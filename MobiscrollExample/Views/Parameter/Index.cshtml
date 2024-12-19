@@ -1,0 +1,199 @@
+﻿@using Nestle.CH.HQ.RSL.WebApp
+@using Nestle.CH.HQ.RSL.WebApp.Models
+@using Nestle.CH.HQ.RSL.WebApp.Services;
+@inject LanguageService _localization
+
+@{
+    Layout = "_Layout";
+}
+
+<!-- Header End -->
+<body>
+
+    <!-- Passengers page -->
+    <section class="main-section admin-section" id="passengers-section">
+        <div class="passanger-container">
+            <h3>@_localization.Getkey("Parameter")</h3>
+            <div class="passanger-row">
+                <div class="passanger-col">
+                    <div class="passanger-header">
+                        <div class="search-wrapper">
+                            <input class="search search-box" type="search" name="gsearch" required="" placeholder="@_localization.Getkey("SearchParameter")" id="gsearch">
+                        </div>
+                        <div class="passanger-header-right">
+                        </div>
+                    </div>
+                    <div class="grid-table">
+                        <div class="grid-wrapper">
+                            <table id="passanger-grid"></table>
+                        </div>
+                    </div>
+                </div>
+                <div class="passanger-col">
+                    <div class="passanger-info-blk">
+                        <div class="box-container-blk">
+                            <div class="box-container scroll-bar">
+                                <div class="passanger-header">
+                                    <span>@_localization.Getkey("PassengerHeaderName")</span>
+                                    <img id="sort-button" data-id="1" class="icon-large-img pointer-event" src="./img/sort.png" alt="add">
+                                </div>
+                                <div class="passanger-info-list">
+                                    <div class="combined-info-col-container">
+                                    <div class="accordion" id="accordionPanelsStayOpenExample">
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                                                        @_localization.Getkey("ParameterCategoryAttribute")
+                                                </button>
+                                            </h2>
+                                            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                                                <div class="accordion-body">
+                                                    <div class="info-body">
+                                                        <div class="info-col">
+                                                            <div class="info-left">
+                                                                <span>@_localization.Getkey("ParameterIdDisplayName")</span>
+                                                                <img class="icon-img m-l-10" src="./img/circle-outline.png" alt="Info" title="@_localization.Getkey("ParameterIdDescription")">
+                                                            </div>
+                                                            <div class="info-right">
+                                                                <input type="text" id="textId" disabled>
+                                                                <input type="hidden" id="textSelectedAction">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                                                        @_localization.Getkey("MainDisplayName")
+                                                </button>
+                                            </h2>
+                                            <div id="panelsStayOpen-collapseTwo" class="accordion-collapse show" aria-labelledby="panelsStayOpen-headingTwo">
+                                                <div class="accordion-body">
+                                                    <div class="info-body">
+                                                        <div class="info-col">
+                                                            <div class="info-left">
+                                                                <span>@_localization.Getkey("ParameterDescriptionDisplayName")</span>
+                                                                <img class="icon-img m-l-10" src="./img/circle-outline.png" alt="Info" title="@_localization.Getkey("ParameterDescriptionDescription")">
+                                                            </div>
+                                                            <div class="info-right">
+                                                                <input type="text" id="textDescription">
+                                                            </div>
+                                                        </div>
+                                                        <div class="info-col">
+                                                            <div class="info-left">
+                                                                <span>@_localization.Getkey("ParameterNameDisplayName") <span class="required-red">*</span></span>
+                                                                <img class="icon-img m-l-10" src="./img/circle-outline.png" alt="Info" title="@_localization.Getkey("ParameterNameDescription")">
+                                                            </div>
+                                                            <div class="info-right">
+                                                                <input type="text" id="textName">
+                                                            </div>
+                                                        </div> 
+                                                        <div class="info-col">
+                                                            <div class="info-left">
+                                                                <span>@_localization.Getkey("ParameterValueDisplayName")</span>
+                                                                <img class="icon-img m-l-10" src="./img/circle-outline.png" alt="Info" title="@_localization.Getkey("ParameterValueDescription")">
+                                                            </div>
+                                                            <div class="info-right">
+                                                                <input type="text" id="textValue">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="panelsStayOpen-headingsix">
+                                                <button class="accordion-button " type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapsesix" aria-expanded="false" aria-controls="panelsStayOpen-collapsesix">
+                                                        3. @_localization.Getkey("Information")
+                                                </button>
+                                            </h2>
+                                            <div id="panelsStayOpen-collapsesix" class="accordion-collapse show" aria-labelledby="panelsStayOpen-headingsix">
+                                                <div class="accordion-body">
+                                                    <div class="info-body">
+                                                        <div class="info-col">
+                                                            <div class="info-left">
+                                                                <span>@_localization.Getkey("ParameterTimeStampDisplayName")</span>
+                                                                <img class="icon-img m-l-10" src="./img/circle-outline.png" alt="Info" title="@_localization.Getkey("ParameterTimeStampDescription")">
+                                                            </div>
+                                                            <div class="info-right">
+                                                                <input type="text" id="textTimeStamp" disabled>
+                                                            </div>
+                                                        </div>
+                                                        <div class="info-col">
+                                                            <div class="info-left">
+                                                                <span>@_localization.Getkey("ParameterModifiedByDisplayName")</span>
+                                                                <img class="icon-img m-l-10" src="./img/circle-outline.png" alt="Info" title="@_localization.Getkey("ParameterModifiedByDescription")">
+                                                            </div>
+                                                            <div class="info-right">
+                                                                <input type="text" id="textModifiedBy" value="" disabled>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="box-bottom">
+                                <button type="button" class="btn btn-yellow" id="enregisterBtn">@_localization.Getkey("insertBtn")</button>
+                                <button type="reset" class="btn btn-gray" id="resetBtn">@_localization.Getkey("closeBtn")</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal fade alert-modal alert_statement" id="alert-update-popup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+         <div class="vertical-alignment-helper"> 
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header"></div>
+                <div class="modal-body">
+                    @{
+                        string updateQuestion = @_localization.Getkey("alertQuestionUpdate");
+                        string parameter = @_localization.Getkey("ParameterName");
+                        string updateSatement = string.Format(updateQuestion, parameter);
+                    }
+                    <h4 id="alertPassengerUpdate">@updateSatement</h4>
+                </div>
+                <div class="modal-footer">
+                        <button type="button" class="btn btn-yellow" id="btnUpdateConfirm">@_localization.Getkey("Confirm")</button>
+                        <button type="button" class="btn btn-border" data-bs-dismiss="modal" aria-label="Close">@_localization.Getkey("CancelButton")</button>
+                </div>
+            </div>
+        </div>
+       </div> 
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade alert-modal" id="alert-update-green" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="vertical-alignment-helper">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <h4 id="alertUpdateSuccess"><span>@_localization.Getkey("Success")</span> @_localization.Getkey("SuccessUpdateStatement")</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--alert Green End -->
+    <!-- Modal -->
+    <!-- Passengers page ENd -->
+    <!--  Passengers Js Start -->
+    @* <script type="text/javascript" src="~/scripts/ManagerUser.js"></script> *@
+    @* <script src="~/scripts/parameter.js"></script> *@
+    <!--  Passengers Grid Js End -->
+    <!-- Javascript dependency -->
+    @* <script src="~/scripts/parameter.js"></script> *@
+    <script src="~/scripts/parameter.js?new Date().getTime()"></script>
+</body>

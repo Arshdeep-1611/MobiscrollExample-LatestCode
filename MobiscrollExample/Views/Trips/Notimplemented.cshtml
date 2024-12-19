@@ -1,0 +1,121 @@
+﻿@{
+    Layout = "_Layout";
+}
+<style>
+
+</style>
+<!-- Create Trip Section -->
+<section class="main-section" id="createTrip-section">
+    <div id="container">
+    </div>
+ @*    <div id="addTemplate" style="display: none;">
+        <button id="addEventButton">Add Event</button>
+    </div> *@
+ 
+    <div id="out-of-policy-scheduler" class="md-work-order-scheduling"></div>
+
+    <div style="display: none">
+        <div id="demo-add-popup">
+            <div class="mbsc-form-group">
+                <label style="display:none">
+                    Id
+                    <input mbsc-input id="event-id">
+                    <input mbsc-input-id="event-driverid" />
+                </label>
+                <label>
+                    Driver
+                    <input mbsc-input id="event-driver" disabled>
+                    
+                </label>
+                <label>
+                    Type Of Event
+                    <select id="event-name">
+                       
+                    </select>
+                @*     <input mbsc-input id="event-title"> *@
+                </label>
+               
+            </div>
+            <div class="mbsc-form-group">
+                <label style="display:none">
+                    All-day
+                    <input mbsc-switch id="event-all-day" type="checkbox"  />
+                </label>
+                <label>
+                    Starts
+                    <input mbsc-input id="start-input" />
+                </label>
+                <label>
+                    Ends
+                    <input mbsc-input id="end-input" />
+                </label>
+                <label>
+                    Duration
+                    <input type="number" placeholder="Days" />
+                    <input   type="number"  placeholder="Hours" />
+                    <input type="number"  placeholder="Minutes" />
+                </label>
+                <label>
+                    Comments
+                    <textarea mbsc-textarea id="event-desc"></textarea>
+                </label>
+                <div id="event-date"></div>
+                <div class="mbsc-button-group">
+                    <button class="mbsc-button-block" id="event-delete" mbsc-button data-color="danger" data-variant="outline">Delete event</button>
+                </div>
+            </div>
+        </div>
+       
+        </div>
+</section>
+
+
+<div style="display:none">
+<div id="popupMenu">
+        <div class="mbsc-form-group">
+    <label>
+         Add Event
+    </label>
+    </div>
+</div>
+</div>
+
+<div style="display:none">
+    <div id="eventPopupMenu">
+        <div class="mbsc-form-group">
+            <div id="detailsEvent">
+            <label>
+                Details Of Event
+            </label><br />
+            </div>
+            <div id="deleteEvent">
+            <label>
+                Delete Event
+            </label>
+            </div>           
+        </div>
+    </div>
+</div>
+<div style="display:none">
+    <div id="tripPopupMenu">
+        <div class="mbsc-form-group">
+            <label id="detailsTrip">
+                Details Of Trip
+            </label><br />
+            @* <label>
+                Print
+            </label>
+            <div id="dynamicContent">
+
+            </div> *@
+           
+        </div>
+    </div>
+</div>
+<div style="display: none">
+
+<div id="tooltipContainer">
+    <div id="toolcontent"></div>
+</div>
+</div>
+<script src="~/scripts/outofpolicy.js?new Date().getTime()"></script>

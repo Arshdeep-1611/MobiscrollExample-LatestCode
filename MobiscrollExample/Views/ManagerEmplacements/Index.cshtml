@@ -1,0 +1,443 @@
+﻿@using Nestle.CH.HQ.RSL.WebApp
+@using Nestle.CH.HQ.RSL.WebApp.Models
+@using Nestle.CH.HQ.RSL.WebApp.Services;
+@inject LanguageService _localization
+
+@{
+    Layout = "_Layout";
+}
+
+<!-- Header End -->
+<body>
+
+    <!-- Passengers page -->
+    <section class="main-section admin-section" id="passengers-section">
+        <div class="passanger-container">
+            <h3>@_localization.Getkey("Locations")</h3>
+            <div class="passanger-row">
+                <div class="passanger-col">
+                    <div class="passanger-header">
+                        <div class="search-wrapper">
+                            <input class="search search-box" type="search" name="gsearch" required="" placeholder="@_localization.Getkey("SearchLocations")" id="gsearch">
+                        </div>
+                        <div class="passanger-header-right">
+                            <div class="select-wrapper">
+                                <select class="admin-select" name="" id="textFilter">
+                                    <option value="2">All</option>
+                                    <option value="1">Active</option>
+                                    <option value="0">Inactive</option>
+                                </select>
+                            </div>
+                            <button class="btn btn-yellow" id="addLocationBtn">
+                                <img class="icon-img m-r-10" src="./img/add.png" alt="add">
+                                <span>@_localization.Getkey("AddLocationManager")</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="grid-table">
+                        <div id="alerMessageBox"></div>
+                        <div class="grid-wrapper">
+                            <table id="passanger-grid"></table>
+                        </div>
+                    </div>
+                </div>
+                <div class="passanger-col">
+                    <div class="passanger-info-blk">
+                        <div class="box-container-blk">
+                            <div class="box-container scroll-bar">
+                                <div class="passanger-header">
+                                    <span>@_localization.Getkey("PassengerHeaderName")</span>
+                                    <img id="sort-button" data-id="1" class="icon-large-img pointer-event" src="./img/sort.png" alt="add">
+                                </div>
+                                <div class="passanger-info-list">
+                                    <div class="combined-info-col-container">
+                                    <div class="accordion" id="accordionPanelsStayOpenExample">
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                                                        @_localization.Getkey("ParameterCategoryAttribute")
+                                                </button>
+                                            </h2>
+                                            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                                                <div class="accordion-body">
+                                                    <div class="info-body">
+                                                        <div class="info-col">
+                                                            <div class="info-left">
+                                                                <span>@_localization.Getkey("IdDisplayName")</span>
+                                                                <img class="icon-img m-l-10" src="./img/circle-outline.png" alt="Info" title="@_localization.Getkey("EmplacementIdDescription")">
+                                                            </div>
+                                                            <div class="info-right">
+                                                                <input type="text" id="textLocationId" disabled>
+                                                                <input type="hidden" id="textSelectedAction">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                                                        @_localization.Getkey("MainDisplayName")
+                                                </button>
+                                            </h2>
+                                            <div id="panelsStayOpen-collapseTwo" class="accordion-collapse show" aria-labelledby="panelsStayOpen-headingTwo">
+                                                <div class="accordion-body">
+                                                    <div class="info-body">
+                                                        <div class="info-col">
+                                                            <div class="info-left">
+                                                                <span>@_localization.Getkey("CodeEmplacement")</span>
+                                                                <img class="icon-img m-l-10" src="./img/circle-outline.png" alt="Info" title="@_localization.Getkey("CodeDescription")">
+                                                            </div>
+                                                            <div class="info-right">
+                                                                    <input type="text" id="codeEmplacement" title="Please fill this field!" class="admin-input-change">
+                                                            </div>
+                                                        </div>
+                                                        <div class="info-col">
+                                                            <div class="info-left">
+                                                                <span>@_localization.Getkey("CommentDisplayName")</span>
+                                                                <img class="icon-img m-l-10" src="./img/circle-outline.png" alt="Info" title="@_localization.Getkey("EmplacementCommentDescription")">
+                                                            </div>
+                                                            <div class="info-right">
+                                                                    <input type="text" id="textComment" class="admin-input-change">
+                                                            </div>
+                                                        </div>
+                                                        <div class="info-col">
+                                                            <div class="info-left">
+                                                                <span>@_localization.Getkey("IsEditableDisplayName")</span>
+                                                                <img class="icon-img m-l-10" src="./img/circle-outline.png" alt="Info" title="@_localization.Getkey("EmplacementIsEditableDescription")">
+                                                            </div>
+                                                            <div class="info-right">
+                                                                    <select name="" id="textIsEdit" class="admin-input-change">
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="info-col">
+                                                            <div class="info-left">
+                                                                    <span>@_localization.Getkey("LocationNameDisplayName") </span><span class="required-red"> *</span>
+                                                                <img class="icon-img m-l-10" src="./img/circle-outline.png" alt="Info" title="@_localization.Getkey("EmplacementNameDescription")">
+                                                            </div>
+                                                            <div class="info-right">
+                                                                <input type="text" id="textLocationName" class="admin-input-change" min="0" maxlength="50">
+                                                            </div>
+                                                        </div>
+                                                        <div class="info-col">
+                                                            <div class="info-left">
+                                                                <span>@_localization.Getkey("IsPrivateDisplayName")</span>
+                                                                <img class="icon-img m-l-10" src="./img/circle-outline.png" alt="Info" title="@_localization.Getkey("EmplacementIsPrivateDescription")">
+                                                            </div>
+                                                            <div class="info-right">
+                                                                    <select name="" id="textIsPrivate" class="admin-input-change">
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="info-col">
+                                                            <div class="info-left">
+                                                                <span>@_localization.Getkey("EmplacementOwnerUserIdDisplayName")</span>
+                                                                <img class="icon-img m-l-10" src="./img/circle-outline.png" alt="Info" title="@_localization.Getkey("EmplacementOwnerUserIdDescription")">
+                                                            </div>
+                                                            <div class="info-right">
+                                                                    <select name="" id="textOwnerId" class="admin-input-change">
+                                                                    <option value="Aucun">--</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="info-col">
+                                                            <div class="info-left">
+                                                                <span>@_localization.Getkey("JoinMinutesName")</span>
+                                                                <img class="icon-img m-l-10" src="./img/circle-outline.png" alt="Info" title="@_localization.Getkey("JoinMinutesDescription")">
+                                                            </div>
+                                                            <div class="info-right">
+                                                                    <input type="text" id="textTemp" class="admin-input-change">
+                                                            </div>
+                                                        </div>
+                                                        <div class="info-col">
+                                                            <div class="info-left">
+                                                                <span>@_localization.Getkey("ValidDisplayName")</span>
+                                                                <img class="icon-img m-l-10" src="./img/circle-outline.png" alt="Info" title="@_localization.Getkey("EmplacementValidDescription")">
+                                                            </div>
+                                                            <div class="info-right">
+                                                                    <select name="" id="textValid" class="admin-input-change">
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                                                <button class="accordion-button " type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                                                        3. @_localization.Getkey("Address")
+                                                </button>
+                                            </h2>
+                                            <div id="panelsStayOpen-collapseThree" class="accordion-collapse show" aria-labelledby="panelsStayOpen-headingThree">
+                                                <div class="accordion-body">
+                                                    <div class="info-body">
+                                                        <div class="info-col">
+                                                            <div class="info-left">
+                                                                <span>@_localization.Getkey("NpaDisplayName")</span>
+                                                                <img class="icon-img m-l-10" src="./img/circle-outline.png" alt="Info" title="@_localization.Getkey("NpaDescription")">
+                                                            </div>
+                                                            <div class="info-right">
+                                                                    <input type="text" id="textNpa" class="admin-input-change">
+                                                            </div>
+                                                        </div>
+                                                        <div class="info-col">
+                                                            <div class="info-left">
+                                                                <span>@_localization.Getkey("CountryDisplayName")</span>
+                                                                <img class="icon-img m-l-10" src="./img/circle-outline.png" alt="Info" title="@_localization.Getkey("CountryDescription")">
+                                                            </div>
+                                                            <div class="info-right">
+                                                                    <input type="text" id="textCountry" class="admin-input-change">
+                                                            </div>
+                                                        </div>
+                                                        <div class="info-col">
+                                                            <div class="info-left">
+                                                                <span>@_localization.Getkey("StreetDisplayName")</span>
+                                                                <img class="icon-img m-l-10" src="./img/circle-outline.png" alt="Info" title="@_localization.Getkey("StreetDescription")">
+                                                            </div>
+                                                            <div class="info-right">
+                                                                    <input type="text" id="textStreet" class="admin-input-change">
+                                                            </div>
+                                                        </div>
+                                                        <div class="info-col">
+                                                            <div class="info-left">
+                                                                    <span>@_localization.Getkey("CityDisplayName")</span><span class="required-red"> *</span>
+                                                                <img class="icon-img m-l-10" src="./img/circle-outline.png" alt="Info" title="@_localization.Getkey("CityDescription")">
+                                                            </div>
+                                                            <div class="info-right">
+                                                                    <input type="text" id="textCity" class="admin-input-change">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="panelsStayOpen-headingfour">
+                                                <button class="accordion-button " type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                                                        4. @_localization.Getkey("GPSCoordinates")
+                                                    </button>
+                                            </h2>
+                                            <div id="panelsStayOpen-collapseFour" class="accordion-collapse show" aria-labelledby="panelsStayOpen-headingFour">
+                                                <div class="accordion-body">
+                                                    <div class="info-body">
+                                                        <div class="info-col">
+                                                            <div class="info-left">
+                                                                <span>@_localization.Getkey("LatitudeDisplayName")</span>
+                                                                <img class="icon-img m-l-10" src="./img/circle-outline.png" alt="Info" title="@_localization.Getkey("LatitudeDescription")">
+                                                            </div>
+                                                            <div class="info-right">
+                                                                    <input type="text" id="textLatitude" class="admin-input-change">
+                                                            </div>
+                                                        </div>
+                                                        <div class="info-col">
+                                                            <div class="info-left">
+                                                                <span>@_localization.Getkey("LongitudeDisplayName")</span>
+                                                                <img class="icon-img m-l-10" src="./img/circle-outline.png" alt="Info" title="@_localization.Getkey("LongitudeDescription")">
+                                                            </div>
+                                                            <div class="info-right">
+                                                                    <input type="text" id="textLongitude" class="admin-input-change">
+                                                            </div>
+                                                        </div>
+                                                        <div class="info-col">
+                                                            <div class="info-left">
+                                                                    <span>@_localization.Getkey("ZoomDisplayName")</span><span class="required-red"> *</span>
+                                                                <img class="icon-img m-l-10" src="./img/circle-outline.png" alt="Info" title="@_localization.Getkey("ZoomDescription")">
+                                                            </div>
+                                                            <div class="info-right">
+                                                                    <input type="number" class="admin-input-change" id="textZoom" min="0" max="50">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="panelsStayOpen-headingsix">
+                                                <button class="accordion-button " type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapsesix" aria-expanded="false" aria-controls="panelsStayOpen-collapsesix">
+                                                        5. @_localization.Getkey("Information")
+                                                </button>
+                                            </h2>
+                                            <div id="panelsStayOpen-collapsesix" class="accordion-collapse show" aria-labelledby="panelsStayOpen-headingsix">
+                                                <div class="accordion-body">
+                                                    <div class="info-body">
+                                                        <div class="info-col">
+                                                            <div class="info-left">
+                                                                <span>@_localization.Getkey("TimeStampDisplayName")</span>
+                                                                <img class="icon-img m-l-10" src="./img/circle-outline.png" alt="Info" title="@_localization.Getkey("TimeStampDescription")">
+                                                            </div>
+                                                            <div class="info-right">
+                                                                <input type="text" id="textTimeStamp" disabled>
+                                                            </div>
+                                                        </div>
+                                                        <div class="info-col">
+                                                            <div class="info-left">
+                                                                <span>@_localization.Getkey("ModifiedByDisplayName")</span>
+                                                                <img class="icon-img m-l-10" src="./img/circle-outline.png" alt="Info" title="@_localization.Getkey("ModifiedByDescription")">
+                                                            </div>
+                                                            <div class="info-right">
+                                                                <input type="text" id="textModifiedBy" value="" disabled>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="box-bottom">
+                                <button type="button" class="btn btn-yellow" id="enregisterBtn">@_localization.Getkey("insertBtn")</button>
+                                <button type="reset" class="btn btn-gray" id="resetBtn">@_localization.Getkey("closeBtn")</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+  
+   
+    <!-- Modal -->
+    <!--alert red Start -->
+    <div class="modal fade alert-modal alert_statement" id="alert-delete-red" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="vertical-alignment-helper">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        @{
+                            string status = @_localization.Getkey("Delete");
+                            string originalString = @_localization.Getkey("alertDeleteDanger");
+                            string location = @_localization.Getkey("LocationCase");
+                            string replacedString = string.Format(originalString, location);
+                        }
+                        <h4 id="alertDeleteDanger"><span>@status</span> @replacedString</h4>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--alert red End -->
+    <!-- Modal -->
+    <!--alert green Start -->
+    <div class="modal fade alert-modal" id="alert-insert-green" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="vertical-alignment-helper">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <h4 id="alertInsertSuccess"><span>@_localization.Getkey("Success")</span> @_localization.Getkey("SuccessInsertStatement")</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--alert green End -->
+
+
+    <div class="modal fade alert-modal" id="alert-insert-popup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="vertical-alignment-helper">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content" id="alertQuestionInsert">
+                    <div class="modal-header"></div>
+                    <div class="modal-body">
+                        @{
+                            string insertQuestion = @_localization.Getkey("alertQuestionInsert");
+                            string location1 = @_localization.Getkey("LocationCase");
+                            string insertSatement = string.Format(insertQuestion, location1);
+                        }
+                        <h4 id="alertPassengerInsert">@insertSatement</h4>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-yellow" id="btnInsertConfirm">@_localization.Getkey("Confirm")</button>
+                        <button type="button" class="btn btn-border" data-bs-dismiss="modal" aria-label="Close">@_localization.Getkey("CancelButton")</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade alert-modal" id="alert-update-popup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="vertical-alignment-helper">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content" id="alertQuestionUpdate">
+                    <div class="modal-header"></div>
+                    <div class="modal-body">
+                        @{
+                            string updateQuestion = @_localization.Getkey("alertQuestionUpdate");
+                            string location2 = @_localization.Getkey("LocationCase");
+                            string updateSatement = string.Format(updateQuestion, location2);
+                        }
+                        <h4 id="alertPassengerUpdate">@updateSatement</h4>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-yellow" id="btnUpdateConfirm">@_localization.Getkey("Confirm")</button>
+                        <button type="button" class="btn btn-border" data-bs-dismiss="modal" aria-label="Close">@_localization.Getkey("CancelButton")</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade alert-modal" id="alert-delete-popup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="vertical-alignment-helper">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content" id="alertQuestionDelete">
+                    <div class="modal-header"></div>
+                    <div class="modal-body">
+                        @{
+                            string deleteQuestion = @_localization.Getkey("alertQuestionDelete");
+                            string location3 = @_localization.Getkey("LocationCase");
+                            string deleteSatement = string.Format(deleteQuestion, location3);
+                        }
+                        <h4 id="alertPassengerDelete">@deleteSatement</h4>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-yellow" id="btnDeleteConfirm">@_localization.Getkey("Confirm")</button>
+                        <button type="button" class="btn btn-border" data-bs-dismiss="modal" aria-label="Close">@_localization.Getkey("CancelButton")</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade alert-modal" id="alert-update-green" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="vertical-alignment-helper">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <h4 id="alertUpdateSuccess"><span>@_localization.Getkey("Success")</span> @_localization.Getkey("SuccessUpdateStatement")</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade alert-modal" id="alert-duplicateLocation-green" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="vertical-alignment-helper">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <h4 id="alertUpdateSuccess"><span>@_localization.Getkey("Warning :")</span> @_localization.Getkey("SuccessLocationDeleteStatement")</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <!-- Passengers page ENd -->
+    <!--  Passengers Js Start -->
+    <script src="~/scripts/manageremplacements.js?new Date().getTime()"></script>
+    <!--  Passengers Grid Js End -->
+    <!-- Javascript dependency -->
+
+</body>

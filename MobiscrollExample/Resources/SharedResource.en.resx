@@ -1,0 +1,2448 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccessLevelDisplayName" xml:space="preserve">
+    <value>Access level</value>
+  </data>
+  <data name="btnConnectManager" xml:space="preserve">
+    <value>Connect as manager</value>
+  </data>
+  <data name="btnConnectManager1" xml:space="preserve">
+    <value>Connect as manager</value>
+  </data>
+  <data name="btnConnectUser" xml:space="preserve">
+    <value>Connect as user</value>
+  </data>
+  <data name="CityDescription" xml:space="preserve">
+    <value>City of the location</value>
+  </data>
+  <data name="CodeDescription" xml:space="preserve">
+    <value>Code of the start or end location, used for the planning</value>
+  </data>
+  <data name="CountryDescription" xml:space="preserve">
+    <value>Country of the location</value>
+  </data>
+  <data name="EmplacementCommentDescription" xml:space="preserve">
+    <value>Comment on the location</value>
+  </data>
+  <data name="EmplacementIdDescription" xml:space="preserve">
+    <value>Technical identifier of the Location (read only)</value>
+  </data>
+  <data name="EmplacementIsEditableDescription" xml:space="preserve">
+    <value>If not set, this location cannot be updated by users</value>
+  </data>
+  <data name="EmplacementIsPrivateDescription" xml:space="preserve">
+    <value>If set, this location cannot be used for a new trip by other users</value>
+  </data>
+  <data name="EmplacementNameDescription" xml:space="preserve">
+    <value>Name of the location</value>
+  </data>
+  <data name="EmplacementOwnerUserIdDescription" xml:space="preserve">
+    <value>Id of the user responsible of the management of the location</value>
+  </data>
+  <data name="EmplacementOwnerUserIdDisplayName" xml:space="preserve">
+    <value>Responsible</value>
+  </data>
+  <data name="EmplacementValidDescription" xml:space="preserve">
+    <value>If set this location can be used for a new trip</value>
+  </data>
+  <data name="JoinMinutesDescription" xml:space="preserve">
+    <value>Time in minutes took by the driver to join the location or return from the location from the garage</value>
+  </data>
+  <data name="LatitudeDescription" xml:space="preserve">
+    <value>Latitude of the location</value>
+  </data>
+  <data name="LongitudeDescription" xml:space="preserve">
+    <value>Longitude of the location</value>
+  </data>
+  <data name="NpaDescription" xml:space="preserve">
+    <value>Postal code of the location</value>
+  </data>
+  <data name="StreetDescription" xml:space="preserve">
+    <value>Street Name</value>
+  </data>
+  <data name="ZoomDescription" xml:space="preserve">
+    <value>Map zoom</value>
+  </data>
+  <data name="btnConnectUser1" xml:space="preserve">
+    <value>Connect as user</value>
+  </data>
+  <data name="CityDisplayName" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="closeBtn" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="CodeEmplacement" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="CommentDescription" xml:space="preserve">
+    <value>Comments on the passenger.</value>
+  </data>
+  <data name="CommentDisplayName" xml:space="preserve">
+    <value>Comments</value>
+  </data>
+  <data name="ContactPhoneDescription" xml:space="preserve">
+    <value>Passenger contact phone number</value>
+  </data>
+  <data name="ContactPhoneDisplayName" xml:space="preserve">
+    <value>Contact phone</value>
+  </data>
+  <data name="CountryDisplayName" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="CreatedByDescription" xml:space="preserve">
+    <value>Passenger added by.</value>
+  </data>
+  <data name="CreatedByDisplayName" xml:space="preserve">
+    <value>Created by</value>
+  </data>
+  <data name="DefaultVehicleIdDescription" xml:space="preserve">
+    <value>Default usual vehicle used by this driver</value>
+  </data>
+  <data name="DriverFirstNameDescription" xml:space="preserve">
+    <value>First Name of the driver</value>
+  </data>
+  <data name="DriverIdDescription" xml:space="preserve">
+    <value>Technical identifier of the driver (read only)</value>
+  </data>
+  <data name="DriverLastNameDescription" xml:space="preserve">
+    <value>Last Name of the driver</value>
+  </data>
+  <data name="DriverMobilePhoneDescription" xml:space="preserve">
+    <value>Mobile phone of the driver</value>
+  </data>
+  <data name="DriverOwnerUserIdDisplayName" xml:space="preserve">
+    <value>Owner</value>
+  </data>
+  <data name="DriverUnAssignedWarningHours" xml:space="preserve">
+    <value>Unassigned warning delay</value>
+  </data>
+  <data name="DriverUnConfirmedWarningHours" xml:space="preserve">
+    <value>Unconfirmed warning delay</value>
+  </data>
+  <data name="DriverUserIdDescription" xml:space="preserve">
+    <value>Application user linked to this driver</value>
+  </data>
+  <data name="DriverValidDescription" xml:space="preserve">
+    <value>If the driver is valid it can be selected for a task or a trip</value>
+  </data>
+  <data name="DriverVehicleName" xml:space="preserve">
+    <value>Vehicle</value>
+  </data>
+  <data name="DriverWeeklyWorkingHours" xml:space="preserve">
+    <value>Weekly working hours</value>
+  </data>
+  <data name="EmailDescription" xml:space="preserve">
+    <value>E-mail addrress of the passenger</value>
+  </data>
+  <data name="EmailDisplayName" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="EmployeeIdDescription" xml:space="preserve">
+    <value>Technical identifier of the employee in the CMDP</value>
+  </data>
+  <data name="EmployeeIdDisplayName" xml:space="preserve">
+    <value>Employee Id</value>
+  </data>
+  <data name="ExternalCodeDescription" xml:space="preserve">
+    <value>Internal code corresponding to the external service. This code is used to recognize the external service for specific jobs</value>
+  </data>
+  <data name="ExternalCommentDescription" xml:space="preserve">
+    <value>Comments about this service</value>
+  </data>
+  <data name="ExternalContactEmailDescription" xml:space="preserve">
+    <value>Addresse(s) email of the main contact. Separtate the addresses by a ';' if more than one.</value>
+  </data>
+  <data name="ExternalContactFirstnameDescription" xml:space="preserve">
+    <value>First name of the main contact in this company</value>
+  </data>
+  <data name="ExternalContactLastnameDescription" xml:space="preserve">
+    <value>Last name of the main contact in this company</value>
+  </data>
+  <data name="ExternalContactPhoneDescription" xml:space="preserve">
+    <value>Phone number of the main contact in this company</value>
+  </data>
+  <data name="ExternalIdDescription" xml:space="preserve">
+    <value>Technical identifier of the external (read only)</value>
+  </data>
+  <data name="ExternalIntervalCancellingHoursDescription" xml:space="preserve">
+    <value>Interval of time (in hour) before automatically cancel the trip (according the trip start)</value>
+  </data>
+  <data name="ExternalNameDescription" xml:space="preserve">
+    <value>Full name of the external service</value>
+  </data>
+  <data name="ExternalSupplierInterfaceDescription" xml:space="preserve">
+    <value>Set 'Yes' if the supplier is electronicaly interfaced</value>
+  </data>
+  <data name="ExternalUnassignedWarningHoursDescription" xml:space="preserve">
+    <value>Delay in hours to show the warning alert in the planning for an unassigned trip</value>
+  </data>
+  <data name="ExternalUnconfirmedWarningHoursDescription" xml:space="preserve">
+    <value>Delay in hours to show the warning alert in the planning for an unconfirmed assigned trip</value>
+  </data>
+  <data name="ExternalValidDescription" xml:space="preserve">
+    <value>If actived this external service can be mandated for a job.</value>
+  </data>
+  <data name="ExternalWebserviceAuthCodeDescription" xml:space="preserve">
+    <value>Personal code for the authentication</value>
+  </data>
+  <data name="ExternalWebserviceAuthPwdDescription" xml:space="preserve">
+    <value>Password for the authentication</value>
+  </data>
+  <data name="ExternalWebserviceAuthUserDescription" xml:space="preserve">
+    <value>User for the authentication</value>
+  </data>
+  <data name="ExternalWebserviceUrlDescription" xml:space="preserve">
+    <value>URL address of the webservice to transfer data</value>
+  </data>
+  <data name="FirstNameDescription" xml:space="preserve">
+    <value>First name of the passenger</value>
+  </data>
+  <data name="FirstNameDisplayName" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="TripsCancelConfirmMessage" xml:space="preserve">
+    <value>Changes made are not saved, Are you sure you want to cancel?</value>
+  </data>
+  <data name="IdDescription" xml:space="preserve">
+    <value>Technical identifier of the passenger (read only)</value>
+  </data>
+  <data name="IdDisplayName" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="IdDisplayNameDriver" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="insertBtn" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="IsAuthorizedDescription" xml:space="preserve">
+    <value>If active the passenger can be the main passenger of a trip.</value>
+  </data>
+  <data name="IsAuthorizedDisplayName" xml:space="preserve">
+    <value>Authorized</value>
+  </data>
+  <data name="IsEditableDescription" xml:space="preserve">
+    <value>If active, the passenger will not be automaticaly synchronized.</value>
+  </data>
+  <data name="IsEditableDisplayName" xml:space="preserve">
+    <value>Editable</value>
+  </data>
+  <data name="IsPrivateDescription" xml:space="preserve">
+    <value>If active this passenger can be used only by the user who introduced it and the administrators.</value>
+  </data>
+  <data name="IsPrivateDisplayName" xml:space="preserve">
+    <value>Private</value>
+  </data>
+  <data name="IsVipDescription" xml:space="preserve">
+    <value>If active, the passenger is considered as important and is highlighted.</value>
+  </data>
+  <data name="IsVipDisplayName" xml:space="preserve">
+    <value>VIP</value>
+  </data>
+  <data name="JoinMinutesName" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="labelDriver" xml:space="preserve">
+    <value>3. Driver</value>
+  </data>
+  <data name="labelManager" xml:space="preserve">
+    <value>5. Manager</value>
+  </data>
+  <data name="labelManagerBackup" xml:space="preserve">
+    <value>4. Manager Backup</value>
+  </data>
+  <data name="labelRequester" xml:space="preserve">
+    <value>1. Requester</value>
+  </data>
+  <data name="labelRequesterPassengerManagement" xml:space="preserve">
+    <value>2. Requester with passangers management</value>
+  </data>
+  <data name="labelSupervisor" xml:space="preserve">
+    <value>6. Supervisor</value>
+  </data>
+  <data name="LastNameDescription" xml:space="preserve">
+    <value>Familly name of the passenger</value>
+  </data>
+  <data name="LastNameDisplayName" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="LatitudeDisplayName" xml:space="preserve">
+    <value>Latitude</value>
+  </data>
+  <data name="linkAdministration" xml:space="preserve">
+    <value>ADMINISTRATION</value>
+  </data>
+  <data name="linkAdministration1" xml:space="preserve">
+    <value>ADMINISTRATION</value>
+  </data>
+  <data name="linkDelegates" xml:space="preserve">
+    <value>DELEGATES</value>
+  </data>
+  <data name="linkDelegates1" xml:space="preserve">
+    <value>DELEGATES</value>
+  </data>
+  <data name="linkPassenger" xml:space="preserve">
+    <value>Passengers</value>
+  </data>
+  <data name="linkPaymentMode" xml:space="preserve">
+    <value>PAYMENT MODES</value>
+  </data>
+  <data name="linkPaymentMode1" xml:space="preserve">
+    <value>PAYMENT MODES</value>
+  </data>
+  <data name="linkReports" xml:space="preserve">
+    <value>REPORTS</value>
+  </data>
+  <data name="linkReports1" xml:space="preserve">
+    <value>REPORTS</value>
+  </data>
+  <data name="linkTrips" xml:space="preserve">
+    <value>TRIPS</value>
+  </data>
+  <data name="linkTrips1" xml:space="preserve">
+    <value>TRIPS</value>
+  </data>
+  <data name="LocationNameDisplayName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="LongitudeDisplayName" xml:space="preserve">
+    <value>Longitude</value>
+  </data>
+  <data name="MobilePhoneDescription" xml:space="preserve">
+    <value>Passenger mobile phone number</value>
+  </data>
+  <data name="MobilePhoneDisplayName" xml:space="preserve">
+    <value>Mobile Phone</value>
+  </data>
+  <data name="ModifiedByDescription" xml:space="preserve">
+    <value>Last modification done by.</value>
+  </data>
+  <data name="ModifiedByDisplayName" xml:space="preserve">
+    <value>Modified by.</value>
+  </data>
+  <data name="NpaDisplayName" xml:space="preserve">
+    <value>Postal code</value>
+  </data>
+  <data name="optionNo" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="optionYes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="OwnerUserIdDescription" xml:space="preserve">
+    <value>Owner user of the passenger, used with private passenger</value>
+  </data>
+  <data name="OwnerUserIdDisplayName" xml:space="preserve">
+    <value>Owner</value>
+  </data>
+  <data name="ParameterDescriptionDescription" xml:space="preserve">
+    <value>Full description of the parameter</value>
+  </data>
+  <data name="ParameterDescriptionDisplayName" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="ParameterIdDescription" xml:space="preserve">
+    <value>Technical identifier of the parameter (read only)</value>
+  </data>
+  <data name="ParameterIdDisplayName" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="ParameterModifiedByDescription" xml:space="preserve">
+    <value>Last modification done by</value>
+  </data>
+  <data name="ParameterModifiedByDisplayName" xml:space="preserve">
+    <value>Modified by</value>
+  </data>
+  <data name="ParameterNameDescription" xml:space="preserve">
+    <value>Name of the parameter</value>
+  </data>
+  <data name="ParameterNameDisplayName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="ParameterTimeStampDescription" xml:space="preserve">
+    <value>Last modification date</value>
+  </data>
+  <data name="ParameterTimeStampDisplayName" xml:space="preserve">
+    <value>Last modification date</value>
+  </data>
+  <data name="ParameterValueDescription" xml:space="preserve">
+    <value>Value of the parameter</value>
+  </data>
+  <data name="ParameterValueDisplayName" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="PhoneDescription" xml:space="preserve">
+    <value>Phone number of the passenger (land line)</value>
+  </data>
+  <data name="PhoneDisplayName" xml:space="preserve">
+    <value>Phone Number</value>
+  </data>
+  <data name="selectedLanguage" xml:space="preserve">
+    <value>en</value>
+  </data>
+  <data name="selectedLanguage1" xml:space="preserve">
+    <value>en</value>
+  </data>
+  <data name="StreetDisplayName" xml:space="preserve">
+    <value>Street</value>
+  </data>
+  <data name="TimeStampDescription" xml:space="preserve">
+    <value>Last modification date.</value>
+  </data>
+  <data name="TimeStampDisplayName" xml:space="preserve">
+    <value>Last modification date.</value>
+  </data>
+  <data name="UnassignedWarningHoursDescription" xml:space="preserve">
+    <value>Delay in hours to show the warning alert in the planning for an unassigned trip</value>
+  </data>
+  <data name="UnconfirmedWarningHoursDescription" xml:space="preserve">
+    <value>Delay in hours to show the warning alert in the planning for an unconfirmed assigned trip</value>
+  </data>
+  <data name="UserAccessLevelDescription" xml:space="preserve">
+    <value>Access level of the user</value>
+  </data>
+  <data name="UserIdDescription" xml:space="preserve">
+    <value>Technical identifier of the User (read only)</value>
+  </data>
+  <data name="UserSendAlertDescription" xml:space="preserve">
+    <value>If active the user will recive messages</value>
+  </data>
+  <data name="UserSendAlertDuringWeekendDescription" xml:space="preserve">
+    <value>If actived the user will recive the change messages during the weekend and free days</value>
+  </data>
+  <data name="UserSendAlertFromDescription" xml:space="preserve">
+    <value>The user will be alerted if a change occurs after the start time</value>
+  </data>
+  <data name="UserSendAlertToDescription" xml:space="preserve">
+    <value>The user will be alerted if a change occurs before the end time</value>
+  </data>
+  <data name="UserUserNameDescription" xml:space="preserve">
+    <value>User name in the Active Directory</value>
+  </data>
+  <data name="ValidDescription" xml:space="preserve">
+    <value>If the passenger is valid it can be selected for a trip</value>
+  </data>
+  <data name="ValidDisplayName" xml:space="preserve">
+    <value>Valid</value>
+  </data>
+  <data name="VehicleCapacityDescription" xml:space="preserve">
+    <value>Capacity of the vehicle in people count.</value>
+  </data>
+  <data name="VehicleCapacityDisplayName" xml:space="preserve">
+    <value>Capacity</value>
+  </data>
+  <data name="VehicleCodeDescription" xml:space="preserve">
+    <value>Code or plate of the vehicle.</value>
+  </data>
+  <data name="VehicleCodeDisplayName" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="VehicleIdDescription" xml:space="preserve">
+    <value>Technical identifier of the vehicle (read only)</value>
+  </data>
+  <data name="VehicleIdDisplayName" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="VehicleModifiedByDescription" xml:space="preserve">
+    <value>Last modification done by</value>
+  </data>
+  <data name="VehicleModifiedByDisplayName" xml:space="preserve">
+    <value>Modified by</value>
+  </data>
+  <data name="VehicleNameDescription" xml:space="preserve">
+    <value>Name of the vehicle (brand, model, etc...).</value>
+  </data>
+  <data name="VehicleNameDisplayName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="VehicleTimeStampDescription" xml:space="preserve">
+    <value>Last modification date</value>
+  </data>
+  <data name="VehicleTimeStampDisplayName" xml:space="preserve">
+    <value>Last modification date</value>
+  </data>
+  <data name="VehicleValidDescription" xml:space="preserve">
+    <value>If Set this vehicle can be used for a trip.</value>
+  </data>
+  <data name="VehicleValidDisplayName" xml:space="preserve">
+    <value>Valid</value>
+  </data>
+  <data name="WeeklyWorkingHoursDescription" xml:space="preserve">
+    <value>Max workings hours per week</value>
+  </data>
+  <data name="ZoomDisplayName" xml:space="preserve">
+    <value>Zoom</value>
+  </data>
+  <data name="CategoryCodeDescription" xml:space="preserve">
+    <value>Category for grouping events kinds in the work report.</value>
+  </data>
+  <data name="CategoryDisplayName" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="CodeDisplayName" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="ColorDescription" xml:space="preserve">
+    <value>Display color of an event of this kind when it's added to the time line.</value>
+  </data>
+  <data name="ColorDisplayName" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="DisplayDisplayName" xml:space="preserve">
+    <value>3. Display</value>
+  </data>
+  <data name="EventKindAccessLevelDescription" xml:space="preserve">
+    <value>Required access level to create an event of this kind.</value>
+  </data>
+  <data name="EventKindDisplayName" xml:space="preserve">
+    <value>Add, Modify an event type</value>
+  </data>
+  <data name="EventKindIdDescription" xml:space="preserve">
+    <value>Technical identifier of the external (read only)</value>
+  </data>
+  <data name="EventKindLevelDescription" xml:space="preserve">
+    <value>Display level of an event of this kind</value>
+  </data>
+  <data name="EventKindModifiedByDescription" xml:space="preserve">
+    <value>Last modification done by</value>
+  </data>
+  <data name="EventKindNameDescription" xml:space="preserve">
+    <value>Full name of the event kind.</value>
+  </data>
+  <data name="EventKindTimeStampDescription" xml:space="preserve">
+    <value>Last modification date</value>
+  </data>
+  <data name="EventKindValidationLevelDescription" xml:space="preserve">
+    <value>Required access level to validate an event of this kind.</value>
+  </data>
+  <data name="EventKindValidDescription" xml:space="preserve">
+    <value>If actived this external service can be mandated for a job.</value>
+  </data>
+  <data name="IntervalCancellingHoursDescription" xml:space="preserve">
+    <value>Interval of time (in hour) before automatically cancel the trip (according the trip start)</value>
+  </data>
+  <data name="IntervalCancellingHoursDisplayName" xml:space="preserve">
+    <value>Interval before cancelling</value>
+  </data>
+  <data name="LevelDescription" xml:space="preserve">
+    <value>Display level of an event of this kind</value>
+  </data>
+  <data name="LevelDisplayName" xml:space="preserve">
+    <value>Level</value>
+  </data>
+  <data name="LogDataDisplayName" xml:space="preserve">
+    <value>6. Update informations (read only)</value>
+  </data>
+  <data name="MainDisplayName" xml:space="preserve">
+    <value>2. Base data</value>
+  </data>
+  <data name="MustOverloadDescription" xml:space="preserve">
+    <value>An event with this property activated can not be placed at the root of the timeline but must overload an event of level n-1.</value>
+  </data>
+  <data name="MustOverloadDisplayName" xml:space="preserve">
+    <value>Must Overload</value>
+  </data>
+  <data name="NameDescription" xml:space="preserve">
+    <value>Full name of the event kind.</value>
+  </data>
+  <data name="NameDisplayName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="OverloadableDescription" xml:space="preserve">
+    <value>Set it true if an event of this kind can be overloded by an other event.</value>
+  </data>
+  <data name="OverloadableDisplayName" xml:space="preserve">
+    <value>Overloadable</value>
+  </data>
+  <data name="ParameterCategoryAttribute" xml:space="preserve">
+    <value>1. Identity (read only)</value>
+  </data>
+  <data name="RejectedColorDescription" xml:space="preserve">
+    <value>Display color on an event of this kind when it has been rejected.</value>
+  </data>
+  <data name="RejectedColorDisplayName" xml:space="preserve">
+    <value>Color when rejected</value>
+  </data>
+  <data name="RequestAmountDescription" xml:space="preserve">
+    <value>If activated it will be mandatory to introduce an amount (in CHF) to create an event of this kind.</value>
+  </data>
+  <data name="RequestAmountDisplayName" xml:space="preserve">
+    <value>Request amount</value>
+  </data>
+  <data name="RequestCommentsDescription" xml:space="preserve">
+    <value>If activated it will be mandatory to introduce a comment to create an event of this kind.</value>
+  </data>
+  <data name="RequestCommentsDisplayName" xml:space="preserve">
+    <value>Request comment</value>
+  </data>
+  <data name="RequestDurationDescription" xml:space="preserve">
+    <value>If activated it will be madatorx to introduce a duration to create an event of this kind.</value>
+  </data>
+  <data name="RequestDurationDisplayName" xml:space="preserve">
+    <value>Request duration</value>
+  </data>
+  <data name="RequestFromToDescription" xml:space="preserve">
+    <value>If activated the introduction of a start date and an end date will be mandatory to create an event of this kind.</value>
+  </data>
+  <data name="RequestFromToDisplayName" xml:space="preserve">
+    <value>Request date from and to</value>
+  </data>
+  <data name="RequetedDataDisplayName" xml:space="preserve">
+    <value>4. Required informations</value>
+  </data>
+  <data name="SecurityDataDisplayName" xml:space="preserve">
+    <value>5. Security</value>
+  </data>
+  <data name="ValidatedColorDescription" xml:space="preserve">
+    <value>Display color on an event of this kind when it has been validated.</value>
+  </data>
+  <data name="ValidationLevelDescription" xml:space="preserve">
+    <value>Required access level to validate an event of this kind.</value>
+  </data>
+  <data name="ValidationLevelDisplayName" xml:space="preserve">
+    <value>Validation Access Level</value>
+  </data>
+  <data name="ValidColorDisplayName" xml:space="preserve">
+    <value>Color when validated</value>
+  </data>
+  <data name="labelCategoryAbsenceTime" xml:space="preserve">
+    <value>Absence</value>
+  </data>
+  <data name="labelCategoryDriveTime" xml:space="preserve">
+    <value>Drive time</value>
+  </data>
+  <data name="labelCategoryNoDriveTime" xml:space="preserve">
+    <value>No drive time</value>
+  </data>
+  <data name="labelCategoryOther" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="labelCategoryOvertimeRecovery" xml:space="preserve">
+    <value>Overtime recovery</value>
+  </data>
+  <data name="labelCategoryRateTime" xml:space="preserve">
+    <value>Increasing rate time (old)</value>
+  </data>
+  <data name="labelCategoryReserveTime" xml:space="preserve">
+    <value>Reserve time</value>
+  </data>
+  <data name="labelCategorySurchargeNightTime" xml:space="preserve">
+    <value>Surcharged time (night)</value>
+  </data>
+  <data name="labelCategorySurchargeSundayDayTime" xml:space="preserve">
+    <value>Surcharged time (sunday day)</value>
+  </data>
+  <data name="labelCategorySurchargeSundayNightTime" xml:space="preserve">
+    <value>Surcharged time (sunday night)</value>
+  </data>
+  <data name="labelCategoryWorkTime" xml:space="preserve">
+    <value>Work time</value>
+  </data>
+  <data name="labelLavel1" xml:space="preserve">
+    <value>Level 1</value>
+  </data>
+  <data name="labelLavel2" xml:space="preserve">
+    <value>Level 2</value>
+  </data>
+  <data name="labelLavel3" xml:space="preserve">
+    <value>Level 3</value>
+  </data>
+  <data name="labelLavel4" xml:space="preserve">
+    <value>Level 4</value>
+  </data>
+  <data name="labelNone" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="linkManagerEvent" xml:space="preserve">
+    <value>Types Of Events</value>
+  </data>
+  <data name="ManageAccessIdDescription" xml:space="preserve">
+    <value>Technical identifier of the tool (read only)</value>
+  </data>
+  <data name="ManageAccessLevelDescription" xml:space="preserve">
+    <value>Access level of the user</value>
+  </data>
+  <data name="ToolIdDisplayName" xml:space="preserve">
+    <value>Tool</value>
+  </data>
+  <data name="ToolsIdDescription" xml:space="preserve">
+    <value>Tool name</value>
+  </data>
+  <data name="TitleClearCache" xml:space="preserve">
+    <value>Empty the cache</value>
+  </data>
+  <data name="TitleDrivers" xml:space="preserve">
+    <value>Drivers</value>
+  </data>
+  <data name="TitleEventKind" xml:space="preserve">
+    <value>Event kinds</value>
+  </data>
+  <data name="TitleExportTool" xml:space="preserve">
+    <value>PDF export report</value>
+  </data>
+  <data name="TitleExternalServices" xml:space="preserve">
+    <value>External services</value>
+  </data>
+  <data name="TitleLocations" xml:space="preserve">
+    <value>Locations</value>
+  </data>
+  <data name="TitleManageAccess" xml:space="preserve">
+    <value>Manage Access</value>
+  </data>
+  <data name="TitleNightAndSundayHours" xml:space="preserve">
+    <value>Report of night and sunday hours</value>
+  </data>
+  <data name="TitleOutOfPolicyTrips" xml:space="preserve">
+    <value>Out of policy trips</value>
+  </data>
+  <data name="TitleOvertime" xml:space="preserve">
+    <value>Report of overtime</value>
+  </data>
+  <data name="TitleParameters" xml:space="preserve">
+    <value>Parameters</value>
+  </data>
+  <data name="TitlePassengers" xml:space="preserve">
+    <value>Passengers</value>
+  </data>
+  <data name="TitlePaymentModes" xml:space="preserve">
+    <value>Payment modes</value>
+  </data>
+  <data name="TitlePrintReport" xml:space="preserve">
+    <value>Print report</value>
+  </data>
+  <data name="TitleReportAuthorizedPeople" xml:space="preserve">
+    <value>Rights holders’ journey report</value>
+  </data>
+  <data name="TitleSyncPassengers" xml:space="preserve">
+    <value>Synchronize passengers</value>
+  </data>
+  <data name="TitleTripPlanning" xml:space="preserve">
+    <value>Search for a race</value>
+  </data>
+  <data name="TitleTripsPlanning" xml:space="preserve">
+    <value>Trips planning</value>
+  </data>
+  <data name="TitleTripValidation" xml:space="preserve">
+    <value>Validation of trips</value>
+  </data>
+  <data name="TitleUsers" xml:space="preserve">
+    <value>Users</value>
+  </data>
+  <data name="TitleVehicles" xml:space="preserve">
+    <value>Vehicles</value>
+  </data>
+  <data name="TitleWorkReport" xml:space="preserve">
+    <value>Report work report</value>
+  </data>
+  <data name="alertDeleteDanger" xml:space="preserve">
+    <value>{0} has been successfully removed.</value>
+  </data>
+  <data name="alertInsertSuccess" xml:space="preserve">
+    <value>{0} has been successfully created.</value>
+  </data>
+  <data name="alertQuestionDelete" xml:space="preserve">
+    <value>Are you sure you want to remove {0}?</value>
+  </data>
+  <data name="alertQuestionInsert" xml:space="preserve">
+    <value>Are you sure you want to create a new {0}?</value>
+  </data>
+  <data name="alertQuestionUpdate" xml:space="preserve">
+    <value>Are you sure you want to modify {0}?</value>
+  </data>
+  <data name="alertUpdateSuccess" xml:space="preserve">
+    <value>{0} has been successfully modified.</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete!</value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>Success!</value>
+  </data>
+  <data name="DangerDeleteStatement" xml:space="preserve">
+    <value>removed successfully!</value>
+  </data>
+  <data name="SuccessInsertStatement" xml:space="preserve">
+    <value> successfully created!</value>
+  </data>
+  <data name="SuccessUpdateStatement" xml:space="preserve">
+    <value>successfully modified!</value>
+  </data>
+  <data name="AdditionalInformation" xml:space="preserve">
+    <value>Additional Information</value>
+  </data>
+  <data name="AddPassenger" xml:space="preserve">
+    <value>Add Passenger</value>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>Apply</value>
+  </data>
+  <data name="AuthorizedPassenger" xml:space="preserve">
+    <value>Authorized passenger</value>
+  </data>
+  <data name="ss" xml:space="preserve">
+    <value>Add New Passenger</value>
+  </data>
+  <data name="CustomizedPassenger" xml:space="preserve">
+    <value>Customized passenger (not automatically updated)</value>
+  </data>
+  <data name="CustomPassenger" xml:space="preserve">
+    <value>Custom Passenger</value>
+  </data>
+  <data name="ExistingEmployee" xml:space="preserve">
+    <value>Existing Employee</value>
+  </data>
+  <data name="Filter" xml:space="preserve">
+    <value>Filter</value>
+  </data>
+  <data name="PrivatePassenger" xml:space="preserve">
+    <value>Private passenger (not visible to other requestors)</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="SearchResult" xml:space="preserve">
+    <value>Search Result</value>
+  </data>
+  <data name="TelephoneDisplayName" xml:space="preserve">
+    <value>Telephone</value>
+  </data>
+  <data name="btnEventKind" xml:space="preserve">
+    <value>Add Eventkind</value>
+  </data>
+  <data name="EventKindTitle" xml:space="preserve">
+    <value>Events</value>
+  </data>
+  <data name="Duplicate" xml:space="preserve">
+    <value>Duplicate!!</value>
+  </data>
+  <data name="Add Delegate" xml:space="preserve">
+    <value>Add Delegate</value>
+  </data>
+  <data name="Add a New Delegate" xml:space="preserve">
+    <value>Add a New Delegate</value>
+  </data>
+  <data name="Cost Center Code" xml:space="preserve">
+    <value>Cost Center Code</value>
+  </data>
+  <data name="Cost Center Name" xml:space="preserve">
+    <value>Cost Center Name</value>
+  </data>
+  <data name="Delegates Filter" xml:space="preserve">
+    <value>Delegates Filter</value>
+  </data>
+  <data name="First Name" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="Last Name" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="My Delegates" xml:space="preserve">
+    <value>My Delegates</value>
+  </data>
+  <data name="Search delegate" xml:space="preserve">
+    <value>Search delegate</value>
+  </data>
+  <data name="AlertNoRecords" xml:space="preserve">
+    <value>There is no records!</value>
+  </data>
+  <data name="ExternalIntervalCancellingHoursDisplayName" xml:space="preserve">
+    <value>Interval before cancelling</value>
+  </data>
+  <data name="ExternalNameDisplayName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="ExternalUnassignedWarningHoursDisplayName" xml:space="preserve">
+    <value>Unassigned warning delay</value>
+  </data>
+  <data name="ExternalUnconfirmedWarningHoursDisplayName" xml:space="preserve">
+    <value>Unconfirmed warning delay</value>
+  </data>
+  <data name="ExternalWebserviceAuthCodeDisplayName" xml:space="preserve">
+    <value>Personal code</value>
+  </data>
+  <data name="ExternalWebserviceAuthPwdDisplayName" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="ExternalWebserviceAuthUserDisplayName" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="ExternalWebserviceUrlDisplayName" xml:space="preserve">
+    <value>URL address</value>
+  </data>
+  <data name="UserSendAlertDisplayName" xml:space="preserve">
+    <value>Message actived</value>
+  </data>
+  <data name="UserSendAlertDuringWeekendDisplayName" xml:space="preserve">
+    <value>Send alert on weekend</value>
+  </data>
+  <data name="UserSendAlertFromDisplayName" xml:space="preserve">
+    <value>Send messages from</value>
+  </data>
+  <data name="UserSendAlertToDisplayName" xml:space="preserve">
+    <value>Send messages until</value>
+  </data>
+  <data name="AccessLevelDescription" xml:space="preserve">
+    <value>Access level required to edit this passenger</value>
+  </data>
+  <data name="SearchEventKind" xml:space="preserve">
+    <value>Search Eventkind</value>
+  </data>
+  <data name="AllOption" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="InvalidOption" xml:space="preserve">
+    <value>Inactive</value>
+  </data>
+  <data name="PassengerHolder" xml:space="preserve">
+    <value>Search Passenger</value>
+  </data>
+  <data name="ValidOption" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="Lan" xml:space="preserve">
+    <value>En</value>
+  </data>
+  <data name="BtnDelete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="BtnEdit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="DuplicateWarningStatement" xml:space="preserve">
+    <value>Duplicate values not allowed</value>
+  </data>
+  <data name="AlertDuplicateDanger" xml:space="preserve">
+    <value>Duplicate values not allowed</value>
+  </data>
+  <data name="PassengerSynchronization" xml:space="preserve">
+    <value>Passenger Synchronization</value>
+  </data>
+  <data name="Arrivaldate" xml:space="preserve">
+    <value>Arrival date</value>
+  </data>
+  <data name="Datededepart" xml:space="preserve">
+    <value>Date of departure</value>
+  </data>
+  <data name="ResearchCities" xml:space="preserve">
+    <value>Search criteria</value>
+  </data>
+  <data name="Today" xml:space="preserve">
+    <value>Today</value>
+  </data>
+  <data name="Accepted" xml:space="preserve">
+    <value>Accepted</value>
+  </data>
+  <data name="Applicant" xml:space="preserve">
+    <value>Requestor</value>
+  </data>
+  <data name="ArrivalLocation" xml:space="preserve">
+    <value>Arrival Location</value>
+  </data>
+  <data name="Cancelling" xml:space="preserve">
+    <value>Cancelling</value>
+  </data>
+  <data name="Incomplete" xml:space="preserve">
+    <value>Incomplete</value>
+  </data>
+  <data name="OnHold" xml:space="preserve">
+    <value>Pending</value>
+  </data>
+  <data name="OutOfPolicy" xml:space="preserve">
+    <value>Out of Policy</value>
+  </data>
+  <data name="Past" xml:space="preserve">
+    <value>Past</value>
+  </data>
+  <data name="Predefined" xml:space="preserve">
+    <value>Predefined</value>
+  </data>
+  <data name="Print" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="Processing" xml:space="preserve">
+    <value>Processing</value>
+  </data>
+  <data name="Rejected" xml:space="preserve">
+    <value>Rejected</value>
+  </data>
+  <data name="SearchResults" xml:space="preserve">
+    <value>Search results</value>
+  </data>
+  <data name="StartLocation" xml:space="preserve">
+    <value>Start Location</value>
+  </data>
+  <data name="ResearchApplicant" xml:space="preserve">
+    <value>Requestor</value>
+  </data>
+  <data name="ResearchComments" xml:space="preserve">
+    <value>Comments</value>
+  </data>
+  <data name="ResearchCostcenter" xml:space="preserve">
+    <value>Cost center</value>
+  </data>
+  <data name="ResearchDriver" xml:space="preserve">
+    <value>Driver</value>
+  </data>
+  <data name="ResearchEndoftherace" xml:space="preserve">
+    <value>End of the trip</value>
+  </data>
+  <data name="ResearchExternalreference" xml:space="preserve">
+    <value>External reference</value>
+  </data>
+  <data name="ResearchExternalservice" xml:space="preserve">
+    <value>External service</value>
+  </data>
+  <data name="ResearchFlightdate" xml:space="preserve">
+    <value>Flight date</value>
+  </data>
+  <data name="ResearchFlightnumber" xml:space="preserve">
+    <value>Flight number</value>
+  </data>
+  <data name="ResearchFollowup" xml:space="preserve">
+    <value>Followup</value>
+  </data>
+  <data name="ResearchItinerary" xml:space="preserve">
+    <value>Itinerary</value>
+  </data>
+  <data name="ResearchMainpassenger" xml:space="preserve">
+    <value>Main passenger</value>
+  </data>
+  <data name="ResearchOutofpolicies" xml:space="preserve">
+    <value>Out of policies</value>
+  </data>
+  <data name="ResearchPaymentmethod" xml:space="preserve">
+    <value>Payment method</value>
+  </data>
+  <data name="ResearchPredefinedname" xml:space="preserve">
+    <value>Predefined name</value>
+  </data>
+  <data name="ResearchStartoftherace" xml:space="preserve">
+    <value>Start of the trip</value>
+  </data>
+  <data name="ResearchStatus" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="ResearchSteps" xml:space="preserve">
+    <value>Steps</value>
+  </data>
+  <data name="ResearchTransmissiondate" xml:space="preserve">
+    <value>Transmission date</value>
+  </data>
+  <data name="ResearchTripDetails" xml:space="preserve">
+    <value>Detail of the trip</value>
+  </data>
+  <data name="ResearchTypeofflight" xml:space="preserve">
+    <value>Type of flight</value>
+  </data>
+  <data name="ResearchVehicle" xml:space="preserve">
+    <value>Vehicle</value>
+  </data>
+  <data name="Erase" xml:space="preserve">
+    <value>Erase</value>
+  </data>
+  <data name="Beneficiaries'TravelReport" xml:space="preserve">
+    <value>Beneficiaries' Travel Report</value>
+  </data>
+  <data name="NightandSundayHoursReport" xml:space="preserve">
+    <value>Night and Sunday Hours Report</value>
+  </data>
+  <data name="OvertimeReport" xml:space="preserve">
+    <value>Overtime Report</value>
+  </data>
+  <data name="ReportDashboard" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="ReportStatistics" xml:space="preserve">
+    <value>STATISTICS </value>
+  </data>
+  <data name="WorkReport" xml:space="preserve">
+    <value>Driver Work Report</value>
+  </data>
+  <data name="ResearchModify" xml:space="preserve">
+    <value>Modify</value>
+  </data>
+  <data name="Planning" xml:space="preserve">
+    <value>Planning</value>
+  </data>
+  <data name="Validation" xml:space="preserve">
+    <value>Validation</value>
+  </data>
+  <data name="linkSynchronization" xml:space="preserve">
+    <value>Synchronisez les passagers</value>
+  </data>
+  <data name="AddDrivers" xml:space="preserve">
+    <value>Add Driver</value>
+  </data>
+  <data name="AddLocation" xml:space="preserve">
+    <value>Add a new Location</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="AddService" xml:space="preserve">
+    <value>Add Service</value>
+  </data>
+  <data name="AddTool" xml:space="preserve">
+    <value>Add Tool</value>
+  </data>
+  <data name="AddVehicles" xml:space="preserve">
+    <value>Add Vehicle</value>
+  </data>
+  <data name="Alerts" xml:space="preserve">
+    <value>Alerts</value>
+  </data>
+  <data name="DriverHour" xml:space="preserve">
+    <value>3. Hourly</value>
+  </data>
+  <data name="DriverLogDataDisplayName" xml:space="preserve">
+    <value>4. Update informations (read only)</value>
+  </data>
+  <data name="Drivers" xml:space="preserve">
+    <value>Drivers</value>
+  </data>
+  <data name="ExternalService" xml:space="preserve">
+    <value>Contact person</value>
+  </data>
+  <data name="ExternalServiceHeader" xml:space="preserve">
+    <value>External Service</value>
+  </data>
+  <data name="GPSCoordinates" xml:space="preserve">
+    <value>GPS Co-ordinates</value>
+  </data>
+  <data name="Information" xml:space="preserve">
+    <value>Update informations (read only)</value>
+  </data>
+  <data name="Locations" xml:space="preserve">
+    <value>Locations</value>
+  </data>
+  <data name="ManageTools" xml:space="preserve">
+    <value>ManageTools</value>
+  </data>
+  <data name="Parameter" xml:space="preserve">
+    <value>Parameters</value>
+  </data>
+  <data name="PassengerHeaderName" xml:space="preserve">
+    <value>Detail of the selected element</value>
+  </data>
+  <data name="PassengerSecurity" xml:space="preserve">
+    <value>3. Security</value>
+  </data>
+  <data name="PassengerTelecommunication" xml:space="preserve">
+    <value>4. Telecommunications</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Users</value>
+  </data>
+  <data name="Vehicles" xml:space="preserve">
+    <value>Vehicles</value>
+  </data>
+  <data name="Webservice" xml:space="preserve">
+    <value>WebService</value>
+  </data>
+  <data name="DriverHourName" xml:space="preserve">
+    <value>4. Hourly</value>
+  </data>
+  <data name="ExternalHeaderName" xml:space="preserve">
+    <value>External Service</value>
+  </data>
+  <data name="ManageAccessHeaderName" xml:space="preserve">
+    <value>Manage Access</value>
+  </data>
+  <data name="ResearchArrival" xml:space="preserve">
+    <value>Arrival</value>
+  </data>
+  <data name="ResearchDeparture" xml:space="preserve">
+    <value>Departure</value>
+  </data>
+  <data name="AcceptedTrips" xml:space="preserve">
+    <value>Accepted Trips</value>
+  </data>
+  <data name="AcceptTrip" xml:space="preserve">
+    <value>Accept Trip</value>
+  </data>
+  <data name="AddEvent" xml:space="preserve">
+    <value>Add Event</value>
+  </data>
+  <data name="April" xml:space="preserve">
+    <value>April</value>
+  </data>
+  <data name="August" xml:space="preserve">
+    <value>August</value>
+  </data>
+  <data name="CancelledTrips" xml:space="preserve">
+    <value>Cancelled Trips</value>
+  </data>
+  <data name="Day" xml:space="preserve">
+    <value>Day</value>
+  </data>
+  <data name="December" xml:space="preserve">
+    <value>December</value>
+  </data>
+  <data name="DeleteEvent" xml:space="preserve">
+    <value>Delete Event</value>
+  </data>
+  <data name="DetailsOfEvent" xml:space="preserve">
+    <value>Details of Event</value>
+  </data>
+  <data name="DetailsofTrip" xml:space="preserve">
+    <value>Details of Trip</value>
+  </data>
+  <data name="February" xml:space="preserve">
+    <value>February</value>
+  </data>
+  <data name="Fri" xml:space="preserve">
+    <value>Fri</value>
+  </data>
+  <data name="January" xml:space="preserve">
+    <value>January</value>
+  </data>
+  <data name="July" xml:space="preserve">
+    <value>July</value>
+  </data>
+  <data name="June" xml:space="preserve">
+    <value>June</value>
+  </data>
+  <data name="March" xml:space="preserve">
+    <value>April</value>
+  </data>
+  <data name="May" xml:space="preserve">
+    <value>May</value>
+  </data>
+  <data name="Mon" xml:space="preserve">
+    <value>Mon</value>
+  </data>
+  <data name="November" xml:space="preserve">
+    <value>November</value>
+  </data>
+  <data name="October" xml:space="preserve">
+    <value>October</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="ReinitiateTrip" xml:space="preserve">
+    <value>Reinitiate Trip</value>
+  </data>
+  <data name="RejectTrip" xml:space="preserve">
+    <value>Reject Trip</value>
+  </data>
+  <data name="Sat" xml:space="preserve">
+    <value>Sat</value>
+  </data>
+  <data name="September" xml:space="preserve">
+    <value>September</value>
+  </data>
+  <data name="Sun" xml:space="preserve">
+    <value>Sun</value>
+  </data>
+  <data name="Thu" xml:space="preserve">
+    <value>Thu</value>
+  </data>
+  <data name="TripNotAssigned" xml:space="preserve">
+    <value>Trip Cannot Be Assigned As Driver Already has a Trip</value>
+  </data>
+  <data name="Tue" xml:space="preserve">
+    <value>Tue</value>
+  </data>
+  <data name="UnacceptedTrips" xml:space="preserve">
+    <value>Unaccepted Trips</value>
+  </data>
+  <data name="UnconfirmedTripsHeader" xml:space="preserve">
+    <value>Unconfirmed Trips</value>
+  </data>
+  <data name="Wed" xml:space="preserve">
+    <value>Wed</value>
+  </data>
+  <data name="Week" xml:space="preserve">
+    <value>Week</value>
+  </data>
+  <data name="Add New Location" xml:space="preserve">
+    <value>Add New Location</value>
+  </data>
+  <data name="Edit Location" xml:space="preserve">
+    <value>Edit Location</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>cancel</value>
+  </data>
+  <data name="Comments" xml:space="preserve">
+    <value>Comments</value>
+  </data>
+  <data name="Days" xml:space="preserve">
+    <value>Days</value>
+  </data>
+  <data name="Driver" xml:space="preserve">
+    <value>Driver</value>
+  </data>
+  <data name="Duration" xml:space="preserve">
+    <value>Event Duration</value>
+  </data>
+  <data name="Ends" xml:space="preserve">
+    <value>Ends</value>
+  </data>
+  <data name="Hours" xml:space="preserve">
+    <value>Hours</value>
+  </data>
+  <data name="Starts" xml:space="preserve">
+    <value>Starts</value>
+  </data>
+  <data name="TripAssociate" xml:space="preserve">
+    <value>Trip Associate</value>
+  </data>
+  <data name="TypeOfEvent" xml:space="preserve">
+    <value>Type Of Event</value>
+  </data>
+  <data name="Location" xml:space="preserve">
+    <value>Name *</value>
+  </data>
+  <data name="Common" xml:space="preserve">
+    <value>Common</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="Private" xml:space="preserve">
+    <value>Private</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>City *</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Country </value>
+  </data>
+  <data name="NPA" xml:space="preserve">
+    <value>NPA </value>
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="Street" xml:space="preserve">
+    <value>Street </value>
+  </data>
+  <data name="AlertPassenger" xml:space="preserve">
+    <value>Alert Passenger</value>
+  </data>
+  <data name="flightInfoDetails" xml:space="preserve">
+    <value>Trip Tracking Information</value>
+  </data>
+  <data name="AddPassengerTitle" xml:space="preserve">
+    <value>Add Passenger</value>
+  </data>
+  <data name="EditPassengerTitle" xml:space="preserve">
+    <value>Modify Passenger</value>
+  </data>
+  <data name="AssignTrip" xml:space="preserve">
+    <value>Assign Trip</value>
+  </data>
+  <data name="PassengerName" xml:space="preserve">
+    <value>PASSENGERS</value>
+  </data>
+  <data name="SearchDriver" xml:space="preserve">
+    <value>Search Driver</value>
+  </data>
+  <data name="SearchVehicle" xml:space="preserve">
+    <value>Search Vehicle</value>
+  </data>
+  <data name="SearchLocations" xml:space="preserve">
+    <value>Search Location</value>
+  </data>
+  <data name="SearchParameter" xml:space="preserve">
+    <value>Search Parameter</value>
+  </data>
+  <data name="SearchService" xml:space="preserve">
+    <value>Search Service</value>
+  </data>
+  <data name="SearchTools" xml:space="preserve">
+    <value>Search Tool</value>
+  </data>
+  <data name="SearchUser" xml:space="preserve">
+    <value>Search User</value>
+  </data>
+  <data name="AddAnotherTripStep" xml:space="preserve">
+    <value>Add Another Trip Step</value>
+  </data>
+  <data name="Addfavorite" xml:space="preserve">
+    <value>Add favorite</value>
+  </data>
+  <data name="Addfiles" xml:space="preserve">
+    <value>Add files</value>
+  </data>
+  <data name="AdditionalFilters" xml:space="preserve">
+    <value>Additional Filters</value>
+  </data>
+  <data name="AddLocationTrip" xml:space="preserve">
+    <value>Add location</value>
+  </data>
+  <data name="Addmore" xml:space="preserve">
+    <value>Add more</value>
+  </data>
+  <data name="AddTrippassenger" xml:space="preserve">
+    <value>Add passenger</value>
+  </data>
+  <data name="Alertpassengers" xml:space="preserve">
+    <value>Alert passengers</value>
+  </data>
+  <data name="Arrivalflight" xml:space="preserve">
+    <value>Arrival flight</value>
+  </data>
+  <data name="Attachedfiles" xml:space="preserve">
+    <value>Attached files</value>
+  </data>
+  <data name="Authorizedtrip" xml:space="preserve">
+    <value>Authorized trip</value>
+  </data>
+  <data name="Beneficiary" xml:space="preserve">
+    <value>Beneficiary</value>
+  </data>
+  <data name="Bringpapermail" xml:space="preserve">
+    <value>Bring paper mail</value>
+  </data>
+  <data name="CancelButton" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="ChangeRequestor" xml:space="preserve">
+    <value>Change Requestor</value>
+  </data>
+  <data name="CheckFiltersDetails" xml:space="preserve">
+    <value>If this checkbox is checked then last one year’s trips and all the future trips will be listed</value>
+  </data>
+  <data name="Comment" xml:space="preserve">
+    <value>Comment</value>
+  </data>
+  <data name="Confidential" xml:space="preserve">
+    <value>Confidential (Trip is not visible by delegates)</value>
+  </data>
+  <data name="Costcenter" xml:space="preserve">
+    <value>Cost center</value>
+  </data>
+  <data name="CostCenterType1" xml:space="preserve">
+    <value>Cost center of the main passenger or the approver</value>
+  </data>
+  <data name="CostCenterType2" xml:space="preserve">
+    <value>Cost center of the following passenger</value>
+  </data>
+  <data name="CostCenterType3" xml:space="preserve">
+    <value>Cost center of the requestor</value>
+  </data>
+  <data name="CostCenterType4" xml:space="preserve">
+    <value>Other cost center</value>
+  </data>
+  <data name="CREATENEWTRIP" xml:space="preserve">
+    <value>CREATE NEW TRIP</value>
+  </data>
+  <data name="CreateNewTripHeader" xml:space="preserve">
+    <value>Create New Trip</value>
+  </data>
+  <data name="DeleteTripStep" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Departureflight" xml:space="preserve">
+    <value>Departure flight</value>
+  </data>
+  <data name="EnddateAndtime" xml:space="preserve">
+    <value>End date &amp; time</value>
+  </data>
+  <data name="EndTriplocation" xml:space="preserve">
+    <value>End location</value>
+  </data>
+  <data name="Flightdatetime" xml:space="preserve">
+    <value>Flight date &amp; time</value>
+  </data>
+  <data name="FlightInformation" xml:space="preserve">
+    <value>Flight Information</value>
+  </data>
+  <data name="Flightnumber" xml:space="preserve">
+    <value>Flight number</value>
+  </data>
+  <data name="FlightType" xml:space="preserve">
+    <value>Flight type</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>From</value>
+  </data>
+  <data name="HandBag" xml:space="preserve">
+    <value>HandBag</value>
+  </data>
+  <data name="Incompleted" xml:space="preserve">
+    <value>Uncompleted</value>
+  </data>
+  <data name="Luggage" xml:space="preserve">
+    <value>Luggage</value>
+  </data>
+  <data name="Mainpassenger" xml:space="preserve">
+    <value>Main passenger</value>
+  </data>
+  <data name="NameHeader" xml:space="preserve">
+    <value>Name *</value>
+  </data>
+  <data name="Noflight" xml:space="preserve">
+    <value>No flight</value>
+  </data>
+  <data name="Options" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="Outofpolicytrip" xml:space="preserve">
+    <value>Out of policy trip</value>
+  </data>
+  <data name="Passenger" xml:space="preserve">
+    <value>Passenger</value>
+  </data>
+  <data name="Payment" xml:space="preserve">
+    <value>Payment</value>
+  </data>
+  <data name="PaymentDetails" xml:space="preserve">
+    <value>Payment Details</value>
+  </data>
+  <data name="Pending" xml:space="preserve">
+    <value>Pending</value>
+  </data>
+  <data name="Predefinedtrip" xml:space="preserve">
+    <value>Favorite trips</value>
+  </data>
+  <data name="PredefinedTripDetails" xml:space="preserve">
+    <value>Your Favorite trips which can be used as template for your new trip creation</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Previous</value>
+  </data>
+  <data name="Requestor" xml:space="preserve">
+    <value>Requestor</value>
+  </data>
+  <data name="RequestorToolTip" xml:space="preserve">
+    <value>Select the trip requestor</value>
+  </data>
+  <data name="Review" xml:space="preserve">
+    <value>Review</value>
+  </data>
+  <data name="IsCompletedConfirmation" xml:space="preserve">
+    <value>The modification of the trip will interrupt the planning process, are you sure you want to continue? If you continue, don't forget to finalize your request with the Submit button!</value>
+  </data>
+  <data name="SaveAndContinue" xml:space="preserve">
+    <value>Save &amp; Continue</value>
+  </data>
+  <data name="Continue" xml:space="preserve">
+    <value>Continue</value>
+  </data>
+  <data name="ShowAll" xml:space="preserve">
+    <value>Show All</value>
+  </data>
+  <data name="Special" xml:space="preserve">
+    <value>Special</value>
+  </data>
+  <data name="StartdateAndtime" xml:space="preserve">
+    <value>Start date &amp; time</value>
+  </data>
+  <data name="StartTriplocation" xml:space="preserve">
+    <value>Start location</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="TripDetails" xml:space="preserve">
+    <value>Trip Details</value>
+  </data>
+  <data name="Tripdetailsheader" xml:space="preserve">
+    <value>Trip details</value>
+  </data>
+  <data name="TripFilters" xml:space="preserve">
+    <value>Trip Filters</value>
+  </data>
+  <data name="TripRequestor" xml:space="preserve">
+    <value>Trip Requestor</value>
+  </data>
+  <data name="TripsIcanmanage" xml:space="preserve">
+    <value>Trips I Can Manage</value>
+  </data>
+  <data name="TripStep" xml:space="preserve">
+    <value>Trip Step </value>
+  </data>
+  <data name="FlightInfo" xml:space="preserve">
+    <value>Flight Details</value>
+  </data>
+  <data name="PrintPermission" xml:space="preserve">
+    <value>The user does not have permission to print</value>
+  </data>
+  <data name="DashboardType1" xml:space="preserve">
+    <value>Authorized journeys carried out by an internal driver:</value>
+  </data>
+  <data name="DashboardType2" xml:space="preserve">
+    <value>Authorized journeys carried out by an external service:</value>
+  </data>
+  <data name="DashboardType3" xml:space="preserve">
+    <value>Out-of-policy races carried out by an external service:</value>
+  </data>
+  <data name="DriverName" xml:space="preserve">
+    <value>Driver Name</value>
+  </data>
+  <data name="EndDate" xml:space="preserve">
+    <value>End Date :</value>
+  </data>
+  <data name="EnterYear" xml:space="preserve">
+    <value>Enter Year</value>
+  </data>
+  <data name="FiltersOfReport" xml:space="preserve">
+    <value>Filters of Report</value>
+  </data>
+  <data name="GenerateReport" xml:space="preserve">
+    <value>Generate Report</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="SelectDriver" xml:space="preserve">
+    <value>Select Driver name here</value>
+  </data>
+  <data name="SelectDriverNameHere" xml:space="preserve">
+    <value>Select Driver Name Here</value>
+  </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>Start Date :</value>
+  </data>
+  <data name="Year" xml:space="preserve">
+    <value>Year :</value>
+  </data>
+  <data name="Accept" xml:space="preserve">
+    <value>Accept</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="AddNewTripStep" xml:space="preserve">
+    <value>Add New Trip Step</value>
+  </data>
+  <data name="AddTripStep" xml:space="preserve">
+    <value>Add Trip Step</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="AssigntoDriver" xml:space="preserve">
+    <value>Assign to Driver</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="ConfidentialName" xml:space="preserve">
+    <value>Confidential</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="CopyTrip" xml:space="preserve">
+    <value>Copy Trip</value>
+  </data>
+  <data name="CostCenterCode" xml:space="preserve">
+    <value>Cost Center Code</value>
+  </data>
+  <data name="CostCenterName" xml:space="preserve">
+    <value>Cost Center Name</value>
+  </data>
+  <data name="DeleteTrip" xml:space="preserve">
+    <value>Cancel Trip</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="EditTrip" xml:space="preserve">
+    <value>Edit Trip</value>
+  </data>
+  <data name="TripInformation" xml:space="preserve">
+    <value>Information of the trip</value>
+  </data>
+  <data name="ExportCode" xml:space="preserve">
+    <value>Export Code</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>First name:</value>
+  </data>
+  <data name="FirstNameName" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="Inactive" xml:space="preserve">
+    <value>Inactive</value>
+  </data>
+  <data name="Internaldrivers" xml:space="preserve">
+    <value>Internal drivers</value>
+  </data>
+  <data name="Lastname" xml:space="preserve">
+    <value>Last name:</value>
+  </data>
+  <data name="LastNameName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="LocationHeaderName" xml:space="preserve">
+    <value>LOCATION</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="Persondetails" xml:space="preserve">
+    <value>Person details</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="PrintTrip" xml:space="preserve">
+    <value>Print Trip</value>
+  </data>
+  <data name="Reject" xml:space="preserve">
+    <value>Reject</value>
+  </data>
+  <data name="ReturnTrip" xml:space="preserve">
+    <value>Return Trip</value>
+  </data>
+  <data name="Running" xml:space="preserve">
+    <value>Synchronizing</value>
+  </data>
+  <data name="SearchLocation" xml:space="preserve">
+    <value>Search Location</value>
+  </data>
+  <data name="TripAccepted" xml:space="preserve">
+    <value>Trips Accepted</value>
+  </data>
+  <data name="UnassignedTrips" xml:space="preserve">
+    <value>Unassigned Trips</value>
+  </data>
+  <data name="BeneficiaryName" xml:space="preserve">
+    <value>Beneficiary Name</value>
+  </data>
+  <data name="FromLocation" xml:space="preserve">
+    <value>From Location</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="ToLocation" xml:space="preserve">
+    <value>To Location</value>
+  </data>
+  <data name="ValidationFilter" xml:space="preserve">
+    <value>Validation Filter</value>
+  </data>
+  <data name="Value" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="Vehicle" xml:space="preserve">
+    <value>Vehicle</value>
+  </data>
+  <data name="AccessLevel" xml:space="preserve">
+    <value>Access Tool</value>
+  </data>
+  <data name="EventName" xml:space="preserve">
+    <value>Event</value>
+  </data>
+  <data name="LocationCase" xml:space="preserve">
+    <value>Location</value>
+  </data>
+  <data name="ParameterName" xml:space="preserve">
+    <value>Parameter</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="btnAddPassenger" xml:space="preserve">
+    <value>Add Passenger</value>
+  </data>
+  <data name="SuccessLocationDeleteStatement" xml:space="preserve">
+    <value>Location cannot be removed as it was used by another trip</value>
+  </data>
+  <data name="AcceptPopup" xml:space="preserve">
+    <value>Are you sure you want to Accept this trip?</value>
+  </data>
+  <data name="DelegateDeletePopup" xml:space="preserve">
+    <value>Are you sure you want to remove?</value>
+  </data>
+  <data name="RejectPopup" xml:space="preserve">
+    <value>Are you sure you want to Reject this trip?</value>
+  </data>
+  <data name="RequestorDropdown" xml:space="preserve">
+    <value>Select Requestor</value>
+  </data>
+  <data name="ToolsDropdown" xml:space="preserve">
+    <value>Select Tools</value>
+  </data>
+  <data name="Trip" xml:space="preserve">
+    <value>Trip</value>
+  </data>
+  <data name="TripsRequestorDropdown" xml:space="preserve">
+    <value>Select options here</value>
+  </data>
+	<data name="RequestorTripDropdown" xml:space="preserve">
+    <value>&lt;All&gt;</value>
+  </data>
+  <data name="UserDopdown" xml:space="preserve">
+    <value>Select Access Level</value>
+  </data>
+  <data name="VehicleDropdown" xml:space="preserve">
+    <value>Select Vehicle</value>
+  </data>
+  <data name="DeleteDelegate" xml:space="preserve">
+    <value>Delete Delegate</value>
+  </data>
+  <data name="Author" xml:space="preserve">
+    <value>Author</value>
+  </data>
+  <data name="Hold" xml:space="preserve">
+    <value>On Hold</value>
+  </data>
+  <data name="HourHeader" xml:space="preserve">
+    <value>Hour</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="For" xml:space="preserve">
+    <value>for</value>
+  </data>
+  <data name="AttachFiles" xml:space="preserve">
+    <value>Attach files</value>
+  </data>
+  <data name="SuccessMessage" xml:space="preserve">
+    <value>Completed Successfully !</value>
+  </data>
+  <data name="SearchCostCenterToolTip" xml:space="preserve">
+    <value>information about the cost center </value>
+  </data>
+  <data name="SearchDriverToolTip" xml:space="preserve">
+    <value>information about the driver</value>
+  </data>
+  <data name="SearchMainPassengerToolTip" xml:space="preserve">
+    <value>information about the main passenger</value>
+  </data>
+  <data name="SearchRequestorToolTip" xml:space="preserve">
+    <value>information about the requestor</value>
+  </data>
+  <data name="ModifyTripStep" xml:space="preserve">
+    <value>Edit Trip Step</value>
+  </data>
+  <data name="CancelTrip" xml:space="preserve">
+    <value>Cancel the Trip</value>
+  </data>
+  <data name="TripFiltersLocation" xml:space="preserve">
+    <value>Trip Filters Location</value>
+  </data>
+  <data name="alertCheckField" xml:space="preserve">
+    <value>This field is required !</value>
+  </data>
+  <data name="EmailPattern" xml:space="preserve">
+    <value>Please enter a valid email address (e.g. example@domain.com).</value>
+  </data>
+  <data name="LastNameOrFirstNameRequired" xml:space="preserve">
+    <value>Either Name or First Name is required.</value>
+  </data>
+  <data name="NoRecordFound" xml:space="preserve">
+    <value>No records found.</value>
+  </data>
+  <data name="PhonePattern" xml:space="preserve">
+    <value>Only alphanumeric characters allowed!</value>
+  </data>
+  <data name="ThisFieldIsRequired" xml:space="preserve">
+    <value>This field is required.</value>
+  </data>
+  <data name="DelegatePopupMsg" xml:space="preserve">
+    <value>Please select atleast one delegate!</value>
+  </data>
+  <data name="DelegateAlert" xml:space="preserve">
+    <value>Selected Delegates added successfully</value>
+  </data>
+  <data name="DelegateContact" xml:space="preserve">
+    <value>Error in adding delegates, Contact the dev team</value>
+  </data>
+  <data name="DelegateDelete" xml:space="preserve">
+    <value>Delegates removed successfully</value>
+  </data>
+  <data name="DelegateDeleteMsg" xml:space="preserve">
+    <value>Error in removing, Contact the dev team</value>
+  </data>
+  <data name="DelegateFilter" xml:space="preserve">
+    <value>No data available for the applied filter</value>
+  </data>
+  <data name="DriverFieldData" xml:space="preserve">
+    <value>Enter valid input fields</value>
+  </data>
+  <data name="DriverPopUpData" xml:space="preserve">
+    <value>No data available for the specified Driver between the selected dates</value>
+  </data>
+  <data name="JourneyPopup" xml:space="preserve">
+    <value>No data found for the selected date range</value>
+  </data>
+  <data name="JourneyReportChanges" xml:space="preserve">
+    <value>Invalid date range</value>
+  </data>
+  <data name="LocationDelete" xml:space="preserve">
+    <value>Record removed successfully</value>
+  </data>
+  <data name="LocationDropdown" xml:space="preserve">
+    <value>Please select different start and end location</value>
+  </data>
+  <data name="LocationInsert" xml:space="preserve">
+    <value>Location added successfully!</value>
+  </data>
+  <data name="LocationPopup" xml:space="preserve">
+    <value>Location modified successfully!</value>
+  </data>
+  <data name="OvertimePopup" xml:space="preserve">
+    <value>No trip data found for the specified Driver and Year</value>
+  </data>
+  <data name="PassengerDropdown" xml:space="preserve">
+    <value>Please select the passenger!</value>
+  </data>
+  <data name="ValidateFields" xml:space="preserve">
+    <value>This field is Required!</value>
+  </data>
+  <data name="AcceptedByManager" xml:space="preserve">
+    <value>Accepted By Manager</value>
+  </data>
+  <data name="CancellationConfirmed" xml:space="preserve">
+    <value>Cancellation Confirmed</value>
+  </data>
+  <data name="CancelledByManager" xml:space="preserve">
+    <value>Cancelled By Manager</value>
+  </data>
+  <data name="CancelledByRequestor" xml:space="preserve">
+    <value>Cancelled By Requestor</value>
+  </data>
+  <data name="Deleted" xml:space="preserve">
+    <value>Deleted</value>
+  </data>
+  <data name="ExtCancelledManager" xml:space="preserve">
+    <value>External Cancelled By Manager</value>
+  </data>
+  <data name="ExternalResetByManager" xml:space="preserve">
+    <value>External Reset By Manager</value>
+  </data>
+  <data name="OutOfPolicyCancelledByRequestor" xml:space="preserve">
+    <value>Out Of Policy Cancelled By Requestor</value>
+  </data>
+  <data name="OutOfPolicyUpdatingByRequestor" xml:space="preserve">
+    <value>Out Of Policy Updating By Requestor</value>
+  </data>
+  <data name="OutPolicyCancelConfExtService" xml:space="preserve">
+    <value>Out Of Policy Cancellation Confirmed ByE xternalService</value>
+  </data>
+  <data name="OutPolicyCancelledExtService" xml:space="preserve">
+    <value>Out Of Policy Cancelled By External Service</value>
+  </data>
+  <data name="OutPolicyRejectedExtService" xml:space="preserve">
+    <value>Out Of Policy Rejected By ExternalService</value>
+  </data>
+  <data name="OutPolicyWaitExtServiceConf" xml:space="preserve">
+    <value>Out Of Policy Waiting External Service Confirmation</value>
+  </data>
+  <data name="Planified" xml:space="preserve">
+    <value>Planified</value>
+  </data>
+  <data name="RejectedByManager" xml:space="preserve">
+    <value>Rejected By Manager</value>
+  </data>
+  <data name="StatusNotReady" xml:space="preserve">
+    <value>Status Not Ready</value>
+  </data>
+  <data name="StatusToBeProcessed" xml:space="preserve">
+    <value>Status To Be Processed</value>
+  </data>
+  <data name="UpdatingByRequestor" xml:space="preserve">
+    <value>Updating By Requestor</value>
+  </data>
+  <data name="WaitExtServiceConf" xml:space="preserve">
+    <value>Waiting External Service Confirmation</value>
+  </data>
+  <data name="WaitingDriverConfirmation" xml:space="preserve">
+    <value>Waiting Driver Confirmation</value>
+  </data>
+  <data name="AlertForMobilePhone" xml:space="preserve">
+    <value>The Mobile and contact phone of the passnger(s) (Adam Stephen Goodger) are missing. Do you want to update the passengers(s) ?</value>
+  </data>
+  <data name="Change" xml:space="preserve">
+    <value>Change</value>
+  </data>
+  <data name="ConfirmDelete" xml:space="preserve">
+    <value>Are you sure you want to remove the attached file?</value>
+  </data>
+  <data name="FlightAlert" xml:space="preserve">
+    <value>The flight date is now too close(less than 30 min). Please forward the date of flight</value>
+  </data>
+  <data name="Requestorsidepopup1" xml:space="preserve">
+    <value>The Mobile and contact phone of the passenger(s) (</value>
+  </data>
+  <data name="Requestorsidepopup2" xml:space="preserve">
+    <value>) are missing. Do you want to update the passenger(s) ?</value>
+  </data>
+  <data name="EditEvent" xml:space="preserve">
+    <value>Edit Event</value>
+  </data>
+  <data name="NewEvent" xml:space="preserve">
+    <value>New Event</value>
+  </data>
+  <data name="Aug" xml:space="preserve">
+    <value>Aug</value>
+  </data>
+  <data name="Dec" xml:space="preserve">
+    <value>Dec</value>
+  </data>
+  <data name="Feb" xml:space="preserve">
+    <value>Feb</value>
+  </data>
+  <data name="AuthorizedUser" xml:space="preserve">
+    <value>Authorized</value>
+  </data>
+  <data name="RowIsNotSelected" xml:space="preserve">
+    <value>Row is not selected!</value>
+  </data>
+  <data name="UnAuthorizedUser" xml:space="preserve">
+    <value>Unauthorized</value>
+  </data>
+  <data name="VipUser" xml:space="preserve">
+    <value>VIP</value>
+  </data>
+  <data name="ConfirmTrip" xml:space="preserve">
+    <value>Trip Created Sucessfully</value>
+  </data>
+  <data name="ErrorLocation" xml:space="preserve">
+    <value>Unable to add location. Please try again.</value>
+  </data>
+  <data name="FileType" xml:space="preserve">
+    <value>File type not allowed: </value>
+  </data>
+  <data name="LocationValidation" xml:space="preserve">
+    <value>Please select different start and end location</value>
+  </data>
+  <data name="MainPassengerValidation" xml:space="preserve">
+    <value>Main passenger has no assigned costcenter</value>
+  </data>
+  <data name="NegativeDuration" xml:space="preserve">
+    <value>Negative duration not accepted</value>
+  </data>
+  <data name="PassengerValidation" xml:space="preserve">
+    <value>Selected passenger has no assigned costcenter</value>
+  </data>
+  <data name="RequestorValidation" xml:space="preserve">
+    <value>Requestor has no assigned costcenter</value>
+  </data>
+  <data name="ValidateDuration" xml:space="preserve">
+    <value>Please add value less than 24</value>
+  </data>
+  <data name="ValidateDuration1" xml:space="preserve">
+    <value>Please add value less than 60</value>
+  </data>
+  <data name="Files" xml:space="preserve">
+    <value>No Files</value>
+  </data>
+  <data name="AddTripSep" xml:space="preserve">
+    <value>Trip Step added Successfully</value>
+  </data>
+  <data name="HeaderPopup" xml:space="preserve">
+    <value>If you change language now you will be redirected to the Validation dashboard</value>
+  </data>
+  <data name="HeaderPopup1" xml:space="preserve">
+    <value>If you change language now you will be redirected to the trips dashboard</value>
+  </data>
+  <data name="TripStepDelete" xml:space="preserve">
+    <value>You cannot delete this because a trip must have at least one step</value>
+  </data>
+  <data name="DriverDetails" xml:space="preserve">
+    <value>Driver Details</value>
+  </data>
+  <data name="PassengerDetails" xml:space="preserve">
+    <value>Passenger Details</value>
+  </data>
+  <data name="RequestorDetails" xml:space="preserve">
+    <value>Requestor Details</value>
+  </data>
+  <data name="DeleteTripPopup" xml:space="preserve">
+    <value>Are you sure want to cancel this trip</value>
+  </data>
+  <data name="DeleteTripSuccess" xml:space="preserve">
+    <value>Trips Cancelled Successfully</value>
+  </data>
+  <data name="ResearchDateErrorPopup" xml:space="preserve">
+    <value>To time cannot be earlier than From time on the same day.</value>
+  </data>
+  <data name="ResearchDatePopup" xml:space="preserve">
+    <value>To date cannot be earlier than From date.</value>
+  </data>
+  <data name="LocationInsertQuestion" xml:space="preserve">
+    <value>Are you sure you want to create location?</value>
+  </data>
+  <data name="LocationUpdateQuestion" xml:space="preserve">
+    <value>Are you sure you want to modify location?</value>
+  </data>
+  <data name="ModifyLocation" xml:space="preserve">
+    <value>Modify Location</value>
+  </data>
+  <data name="tripVip" xml:space="preserve">
+    <value>Trip Vip</value>
+  </data>
+  <data name="CancelConfirmation" xml:space="preserve">
+    <value>Are you sure you want to confirm the cancellation of the trip?</value>
+  </data>
+  <data name="RejectCancellation" xml:space="preserve">
+    <value>Reject Cancellation</value>
+  </data>
+  <data name="AcceptCancelledTrips" xml:space="preserve">
+    <value>Accept Cancellation</value>
+  </data>
+  <data name="RejectCancelledTrips" xml:space="preserve">
+    <value>Reject Cancellation</value>
+  </data>
+  <data name="FromDateValidation" xml:space="preserve">
+    <value>From date cannot be in the past</value>
+  </data>
+  <data name="FromTimeValidation" xml:space="preserve">
+    <value>From time cannot be earlier than the current time</value>
+  </data>
+  <data name="ToDateValidation" xml:space="preserve">
+    <value>To date cannot be earlier than From date</value>
+  </data>
+  <data name="ToTimeValidation" xml:space="preserve">
+    <value>To time cannot be earlier than From time on the same day</value>
+  </data>
+  <data name="EditPassenger" xml:space="preserve">
+    <value>Edit Passenger</value>
+  </data>
+  <data name="AssignDriver" xml:space="preserve">
+    <value>Assign to driver</value>
+  </data>
+  <data name="PlannedTrips" xml:space="preserve">
+    <value>Planned Trips</value>
+  </data>
+  <data name="TripActivities" xml:space="preserve">
+    <value>Trip Activities</value>
+  </data>
+  <data name="FromdateFields" xml:space="preserve">
+    <value>Please select a valid start date</value>
+  </data>
+  <data name="FromtimeFields" xml:space="preserve">
+    <value>Please enter a valid start time</value>
+  </data>
+  <data name="TodateFields" xml:space="preserve">
+    <value>Please select a valid end date</value>
+  </data>
+  <data name="TotimeFields" xml:space="preserve">
+    <value>Please enter a valid end time</value>
+  </data>
+  <data name="SynchroFail" xml:space="preserve">
+    <value>There is no data to sync with!</value>
+  </data>
+  <data name="ViewLocation" xml:space="preserve">
+    <value>View Location</value>
+  </data>
+  <data name="EventsMessage" xml:space="preserve">
+    <value>No events available</value>
+  </data>
+  <data name="ViewBtn" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="WarningEditLocation" xml:space="preserve">
+    <value>All existing trips created using this location will be affected by your change. This editing feature is only available to perform minor corrections and the logical location must remain the same.</value>
+  </data>
+  <data name="AcceptCancelConfirm" xml:space="preserve">
+    <value>Are you sure you want to Confirm Cancellation of this trip?</value>
+  </data>
+  <data name="RejectCancelConfirm" xml:space="preserve">
+    <value>Etes-vous sûr de vouloir refuser l'annulation de ce voyage ?</value>
+  </data>
+  <data name="NoDataAvailable" xml:space="preserve">
+    <value>No Delegate Has Been Configured</value>
+  </data>
+  <data name="CancelAccept" xml:space="preserve">
+    <value>Accepted Trip successfully</value>
+  </data>
+  <data name="CancelConfirm" xml:space="preserve">
+    <value>Confirmation of Cancelled Trip successfull</value>
+  </data>
+  <data name="CancelReject" xml:space="preserve">
+    <value>Rejected Trip successfully</value>
+  </data>
+  <data name="RejectCancelledTrip" xml:space="preserve">
+    <value>Rejected Cancelled Trip successfully</value>
+  </data>
+  <data name="ShowConfirmCancel" xml:space="preserve">
+    <value>Are you sure you want to Confirm Cancellation of trip?</value>
+  </data>
+  <data name="ShowRejectCancel" xml:space="preserve">
+    <value>Are you sure you want to Reject Cancelled trip?</value>
+  </data>
+  <data name="SelectPassenger" xml:space="preserve">
+    <value>Select the correct passenger</value>
+  </data>
+  <data name="LastNameNameDisplay" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="EmailDisplayFormName" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="UpdateTripMessage" xml:space="preserve">
+    <value>Trip Modified Successfully </value>
+  </data>
+  <data name="DeleteEventPopup" xml:space="preserve">
+    <value>Are you sure you want to remove the event ?</value>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>Mins</value>
+  </data>
+  <data name="ModifyTripStepMessage" xml:space="preserve">
+    <value>Trip Step Modified Successfully </value>
+  </data>
+  <data name="ValidateNoTripsMessage" xml:space="preserve">
+    <value>No Trips to validate</value>
+  </data>
+  <data name="CurrentWeek" xml:space="preserve">
+    <value>Current Week</value>
+  </data>
+  <data name="RemoveAttachment" xml:space="preserve">
+    <value>Remove Attachment</value>
+  </data>
+  <data name="AttachMoreFiles" xml:space="preserve">
+    <value>Attach more files</value>
+  </data>
+  <data name="PrintHeaderForId" xml:space="preserve">
+    <value>Trip with driver</value>
+  </data>
+  <data name="PrintHeaderForOutofPolicy" xml:space="preserve">
+    <value>Service Order</value>
+  </data>
+  <data name="TripHeader" xml:space="preserve">
+    <value>Trip</value>
+  </data>
+  <data name="TripHeaderFor" xml:space="preserve">
+    <value>For</value>
+  </data>
+  <data name="TripHeaderOn" xml:space="preserve">
+    <value>on</value>
+  </data>
+  <data name="AT" xml:space="preserve">
+    <value>at</value>
+  </data>
+  <data name="DriverReportCalculationField" xml:space="preserve">
+    <value>Number of hours exceeding planned hours</value>
+  </data>
+  <data name="DriverReportCalculationField1" xml:space="preserve">
+    <value>Number of increased hours exceeding planned hours</value>
+  </data>
+  <data name="DriverReportHeader" xml:space="preserve">
+    <value>Work report from</value>
+  </data>
+  <data name="PrintDate" xml:space="preserve">
+    <value>Printed on</value>
+  </data>
+  <data name="ToName" xml:space="preserve">
+    <value>to</value>
+  </data>
+  <data name="Mail" xml:space="preserve">
+    <value>*Mail</value>
+  </data>
+  <data name="Courrier" xml:space="preserve">
+    <value>Mail</value>
+  </data>
+  <data name="SearchTripAlertMessage" xml:space="preserve">
+    <value>No data available for the search criteria</value>
+  </data>
+  <data name="LocationDetails" xml:space="preserve">
+    <value>Location Details</value>
+  </data>
+  <data name="SelectLocation" xml:space="preserve">
+    <value>Select a Location First</value>
+  </data>
+  <data name="ExceedingWeeklyHour" xml:space="preserve">
+    <value>Exceeding the maximum number of weekly hours</value>
+  </data>
+  <data name="AddMoreTripPassenger" xml:space="preserve">
+    <value>Add Passenger</value>
+  </data>
+  <data name="btnAddTripPassenger" xml:space="preserve">
+    <value>Create Passenger</value>
+  </data>
+  <data name="TimeoutError" xml:space="preserve">
+    <value>The operation has expired. Please try again later.</value>
+  </data>
+  <data name="saveBtn" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="SaveTripStep" xml:space="preserve">
+    <value>Save Trip Step</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="DriverInfo" xml:space="preserve">
+    <value>Driver Info</value>
+  </data>
+  <data name="DriverConcernee" xml:space="preserve">
+    <value>Driver</value>
+  </data>
+  <data name="FromDateFlight" xml:space="preserve">
+    <value>Start Date</value>
+  </data>
+  <data name="ResearchlabelNone" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="EmailDisplayNameExternalService" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="LastNameDisplayNameExternalService" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="DurationLabel" xml:space="preserve">
+    <value>Duration</value>
+  </data>
+  <data name="EmptyMessageForArrival" xml:space="preserve">
+    <value>No Favorite trip with Arrival Flight</value>
+  </data>
+  <data name="EmptyMessageForDeparture" xml:space="preserve">
+    <value>No Favorite trip with Departure Flight</value>
+  </data>
+  <data name="EmptyMessageForNoFlight" xml:space="preserve">
+    <value>No Favorite trip available</value>
+  </data>
+  <data name="DriverInternee" xml:space="preserve">
+    <value>Driver</value>
+  </data>
+  <data name="CommentsEventPlanning" xml:space="preserve">
+    <value>Comments</value>
+  </data>
+  <data name="AddLocationManager" xml:space="preserve">
+    <value>Add a new Location</value>
+  </data>
+  <data name="EventKindHeader" xml:space="preserve">
+    <value>Types of Events</value>
+  </data>
+  <data name="OutOfPolicyResearch" xml:space="preserve">
+    <value>Out of Policy</value>
+  </data>
+  <data name="CommentEtape" xml:space="preserve">
+    <value>Comment</value>
+  </data>
+  <data name="EventNotification" xml:space="preserve">
+    <value>Event</value>
+  </data>
+</root>

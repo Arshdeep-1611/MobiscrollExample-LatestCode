@@ -1,0 +1,415 @@
+﻿@using Nestle.CH.HQ.RSL.WebApp
+@using Nestle.CH.HQ.RSL.WebApp.Models
+@using Nestle.CH.HQ.RSL.WebApp.Services;
+@inject LanguageService _localization
+
+@{
+    Layout = "_Layout";
+}
+<style>
+    #textSendAlert{
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        text-indent: 1px;
+        text-overflow: '';
+    }
+</style>
+<!-- Header End -->
+<body>
+
+    <!-- Passengers page -->
+    <section class="main-section admin-section" id="passengers-section">
+        <div class="passanger-container">
+            <h3>@_localization.Getkey("Users")</h3>
+            <div class="passanger-row">
+                <div class="passanger-col">
+                    <div class="passanger-header">
+                        <div class="search-wrapper">
+                            <input class="search search-box" type="search" name="gsearch" required="" placeholder="@_localization.Getkey("SearchUser")" id="gsearch">
+                        </div>
+                        <div class="passanger-header-right">
+                            @* <div class="select-wrapper">
+                                <select name="" id="textFilter">
+                                    <option value="2">All</option>
+                                    <option value="1">Valid</option>
+                                    <option value="0">Invalid</option>
+                                </select> 
+                            </div>
+                             <button class="btn btn-yellow" id="addPassengerBtn">
+                                <img class="icon-img m-r-10" src="./img/add.png" alt="add">
+                                <span>Add Passanger</span>
+                            </button> *@
+                        </div>
+                    </div>
+                    <div class="grid-table">
+                        <div class="grid-wrapper">
+                            <table id="passanger-grid"></table>
+                        </div>
+                    </div>
+                </div>
+                <div class="passanger-col">
+                    <div class="passanger-info-blk">
+                        <div class="box-container-blk">
+                            <div class="box-container scroll-bar">
+                                <div class="passanger-header">
+                                    <span>@_localization.Getkey("PassengerHeaderName")</span>
+                                    <img id="sort-button" data-id="1" class="icon-large-img pointer-event" src="./img/sort.png" alt="add">
+                                </div>
+                                <div class="passanger-info-list">
+                                    <div class="combined-info-col-container">
+                                    <div class="accordion" id="accordionPanelsStayOpenExample">
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                                                        @_localization.Getkey("ParameterCategoryAttribute")
+                                                </button>
+                                            </h2>
+                                            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                                                <div class="accordion-body">
+                                                    <div class="info-body">
+                                                        <div class="info-col">
+                                                            <div class="info-left">
+                                                                <span>@_localization.Getkey("IdDisplayName")</span>
+                                                                <img class="icon-img m-l-10" src="./img/circle-outline.png" alt="Info" title="@_localization.Getkey("UserIdDescription")">
+                                                            </div>
+                                                            <div class="info-right">
+                                                                <input type="text" id="textUserId" disabled>
+                                                                <input type="hidden" id="textSelectedAction">
+                                                                @* <input type="text" id="textUpdateId"> *@
+                                                            </div>
+                                                        </div>
+                                                        @* <div class="info-col">
+                                                            <div class="info-left">
+                                                                <span>Identifiant de l'employe</span>
+                                                                <img class="icon-img m-l-10" src="./img/circle-outline.png" alt="Info" id="textEmployeeId1">
+                                                            </div>
+                                                            <div class="info-right">
+                                                                <input type="text" id="textEmployeeId">
+                                                            </div>
+                                                        </div> *@
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                                                        @_localization.Getkey("MainDisplayName")
+                                                </button>
+                                            </h2>
+                                            <div id="panelsStayOpen-collapseTwo" class="accordion-collapse show" aria-labelledby="panelsStayOpen-headingTwo">
+                                                <div class="accordion-body">
+                                                    <div class="info-body">
+                                                        <div class="info-col">
+                                                            <div class="info-left">
+                                                                    <span>@_localization.Getkey("Login") <span class="required-red">*</span></span>
+                                                                <img class="icon-img m-l-10" src="./img/circle-outline.png" alt="Info" id="textLastName1" title="@_localization.Getkey("UserUserNameDescription")">
+                                                            </div>
+                                                            <div class="info-right">
+                                                                    <input class="admin-input-change" type="text" id="textLoginName">
+                                                            </div>
+                                                        </div>
+                                                       @*  <div class="info-col">
+                                                            <div class="info-left">
+                                                                <span>Prenom</span>
+                                                                <img class="icon-img m-l-10" src="./img/circle-outline.png" alt="Info" id="textFirstNam1">
+                                                            </div>
+                                                            <div class="info-right">
+                                                                <input type="text" id="textFirstName">
+                                                            </div>
+                                                        </div> *@
+                                                        <div class="info-col">
+                                                            <div class="info-left">
+                                                                <span>@_localization.Getkey("AccessLevelDisplayName")</span>
+                                                                <img class="icon-img m-l-10" src="./img/circle-outline.png" alt="Info" title="@_localization.Getkey("UserAccessLevelDescription")">
+                                                            </div>
+                                                            <div class="info-right">
+                                                                    <select name="" id="textAccessLevel" class="admin-input-change">
+                                                                   @*  <option value=1>1.User</option>
+                                                                    <option value=2>2.</option>
+                                                                    <option value=3>3.</option>
+                                                                    <option value=4>4.</option>
+                                                                    <option value=5>5.</option>
+                                                                    <option value=6>6.Admin</option> *@
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        @* <div class="info-col">
+                                                            <div class="info-left">
+                                                                <span>Valide</span>
+                                                                <img class="icon-img m-l-10" src="./img/circle-outline.png" alt="Info">
+                                                            </div>
+                                                            <div class="info-right">
+                                                                <select name="" id="textValid">
+                                                                </select>
+                                                            </div>
+                                                        </div> *@
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                                                <button class="accordion-button " type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                                                        3. @_localization.Getkey("Alerts")
+                                                </button>
+                                            </h2>
+                                            <div id="panelsStayOpen-collapseThree" class="accordion-collapse show" aria-labelledby="panelsStayOpen-headingThree">
+                                                <div class="accordion-body">
+                                                    <div class="info-body">
+                                                        <div class="info-col">
+                                                            <div class="info-left">
+                                                                <span>@_localization.Getkey("UserSendAlertDisplayName")</span>
+                                                                <img class="icon-img m-l-10" src="./img/circle-outline.png" alt="Info" title="@_localization.Getkey("UserSendAlertDescription")">
+                                                            </div>
+                                                            <div class="info-right">
+                                                                <select name="" id="textSendAlert" class="admin-input-change" disabled>
+                                                                    @* <option value=1>@_localization.Getkey("optionYes")</option>
+                                                                    <option value=0>@_localization.Getkey("optionNo")</option> *@
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="info-col">
+                                                            <div class="info-left">
+                                                                <span>@_localization.Getkey("UserSendAlertFromDisplayName")</span>
+                                                                <img class="icon-img m-l-10" src="./img/circle-outline.png" alt="Info" title="@_localization.Getkey("UserSendAlertFromDescription")">
+                                                            </div>
+                                                            <div class="info-right">
+                                                                    <input class="admin-input-change" type="text" id="fromTime" placeholder="HH:MM" pattern="\d{2}:\d{2}">
+                                                                
+                                                            </div>
+                                                        </div>
+                                                        <div class="info-col">
+                                                            <div class="info-left">
+                                                                <span>@_localization.Getkey("UserSendAlertToDisplayName")</span>
+                                                                <img class="icon-img m-l-10" src="./img/circle-outline.png" alt="Info" title="@_localization.Getkey("UserSendAlertToDescription")">
+                                                            </div>
+                                                            <div class="info-right">
+                                                                    <input class="admin-input-change" type="text" id="toTime" placeholder="HH:MM" pattern="\d{2}:\d{2}">
+                                                               
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="info-col">
+                                                            <div class="info-left">
+                                                                <span>@_localization.Getkey("UserSendAlertDuringWeekendDisplayName") <span class="required-red">*</span></span>
+                                                                <img class="icon-img m-l-10" src="./img/circle-outline.png" alt="Info" title="@_localization.Getkey("UserSendAlertDuringWeekendDescription")">
+                                                            </div>
+                                                            <div class="info-right">
+                                                                    <select name="" id="textSendAlertWeekend" class="admin-input-change">
+                                                                   
+                                                                    <option value="1">@_localization.Getkey("optionYes")</option>
+                                                                    <option value="0">@_localization.Getkey("optionNo")</option>
+                                                                   
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                       @*  <div class="info-col">
+                                                            <div class="info-left">
+                                                                <span>VIP</span>
+                                                                <img class="icon-img m-l-10" src="./img/circle-outline.png" alt="Info">
+                                                            </div>
+                                                            <div class="info-right">
+                                                                <select name="" id="textVip">
+                                                                </select>
+                                                            </div>
+                                                        </div> *@
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @* <div class="accordion-item">
+                                            <h2 class="accordion-header" id="panelsStayOpen-headingfour">
+                                                <button class="accordion-button " type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                                                    4. Telecommunications
+                                                </button>
+                                            </h2>
+                                            <div id="panelsStayOpen-collapseFour" class="accordion-collapse show" aria-labelledby="panelsStayOpen-headingFour">
+                                                <div class="accordion-body">
+                                                    <div class="info-body">
+                                                        <div class="info-col">
+                                                            <div class="info-left">
+                                                                <span>E-mail</span>
+                                                                <img class="icon-img m-l-10" src="./img/circle-outline.png" alt="Info" onhower="Enter Valid email!" id="textEmail1">
+                                                            </div>
+                                                            <div class="info-right">
+                                                                <input type="text" id="textEmail">
+                                                            </div>
+                                                        </div>
+                                                        <div class="info-col">
+                                                            <div class="info-left">
+                                                                <span>Telephone</span>
+                                                                <img class="icon-img m-l-10" src="./img/circle-outline.png" alt="Info" id="textTelePhone1">
+                                                            </div>
+                                                            <div class="info-right">
+                                                                <input type="text" id="textTelePhone">
+                                                            </div>
+                                                        </div>
+                                                        <div class="info-col">
+                                                            <div class="info-left">
+                                                                <span>Telephone de contact</span>
+                                                                <img class="icon-img m-l-10" src="./img/circle-outline.png" alt="Info" id="textContactNumber1">
+                                                            </div>
+                                                            <div class="info-right">
+                                                                <input type="text" id="textContactNumber">
+                                                            </div>
+                                                        </div>
+                                                        <div class="info-col">
+                                                            <div class="info-left">
+                                                                <span>Telephone mobile</span>
+                                                                <img class="icon-img m-l-10" src="./img/circle-outline.png" alt="Info" id="textMobileNumber1">
+                                                            </div>
+                                                            <div class="info-right">
+                                                                <input type="text" id="textMobileNumber">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> *@
+                                        @* <div class="accordion-item">
+                                            <h2 class="accordion-header" id="panelsStayOpen-headingFive">
+                                                <button class="accordion-button " type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFive" aria-expanded="false" aria-controls="panelsStayOpen-collapseFive">
+                                                    5. Commentaires
+                                                </button>
+                                            </h2>
+                                            <div id="panelsStayOpen-collapseFive" class="accordion-collapse show" aria-labelledby="panelsStayOpen-headingFive">
+                                                <div class="accordion-body">
+                                                    <div class="info-body">
+                                                        <textarea type="text" id="textComment"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> *@
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="panelsStayOpen-headingsix">
+                                                <button class="accordion-button " type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapsesix" aria-expanded="false" aria-controls="panelsStayOpen-collapsesix">
+                                                        4. @_localization.Getkey("Information")
+                                                </button>
+                                            </h2>
+                                            <div id="panelsStayOpen-collapsesix" class="accordion-collapse show" aria-labelledby="panelsStayOpen-headingsix">
+                                                <div class="accordion-body">
+                                                    <div class="info-body">
+                                                        @* <div class="info-col">
+                                                            <div class="info-left">
+                                                                <span>Cree par</span>
+                                                                <img class="icon-img m-l-10" src="./img/circle-outline.png" alt="Info" id="textCreatedBy1">
+                                                            </div>
+                                                            <div class="info-right">
+                                                                <input type="text" id="textCreatedBy" disabled value="">
+                                                            </div>
+                                                        </div> *@
+                                                        <div class="info-col">
+                                                            <div class="info-left">
+                                                                <span>@_localization.Getkey("TimeStampDisplayName")</span>
+                                                                <img class="icon-img m-l-10" src="./img/circle-outline.png" alt="Info" id="textTimeStamp1" title="@_localization.Getkey("TimeStampDescription")">
+                                                            </div>
+                                                            <div class="info-right">
+                                                                <input type="text" id="textTimeStamp" disabled>
+                                                            </div>
+                                                        </div>
+                                                        <div class="info-col">
+                                                            <div class="info-left">
+                                                                <span>@_localization.Getkey("ModifiedByDisplayName")</span>
+                                                                <img class="icon-img m-l-10" src="./img/circle-outline.png" alt="Info" id="textModifiedBy1" title="@_localization.Getkey("ModifiedByDescription")">
+                                                            </div>
+                                                            <div class="info-right">
+                                                                <input type="text" id="textModifiedBy" value="" disabled>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="box-bottom">
+                                <button type="button" class="btn btn-yellow" id="enregisterBtn">@_localization.Getkey("insertBtn")</button>
+                                <button type="reset" class="btn btn-gray" id="resetBtn">@_localization.Getkey("closeBtn")</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Modal -->
+    <div class="modal fade alert-modal" id="alert-insert-popup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="vertical-alignment-helper">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header"></div>
+                    <div class="modal-body">
+                        @{
+                            string insertQuestion = @_localization.Getkey("alertQuestionInsert");
+                            string user = @_localization.Getkey("User");
+                            string insertSatement = string.Format(insertQuestion, user);
+                        }
+                        <h4 id="alertPassengerInsert">@insertSatement</h4>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-yellow" id="btnInsertConfirm">@_localization.Getkey("Confirm")</button>
+                        <button type="button" class="btn btn-border" data-bs-dismiss="modal" aria-label="Close">@_localization.Getkey("CancelButton")</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade alert-modal" id="alert-update-popup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="vertical-alignment-helper">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header"></div>
+                    <div class="modal-body">
+                        @{
+                            string updateQuestion = @_localization.Getkey("alertQuestionUpdate");
+                            string user1 = @_localization.Getkey("User");
+                            string updateSatement = string.Format(updateQuestion, user1);
+                        }
+                        <h4 id="alertPassengerUpdate">@updateSatement</h4>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-yellow" id="btnUpdateConfirm">@_localization.Getkey("Confirm")</button>
+                        <button type="button" class="btn btn-border" data-bs-dismiss="modal" aria-label="Close">@_localization.Getkey("CancelButton")</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade alert-modal" id="alert-delete-popup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="vertical-alignment-helper">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header"></div>
+                    <div class="modal-body">
+                        @{
+                            string deleteQuestion = @_localization.Getkey("alertQuestionDelete");
+                            string user2 = @_localization.Getkey("User");
+                            string deleteSatement = string.Format(deleteQuestion, user2);
+                        }
+                        <h4 id="alertPassengerDelete">@deleteSatement</h4>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-yellow" id="btnDeleteConfirm">@_localization.Getkey("Confirm")</button>
+                        <button type="button" class="btn btn-border" data-bs-dismiss="modal" aria-label="Close">@_localization.Getkey("CancelButton")</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <!-- Passengers page ENd -->
+    <!--  Passengers Js Start -->
+    <script type="text/javascript" src="~/scripts/ManagerUser.js?new Date().getTime()"></script>
+    <!--  Passengers Grid Js End -->
+    <!-- Javascript dependency -->
+
+</body>

@@ -1,0 +1,1064 @@
+﻿@{
+    Layout = "_Layout";
+    var action = @ViewBag.Type;
+    var tripId = @ViewBag.TripId;
+    var isCompleted = @ViewBag.IsCompleted;
+}
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.Extensions.Options
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Nestle.CH.HQ.RSL.WebApp
+@using Nestle.CH.HQ.RSL.WebApp.Models
+@using Nestle.CH.HQ.RSL.WebApp.Services;
+@inject LanguageService _localization
+
+<link href="~/css/virtual-select.min.css" rel="stylesheet" />
+<script src="~/js/virtual-select.min.js"></script>
+<!-- Create Trip Section -->
+<section class="main-section" id="createTrip-section">
+    <div id="actionId" data-action-id='@action' style="display: none;"></div>
+    <div id="tripId" data-trip-id='@tripId' style="display: none;"></div>
+    <div id="isCompleted" data-completed='@isCompleted' style="display: none;"></div>
+    <div class="create-trip-container">
+        <div class="create-trip-row">
+            <div class="create-trip-col">
+                <div class="create-trip-header">
+                    <h3>@_localization.Getkey("CREATENEWTRIP")</h3>
+                </div>
+            </div>
+            <div class="create-trip-col">
+                <div class="new-trip-row">
+                    <div class="new-trip-col">
+                        <div class="new-trip-blk">
+
+                            <div class="tabs">
+                                <ul class="tabs-nav-3">
+                                    <li>
+                                        <div id="tab-1-link" class="progress-links">
+                                            <img class="icon-large-img" src="~/img/Flight.png" alt="flight">
+                                            <span>@_localization.Getkey("FlightInformation")</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div id="tab-2-link" class="progress-links">
+                                            <img class="icon-large-img" src="~/img/Trip-details.png" alt="Trip">
+                                            <span>@_localization.Getkey("TripDetails")</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div id="tab-3-link" class="progress-links">
+                                            <img class="icon-large-img" src="~/img/Payment.png" alt="Payment">
+                                            <span>@_localization.Getkey("Payment")</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div id="tab-4-link" class="progress-links">
+                                            <img class="icon-large-img" src="~/img/review.png" alt="review">
+                                            <span>@_localization.Getkey("Review")</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div id="tab-1" class="tab-content-3">
+                                <div class="tab-trip-container">
+                                    <div class="trip-requestor-wrapper">
+                                        <h3>@_localization.Getkey("TripRequestor")</h3>
+                                        <div class="trip-info-col">
+                                            <div class="trip-details-row">
+                                                <div class="trip-blk">
+                                                    <div class="trip-details-col">
+                                                        <span>@_localization.Getkey("Requestor")<sup class="required-red">*</sup></span>
+                                                        <img class="icon-img m-l-10" src="~/img/circle-outline.png" alt="info" title="@_localization.Getkey("RequestorToolTip")">
+                                                        <input type="text" id="requested-user" disabled>
+                                                    </div>
+                                                    <div class="trip-details-col bt">
+                                                        <button id="change-requestor" class="btn btn-outline-yellow">@_localization.Getkey("ChangeRequestor")</button>
+                                                    </div>
+                                                </div>
+                                                <div class="trip-details-col requestor-form" style="display:none">
+
+                                                    <div class="date-time-fields">
+                                                        <select id="requestor-dropdown"> </select>
+                                                        <button id="change" class="btn btn-outline-yellow">@_localization.Getkey("Change")</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <h3>@_localization.Getkey("FlightInformation")</h3>
+                                    <div class="trip-info-row scroll-bar">
+                                        <div class="trip-info-col">
+                                            <div class="trip-info-checks">
+                                                <span>@_localization.Getkey("FlightType")</span>
+                                                <div class="radio-wrapper">
+                                                    <input type="radio" class="radio-box flight-type-active input-change" name="radio-grp" id="radio-departure" value="1" checked>
+                                                    <label for="radio-departure">@_localization.Getkey("Departureflight")</label>
+                                                </div>
+                                                <div class="radio-wrapper">
+                                                    <input type="radio" class="radio-box flight-type-active input-change" name="radio-grp" id="radio-arrival" value="2">
+                                                    <label for="radio-arrival">@_localization.Getkey("Arrivalflight")</label>
+                                                </div>
+                                                <div class="radio-wrapper">
+                                                    <input type="radio" class="radio-box flight-type-active input-change" name="radio-grp" id="radio-flight" value="0">
+                                                    <label for="radio-flight">@_localization.Getkey("Noflight")</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="trip-info-col">
+                                            <div class="trip-details-row">
+                                                <div class="trip-details-col flight-num">
+                                                    <span>@_localization.Getkey("Flightnumber")<sup class="required-red"> * </sup></span>
+                                                    <input type="text" class="error-check input-change" id="flight-number">
+                                                </div>
+                                                <div class="trip-details-col flight-dt">
+                                                    <span>@_localization.Getkey("Flightdatetime")<sup class="required-red"> * </sup></span>
+                                                    <div class="date-time-fields">
+                                                        <input type="date" class="error-check input-change" id="flight-date">
+                                                        <input type="time" class="error-check input-change" id="flight-time">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="trip-info-col">
+                                            <div class="trip-info-list-row">
+                                                <div class="trip-list-title">
+                                                    <span>@_localization.Getkey("Predefinedtrip")</span>
+                                                    <img class="icon-img m-l-10" src="~/img/circle-outline.png" alt="info" title="@_localization.Getkey("PredefinedTripDetails")">
+                                                </div>
+                                                <div id="predefined-list" class="trip-list-block">
+                                                    @* data populated in Trip.js*@
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-bottom">
+                                        <button class="btn btn-outline-gray cancel-trip">
+                                            <img class="icon-img m-r-10" src="~/img/close-cancel.png" alt="Cancel">
+                                            <span>@_localization.Getkey("CancelButton")</span>
+                                        </button>
+                                        <div class="tab-right-bottom">
+                                            <button id="flight-info-save" class="btn btn-yellow" data-bs-target="#tab-2">
+                                                <span>@_localization.Getkey("Continue")</span>
+                                                <img class="icon-img m-l-10" src="~/img/arrow-back-white.png" alt="Cancel">
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="tab-2" class="tab-content-3">
+                                <div class="tab-trip-container">
+                                    <div class="fav-trip" style="display: flex; align-items: center; margin-bottom: 20px;">
+                                        <h3>@_localization.Getkey("Tripdetailsheader")</h3>
+                                        <a class="add-more add-favorite" style="margin-left: auto;">
+                                            <img class="icon-img m-r-10" src="~/img/add-favorite-before.png" alt="User">
+                                            <span>@_localization.Getkey("Addfavorite")</span>
+                                        </a>
+                                    </div>
+                                    <div class="trip-info-row">
+                                        <div class="trip-step-row">
+                                            <div class="detail-info-row trip-step-container">
+                                                <div class="detail-header">
+                                                    <h4>@_localization.Getkey("TripStep") 1</h4>
+                                                    <a class="add-more delete-link" style="display: none; cursor: pointer">
+                                                        <img class="icon-img m-r-10" src="~/img/Close.png" alt="Close">
+                                                        <span>@_localization.Getkey("DeleteTripStep")</span>
+                                                    </a>
+                                                    <button type="button" class="btn btn-outline-gray" data-bs-toggle="modal" data-bs-target="#AddNewLocation" id="addNewLocation">
+                                                        <img class="icon-img m-r-10" src="~/img/add-location.png" alt="Location"><span>@_localization.Getkey("AddLocationTrip")</span>
+                                                    </button>
+                                                </div>
+                                                <div class="detail-blk-row">
+                                                    <div class="detail-blk-col">
+                                                        <div class="details-inputs">
+                                                            <span>@_localization.Getkey("StartdateAndtime") <sup class="required-red"> * </sup></span>
+                                                            <div class="date-time-fields">
+                                                                <input type="date" class="start-date error-check input-change">
+                                                                <input type="time" class="start-time error-check input-change">
+                                                            </div>
+                                                        </div>
+                                                        <div class="details-inputs">
+                                                            <span>@_localization.Getkey("StartTriplocation") <sup class="required-red"> * </sup>  <img class="icon-img m-l-10 startLocationDetails" src="~/img/circle-outline.png" id="startLocationDetails" alt="Info" title="@_localization.Getkey("ViewLocation")"></span>
+                                                           
+                                                            @* <select class="select start-location error-check input-change" id="startlocation">
+                                                            </select> *@
+                                                            <input type="text" id="startlocation" class="start-location error-check input-change" placeholder="@_localization.Getkey("TripsRequestorDropdown")" />
+                                                        </div>
+                                                        <div class="details-inputs">
+                                                            <span>@_localization.Getkey("EnddateAndtime")<sup class="required-red"> * </sup></span>
+                                                            <div class="date-time-fields">
+                                                                <input type="date" class="end-date error-check input-change">
+                                                                <input type="time" class="end-time error-check input-change">
+                                                            </div>
+                                                        </div>
+                                                        <div class="details-inputs">
+                                                            <span>@_localization.Getkey("EndTriplocation")<sup class="required-red"> * </sup> <img class="icon-img m-l-10 endLocationDetails" src="~/img/circle-outline.png" id="endLocationDetails" alt="Info" title="@_localization.Getkey("ViewLocation")"></span>
+                                                            
+                                                           @*  <select class="end-location error-check input-change" name="" id="endlocation">
+                                                            </select> *@
+                                                            <input type="text" id="endlocation" class="end-location error-check input-change" placeholder="@_localization.Getkey("TripsRequestorDropdown")" />
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="detail-blk-col duration bottom-line">
+                                                        <span>@_localization.Getkey("Duration")</span>
+                                                        <div class="details-inputs">
+                                                            <div class="date-time-fields duration">
+                                                                <input type="number" class="duration-days input-change"
+                                                                       min="0">
+                                                                <span>@_localization.Getkey("Days")</span>
+                                                            </div>
+                                                            <div class="date-time-fields duration">
+                                                                <input type="number" class="duration-hours input-change"
+                                                                       min="0" max="23">
+                                                                <span>@_localization.Getkey("Hours")</span>
+                                                            </div>
+                                                            <div class="date-time-fields duration">
+                                                                <input type="number" class="duration-minutes input-change"
+                                                                       min="0" max="59">
+                                                                <span>Minutes</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="detail-blk-col">                                                      
+                                                        <div class="detail-passenger-blk">
+                                                            <div class="detail-header-wrapper">
+                                                                <div class="detail-header-wrapper-col">
+                                                                    <h4>@_localization.Getkey("Passenger")</h4>
+                                                                </div>
+                                                                <div class="detail-header-wrapper-col col-2">
+                                                                    <h4 class="c1-header">@_localization.Getkey("HandBag")</h4>
+                                                                    <h4 class="c2-header">@_localization.Getkey("Luggage")</h4>
+                                                                    <h4 class="c3-header">@_localization.Getkey("Special")</h4>
+                                                                    <img class="icon-img empty" src="~/img/Close.png"
+                                                                         alt="Close">
+                                                                </div>
+                                                            </div>
+                                                            <div class="all-passenger-container">
+                                                                <div class="details-inputs passenger">
+                                                                    <div class="deatil-col-inputs-pass col-1">
+                                                                        <div class="details-header">
+                                                                            <span>@_localization.Getkey("Passenger") 1</span>
+                                                                            <img class="icon-img" src="~/img/Close.png"
+                                                                                 alt="Cancel">
+                                                                        </div>
+                                                                      @*   <select name="" class="passenger-dropdown passenger-dropdown-class error-check input-change" data-id="1">
+                                                                        </select> *@
+                                                                        <input type="text" id="autocomplete-input" class="passenger-dropdown passenger-dropdown-class error-check input-change" placeholder="@_localization.Getkey("TripsRequestorDropdown")" />
+                                                                        <input type="hidden" id="selected-passenger-id" data-id="0" />
+                                                                    </div>
+
+                                                                    <div class="deatil-col-inputs-pass col-2">
+                                                                        <div class="details-inputs-details d4">
+                                                                            <img class="icon-img edit-passenger-row-icon" src="/img/Edit.png" title='@_localization.Getkey("EditPassenger")'>
+                                                                        </div>
+                                                                        <div class="details-inputs-details d1">
+                                                                            <span>@_localization.Getkey("HandBag")</span>
+                                                                            <input class="handbag input-change error-check" type="number" value="0" min="0" max="50">
+                                                                        </div>
+                                                                        <div class="details-inputs-details d2">
+                                                                            <span>@_localization.Getkey("Luggage")</span>
+                                                                            <input class="luggage input-change error-check" type="number" value="0" min="0" max="50">
+                                                                        </div>
+                                                                        <div class="details-inputs-details d3">
+                                                                            <span>@_localization.Getkey("Special")</span>
+                                                                            <input class="special input-change error-check" type="text" maxlength="20" min="0" max="50">
+                                                                        </div>
+                                                                        
+                                                                        <div class="details-inputs-details d4">
+                                                                            <img class="icon-img delete-passenger-row-icon empty" src="/img/Close.png"
+                                                                                 alt="Close">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                                                                                    
+                                                        </div>
+
+                                                        <div class="detail-inputs-more">
+                                                            <a class="add-more add-more-passenger-trip">
+                                                                <img class="icon-img m-r-10" src="~/img/user-plus.png" alt="User">
+                                                                <span>@_localization.Getkey("AddMoreTripPassenger")</span>
+                                                            </a>
+                                                            <button class="btn btn-outline-gray" data-bs-toggle="modal" data-bs-target="#AddNewPassenger" id="openPassengerModal">
+                                                                <img class="icon-img m-r-10" src="~/img/person-add.png" alt="User">
+                                                                <span>@_localization.Getkey("btnAddTripPassenger")</span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="detail-blk-col">
+                                                        <div class="trip-cmt-row">
+                                                            <div class="trip-cmt-col">
+                                                                <span>@_localization.Getkey("Comment")</span>
+                                                                <div class="check-wrapper">
+                                                                    <input type="checkbox" class="check-box is-mail-required input-change" id="mail-trip">
+                                                                    <label id="mail-trip-label">@_localization.Getkey("Bringpapermail")</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="trip-cmt-col">
+                                                                <textarea id="" cols="30" rows="10" class="comment input-change"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div id="add-tripstep" class="add-trip">
+                                            <button class="btn btn-yellow">
+                                                <img class="icon-img m-r-10" src="~/img/add.png" alt="add">
+                                                <span>@_localization.Getkey("AddAnotherTripStep")</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="tab-bottom">
+                                        <button class="btn btn-outline-gray cancel-trip">
+                                            <img class="icon-img m-r-10" src="~/img/close-cancel.png" alt="Cancel">
+                                            <span>@_localization.Getkey("CancelButton")</span>
+                                        </button>
+                                        <div class="tab-right-bottom">
+                                            <button id="trip-step-previous" class="btn btn-outline-gray">
+                                                <img class="icon-img m-r-10" src="~/img/back-arw.png" alt="Cancel">
+                                                <span>@_localization.Getkey("Previous")</span>
+                                            </button>
+                                            <button id="trip-step-save" class="btn btn-yellow">
+                                                <span>@_localization.Getkey("SaveAndContinue")</span>
+                                                <img class="icon-img m-l-10" src="~/img/arrow-back-white.png" alt="Cancel">
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="tab-3" class="tab-content-3">
+                                <div class="tab-trip-container">
+                                    <div class="trip-info-row scroll-bar">
+                                        <div class="payment-trip-info-row">
+                                            <div class="payment-trip-col">
+                                                <div class="tabs">
+                                                    <ul class="t-nav-3">
+                                                        <li id="auth-trip"><a href="#t-1">Authorized trip</a></li>
+                                                        <li id="out-of-policy"><a href="#t-2">Out of policy trip</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div id="t-1" class="tab-3">
+                                                    <div class="auth-row">
+                                                        <div class="auth-col">
+                                                            <h4>@_localization.Getkey("Mainpassenger")<sup class="required-red"> * </sup></h4>
+                                                            <div class="select-inputs">
+                                                                <span>@_localization.Getkey("Passenger")</span>
+                                                                <select name="" id="paymentpassengerlist" class="error-check input-change">
+                                                                    @* <option value="">Agon Jean-Paul</option>
+                                                                    <option value="">None</option>
+                                                                    <option value="">None</option>
+                                                                    <option value="">None</option> *@
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="auth-col">
+                                                            <h4>@_localization.Getkey("Costcenter")</h4>
+                                                            <div class="auth-select-col">
+                                                                <div class="radio-wrapper">
+                                                                    <input type="radio" class="radio-box cost-center-radio-grp input-change" name="costcenter-radio-grp" id="radio-main" value="1">
+                                                                    <label for="radio-main">@_localization.Getkey("CostCenterType1")</label>
+                                                                </div>
+                                                                <div class="radio-wrapper">
+                                                                    <input type="radio" class="radio-box cost-center-radio-grp input-change" name="costcenter-radio-grp" id="radio-passenger" value="2">
+                                                                    <label for="radio-passenger">@_localization.Getkey("CostCenterType2")</label>
+                                                                </div>
+                                                                <div class="select-inputs">
+                                                                    <span>@_localization.Getkey("Passenger")</span>
+                                                                    <select name="" id="paymentpassengerlist2" class="input-change">
+                                                                        @* <option value="">Select</option>
+                                                                        <option value="">None</option>
+                                                                        <option value="">None</option>
+                                                                        <option value="">None</option> *@
+                                                                    </select>
+                                                                </div>
+                                                                <div class="radio-wrapper">
+                                                                    <input type="radio" class="radio-box cost-center-radio-grp input-change" name="costcenter-radio-grp" id="radio-requestor" value="3">
+                                                                    <label for="radio-requestor">@_localization.Getkey("CostCenterType3")</label>
+                                                                </div>
+                                                                <div class="radio-wrapper">
+                                                                    <input type="radio" class="radio-box cost-center-radio-grp input-change" name="costcenter-radio-grp" id="radio-center" value="4">
+                                                                    <label for="radio-center">@_localization.Getkey("CostCenterType4")</label>
+                                                                </div>
+                                                                <div class="select-inputs">
+                                                                    <select name="" id="passengercotsecenter" class="input-change error-check">
+                                                                        @* <option value="">B522310107 - IT Swiss.SC&P.G.CH</option>
+                                                                        <option value="">None</option>
+                                                                        <option value="">None</option>
+                                                                        <option value="">None</option> *@
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div id="t-2" class="tab-3">
+                                                    <div class="auth-row">
+                                                        <div class="auth-col">
+                                                            <div class="select-inputs">
+                                                                <span>@_localization.Getkey("ExternalServiceHeader")</span>
+                                                                <select name="" id="externalservicedropdown"> class="input-change"
+                                                                </select>
+                                                            </div>
+                                                            @* <div class="select-inputs">
+                                                                <span>Payment Mode</span>
+                                                                <select name="" id="paymentmodes">
+                                                                    <option value="">b522310107 - it swiss.sc&p.g.ch</option>
+                                                                    <option value="">none</option>
+                                                                    <option value="">none</option>
+                                                                    <option value="">None</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="select-inputs">
+                                                                <span>Transmitted date</span>
+                                                                <input name="" id="transmitteddate" value="" disabled />
+                                                                <select name="" id="">
+                                                                <option value="">B522310107 - IT Swiss.SC&P.G.CH</option>
+                                                                <option value="">None</option>
+                                                                <option value="">None</option>
+                                                                <option value="">None</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="select-inputs">
+                                                                <span>External reference</span>
+                                                                <input name="" id="externalref" value="" disabled />
+                                                                <select name="" id="">
+                                                                <option value="">B522310107 - IT Swiss.SC&P.G.CH</option>
+                                                                <option value="">None</option>
+                                                                <option value="">None</option>
+                                                                <option value="">None</option>
+                                                                </select>
+                                                            </div> *@
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="payment-trip-col">
+                                                <div class="trip-options-container">
+                                                    <h4>@_localization.Getkey("Options")</h4>
+                                                    <div class="trip-options-row">
+                                                        <div class="trip-options-col">
+                                                            <div class="check-wrapper">
+                                                                <input type="checkbox" class="check-box input-change" id="is-confidential">
+                                                                <label for="is-confidential">@_localization.Getkey("Confidential")</label>
+                                                            </div>
+                                                            <div class="check-wrapper">
+                                                                <input type="checkbox" class="check-box input-change" id="alert-passenger">
+                                                                <label for="alert-passenger">@_localization.Getkey("Alertpassengers")</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="trip-options-col">
+                                                            <span>@_localization.Getkey("Comment")</span>
+                                                            <textarea name="" id="payment-comment" cols="30" rows="10" class="input-change"></textarea>
+                                                        </div>
+                                                        <div class="trip-options-col attach">
+                                                            <div class="attach-header">
+                                                                <h4 class="attch-file-header">@_localization.Getkey("AttachFiles")</h4>
+                                                                <span>(Jpeg, jpg, pdf, word , excel, PPT, txt and CSV)</span>
+                                                            </div>
+                                                           
+                                                            <div class="attach-wrapper">
+                                                                <input id="file-input" type="file" class="input-change" multiple>
+                                                                <span class="text">@_localization.Getkey("Addfiles")</span>
+                                                            </div>
+                                                            <div class="attached-file" style="display: none;">
+                                                                <h4>@_localization.Getkey("Attachedfiles")</h4>
+                                                                <div class="attached-wrapper-row">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-bottom">
+                                        <button class="btn btn-outline-gray cancel-trip">
+                                            <img class="icon-img m-r-10" src="~/img/close-cancel.png" alt="Cancel">
+                                            <span>@_localization.Getkey("CancelButton")</span>
+                                        </button>
+                                        <div class="tab-right-bottom">
+                                            <button id="payment-previous" class="btn btn-outline-gray">
+                                                <img class="icon-img m-r-10" src="~/img/back-arw.png" alt="Cancel">
+                                                <span>@_localization.Getkey("Previous")</span>
+                                            </button>
+                                            <button id="payment-save" class="btn btn-yellow">
+                                                <span>@_localization.Getkey("SaveAndContinue")</span>
+                                                <img class="icon-img m-l-10" src="~/img/arrow-back-white.png" alt="Cancel">
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="tab-4" class="tab-content-3">
+                                <div class="tab-trip-container">
+                                    <h3>@_localization.Getkey("TripDetails") : <span id="tripType"></span></h3>
+                                    <input id="TripId" style="display:none;">
+                                    <input id="DriverId" style="display:none;">
+                                    <input id="ExternalServiceId" style="display:none;">
+                                    <input id="Status" style="display:none;">
+                                    <div class="trip-info-row scroll-bar">
+                                        <div class="trip-final-details trip-step-details">
+                                            <div class="trip-to">
+                                                <img class="icon-img m-r-10 flight-icon-img" src="/img/flight-land.png" alt="Flight" style="display:none">
+                                                <h4 id="flightnumber"></h4>
+                                            </div>
+                                            <div class="trip-review-trip-step-container">
+
+                                            </div>
+                                            <div class="trip-final-details-col trip-review-trip-step-demo" style="display:none;">
+                                                <div class="trip-final-list-col">
+                                                    <h4 class="trip-review-trip-step-header"></h4>
+                                                </div>
+                                                <div class="trip-final-list-col">
+                                                    <div class="trip-loc from-loc">
+                                                        <img class="icon-large-img m-r-10" alt="Location" id="fromLocationImg">
+                                                        <div class="trip-loc-col">
+                                                            <span class="trip-step-from-date"></span>
+                                                            <span class="trip-step-from-location"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="trip-loc direction"><img class="icon-large-img m-r-10" src="~/img/arrow-back.png" alt="To"></div>
+                                                    <div class="trip-loc to-loc">
+                                                        <img class="icon-large-img m-r-10" alt="Location" id="toLocationImg">
+                                                        <div class="trip-loc-col">
+                                                            <span class="trip-step-to-date"></span>
+                                                            <span class="trip-step-to-location"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="trip-final-list-col">
+                                                    <div class="passenger-list-row">
+                                                        <h4>@_localization.Getkey("linkPassenger")</h4>
+
+                                                        <div class="trip-user trip-review-passenger-demo" style="display:none">
+                                                            <div class="trip-user-wrapper">
+                                                                <img class="icon-large-img m-r-10" src="~/img/user-alt-black.png" alt="User">
+                                                                <div class="trip-user-col">
+                                                                    <span class="trip-step-passenger-name">fdbgdfhgh</span>
+                                                                    <span class="trip-step-passenger-phone">gthdghndfrth</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="trip-final-list-col trip-review-trip-step-passenger-list">
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="trip-final-list-col">
+                                                    <div class="passenger-list-row">
+                                                        <h4>@_localization.Getkey("Courrier")</h4>
+                                                        <div class="trip-final-list-col">
+                                                            <div class="trip-user full-width">
+                                                                <div class="trip-user">
+                                                                    <div class="trip-user-col">
+                                                                        <span class="trip-step-mail"></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="trip-final-list-col">
+                                                    <div class="passenger-list-row">
+                                                        <h4>@_localization.Getkey("ResearchComments")</h4>
+                                                        <div class="trip-final-list-col">
+                                                            <div class="trip-user full-width">
+                                                                <div class="trip-user-col">
+                                                                    <span class="trip-step-comment"></span>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="trip-final-details">
+                                            <h4>@_localization.Getkey("PaymentDetails")</h4>
+                                            <div class="last-payment-detail-row">
+                                                <div class="last-payment-detail-col">
+                                                    <span>@_localization.Getkey("Mainpassenger")</span>
+                                                    <h4 class="trip-review-main-passenger"></h4>
+                                                </div>
+                                                <div class="last-payment-detail-col">
+                                                    <span>@_localization.Getkey("ResearchCostcenter")</span>
+                                                    <h4 id="costcenterId"></h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-bottom">
+                                        <button class="btn btn-outline-gray cancel-trip">
+                                            <img class="icon-img m-r-10" src="~/img/close-cancel.png" alt="Cancel">
+                                            <span>@_localization.Getkey("CancelButton")</span>
+                                        </button>
+                                        <div class="tab-right-bottom">
+                                            <button id="review-previous" class="btn btn-outline-gray">
+                                                <img class="icon-img m-r-10" src="~/img/back-arw.png" alt="Cancel">
+                                                <span>@_localization.Getkey("Previous")</span>
+                                            </button>
+                                            <button id="review-submit" class="btn btn-yellow">                                                
+                                                <span>@_localization.Getkey("Submit")</span>
+                                                @* <img class="icon-img m-l-10" src="~/img/arrow-back-white.png" alt="Cancel"> *@
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @* no mobile popup *@
+    <div class="modal fade alert-modal  alert_statement" id="no-mobile-popup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="vertical-alignment-helper">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header"></div>
+                    <div class="modal-body">
+                        <h4 id="popup-body"></h4>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-yellow" data-bs-dismiss="modal" id="yes-no-mobile-popup"> @_localization.Getkey("optionYes")</button>
+                        <button type="button" class="btn btn-border" data-bs-dismiss="modal" id="no-no-mobile-popup"> @_localization.Getkey("optionNo")</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add New Location -->
+    <div class="modal fade addNewLocation"
+         id="AddNewLocation"
+         tabindex="-1"
+         data-bs-backdrop="static"
+         aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLabel">@_localization.Getkey("Add New Location")</h3>
+                    <button type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close" id="closebtn"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="add-location-row">
+                        <div class="add-location-col">
+                            <div class="add-location-checks">
+                                <div class="check-wrapper">
+                                    <input type="checkbox" class="check-box" id="checkRadioPrivate" name="radio-grp" value="1" checked>
+                                    <label for="checkRadioPrivate">@_localization.Getkey("Private")</label>
+                                </div>
+                              @*   <div class="radio-wrapper">
+                                    <input type="radio" class="radio-box" id="checkRadioCommon" name="radioGroup">
+                                    <label for="checkRadioCommon">@_localization.Getkey("Common")</label>
+                                </div>
+                                <div class="radio-wrapper">
+                                    <input type="radio" class="radio-box" id="checkRadioPrivate" name="radioGroup" checked>
+                                    <label for="checkRadioPrivate">@_localization.Getkey("Private")</label>
+                                </div>
+                                <div class="radio-wrapper">
+                                    <input type="radio" class="radio-box" id="checkOpen" name="radioGroup">
+                                    <label for="checkOpen">@_localization.Getkey("Open")</label>
+                                </div> *@
+                            </div>
+                        </div>
+                        <div class="add-location-col">
+                            <div class="select-inputs">
+                                <span>@_localization.Getkey("NameHeader")</span>
+                                <input id="name" type="text">
+                                <input id="locationId" type="hidden" />
+
+                            </div>
+                            <div class="select-inputs">
+                                <span>@_localization.Getkey("Street")</span>
+                                <input id="street" type="text">
+                            </div>
+                            <div class="select-inputs">
+                                <span>@_localization.Getkey("NPA")</span>
+                                <input id="npa" type="text">
+                            </div>
+                            <div class="select-inputs">
+                                <span>@_localization.Getkey("City")</span>
+                                <input id="city" type="text">
+                            </div>
+                            <div class="select-inputs full-width">
+                                <span>@_localization.Getkey("Country")</span>
+                                <input id="country" type="text">
+                            </div>
+                            <div class="select-inputs full-width">
+                                <span>@_localization.Getkey("Comments")</span>
+                                <textarea name="" cols="30" rows="10" id="comment" type="text"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-yellow" id="addLocation">
+                        <img class="icon-img m-r-10" src="~/img/add.png" />
+                        <span>@_localization.Getkey("AddLocation")</span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Add New Location End -->
+
+
+    <div class="modal fade addNewLocation" id="AddNewPassenger" tabindex="-1" data-bs-backdrop="static"
+         aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLabel"></h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="closeBtn"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="AddNewPassengers">
+                        <div class="tab-trip-container">
+                            <div class="trip-info-row scroll-bar">
+                                <div class="payment-trip-info-row">
+                                    <div class="payment-trip-col full-width">
+                                        <div class="tabs">
+                                            <ul class="ta-nav-3">
+                                                <li id="existingEmployeeLink"><a href="#Exist-emp">@_localization.Getkey("ExistingEmployee")</a></li>
+                                                <li id="customPassengerLink"><a href="#Custom-passenger">@_localization.Getkey("CustomPassenger")</a></li>
+                                            </ul>
+                                        </div>
+                                        <div id="Exist-emp" class="tab-3-content">
+                                            <div class="auth-row">
+                                                <div class="auth-col">
+                                                    <div class="name-search d-flex">
+                                                        <div class="select-inputs">
+                                                            <span>@_localization.Getkey("LastNameDisplayName")<sup class="text-danger"><strong>*</strong></sup></span>
+                                                            <input type="text" id="textLastName1">
+                                                            <input type="hidden" id="textLastName1Hidden">
+                                                            <input type="hidden" id="textPassengerId1">
+                                                            <input type="hidden" id="textTelePhone1">
+                                                            <input type="hidden" id="textMobileNumber1">
+                                                            <input type="hidden" id="textEmail1">
+                                                            <input type="hidden" id="textEmployeeId1">
+                                                            <input type="hidden" id="textOwnerId1">
+                                                            <input type="hidden" id="textisValid1">
+                                                            <input type="hidden" id="textisVip1">
+                                                            <input type="hidden" id="textAccessLevelId1">
+                                                            <input type="hidden" id="textTitle1">
+                                                        </div>
+                                                        <div class="select-inputs m-l-10">
+                                                            <span>@_localization.Getkey("FirstNameName")<sup class="text-danger"><strong>*</strong></sup></span>
+                                                            <div class="d-flex">
+                                                                <input type="text" id="textFirstName1" >
+                                                                <input type="hidden" id="textFirstName1Hidden">
+                                                            </div>
+                                                        </div>
+                                                        <div class="select-inputs m-l-10 btn-blk">
+                                                            <button class="btn btn-yellow m-l-10" id="searchEmpBtn1">
+                                                                <span>@_localization.Getkey("Search")</span>
+                                                            </button>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="grid-table" id="small-passanger-table">
+                                                        <h4>@_localization.Getkey("SearchResult")</h4>
+                                                        <div class="grid-wrapper">
+                                                            <table id="smallPassangerGrid"></table>
+                                                        </div>
+                                                    </div>
+                                                    <h4 class="modal-title" id="exampleModalLabel1">@_localization.Getkey("AdditionalInformation")</h4>
+                                                    <div class="add-location-col">
+                                                        <div class="add-location-checks">
+                                                            <div class="check-wrapper">
+                                                                <input type="checkbox" class="check-box" id="checkPrivate1" name="checkPrivate1">
+                                                                <label for="checkPrivate1">@_localization.Getkey("PrivatePassenger")</label>
+                                                            </div>
+                                                            <div class="check-wrapper">
+                                                                <input type="checkbox" class="check-box" id="checkAuthorized1" name="checkAuthorized1">
+                                                                <label for="checkAuthorized1">@_localization.Getkey("AuthorizedPassenger")</label>
+                                                            </div>
+                                                            <div class="check-wrapper">
+                                                                <input type="checkbox" class="check-box" id="checkCustomised1" name="checkCustomised1">
+                                                                <label for="checkCustomised1">@_localization.Getkey("CustomizedPassenger")</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="select-inputs full-width" id="textContactNumberGroup1">
+                                                        <span>@_localization.Getkey("ContactPhoneDisplayName")</span>
+                                                        <input type="text" id="textContactNumber1">
+                                                    </div>
+                                                    <div class="select-inputs full-width">
+                                                        <span>@_localization.Getkey("CommentDisplayName")</span>
+                                                        <textarea name="" cols="30" rows="6" id="textComment1"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="Custom-passenger" class="tab-3-content">
+                                            <div class="auth-row">
+                                                <div class="auth-col d-flex">
+                                                    <div class="select-inputs">
+                                                        <span>Title<sup class="text-danger"><strong>*</strong></sup></span>
+                                                        <Select id="textTitle2" class="input-val">
+                                                            <option value="Mr">Mr</option>
+                                                            <option value="Ms">Ms</option>
+                                                            <option value="Miss">Miss</option>
+                                                            <option value="Mrs">Mrs</option>
+                                                            <option value="Dr">Dr</option>
+                                                            <option value="Pr">Pr</option>
+                                                        </Select>
+                                                    </div>
+                                                    <div class="select-inputs m-l-a">
+                                                        <span>@_localization.Getkey("LastNameDisplayName")<sup class="text-danger"><strong>*</strong></sup></span>
+                                                        <input type="text" id="textLastName2" title='@_localization.Getkey("ThisFieldIsRequired")'>
+                                                        <input type="hidden" id="textPassengerId2">
+                                                        <input type="hidden" id="textOwnerId2">
+                                                        <input type="hidden" id="textisValid2">
+                                                        <input type="hidden" id="textisVip2">
+                                                        <input type="hidden" id="textAccessLevelId2">
+                                                    </div>
+                                                    <div class="select-inputs">
+                                                        <span>@_localization.Getkey("FirstNameName")<sup class="text-danger"><strong>*</strong></sup></span>
+                                                        <input type="text" id="textFirstName2" title='@_localization.Getkey("ThisFieldIsRequired")'>
+                                                    </div>
+                                                    <div class="select-inputs m-l-a">
+                                                        <span>@_localization.Getkey("Phone")</span>
+                                                        <input type="text" id="textTelePhone2" title='@_localization.Getkey("PhonePattern")'>
+                                                    </div>
+                                                    <div class="select-inputs">
+                                                        <span>@_localization.Getkey("MobilePhoneDisplayName")</span>
+                                                        <input type="text" id="textMobileNumber2" title='@_localization.Getkey("PhonePattern")'>
+                                                    </div>
+                                                    <div class="select-inputs m-l-a">
+                                                        <span>@_localization.Getkey("EmailDisplayFormName")</span>
+                                                        <input type="text" id="textEmail2" title='@_localization.Getkey("EmailPattern")'>
+                                                    </div>
+                                                    <h4 class="modal-title" id="exampleModalLabel2">@_localization.Getkey("AdditionalInformation")</h4>
+                                                    <div class="add-location-col">
+                                                        <div class="add-location-checks">
+                                                            <div class="check-wrapper">
+                                                                <input type="checkbox" class="check-box" id="checkPrivate2" name="checkPrivate2">
+                                                                <label for="checkPrivate2">@_localization.Getkey("PrivatePassenger")</label>
+                                                            </div>
+                                                            <div class="check-wrapper">
+                                                                <input type="checkbox" class="check-box" id="checkAuthorized2" name="checkAuthorized2">
+                                                                <label for="checkAuthorized2">@_localization.Getkey("AuthorizedPassenger")</label>
+                                                            </div>
+                                                            <div class="check-wrapper">
+                                                                <input type="checkbox" class="check-box" id="checkCustomised2" name="checkCustomised2">
+                                                                <label for="checkCustomised2">@_localization.Getkey("CustomizedPassenger")</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="select-inputs full-width" id="textContactNumberGroup2">
+                                                        <span>@_localization.Getkey("ContactPhoneDisplayName")</span>
+                                                        <input type="text" id="textContactNumber2" title='@_localization.Getkey("PhonePattern")'>
+                                                    </div>
+                                                    <div class="select-inputs full-width">
+                                                        <span>@_localization.Getkey("CommentDisplayName")</span>
+                                                        <textarea name="" cols="30" rows="6" id="textComment2"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-yellow" id="submitPassengerBtn">
+                        <span>@_localization.Getkey("AddPassenger")</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Modal -->
+<div class="modal fade alert-modal  alert_statement" id="alert-insert-popup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header"></div>
+                <div class="modal-body">
+                    @{
+                        string insertQuestion = @_localization.Getkey("alertQuestionInsert");
+                        string insertSatement = string.Format(insertQuestion, "Passenger");
+                    }
+                    <h4 id="alertPassengerInsert">@insertSatement</h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-yellow" id="btnInsertConfirm">@_localization.Getkey("Confirm")</button>
+                    <button type="button" class="btn btn-border" data-bs-dismiss="modal" aria-label="Close">@_localization.Getkey("CancelButton")</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade alert-modal  alert_statement" id="alert-update-popup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header"></div>
+                <div class="modal-body">
+                    @{
+                        string updateQuestion = @_localization.Getkey("alertQuestionUpdate");
+                        string updateSatement = string.Format(updateQuestion, "Passenger");
+                    }
+                    <h4 id="alertPassengerUpdate">@updateSatement</h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-yellow" id="btnUpdateConfirm">@_localization.Getkey("Confirm")</button>
+                    <button type="button" class="btn btn-border" data-bs-dismiss="modal" aria-label="Close">@_localization.Getkey("CancelButton")</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade alert-modal  alert_statement" id="alert-delete-popup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header"></div>
+                <div class="modal-body">
+                    @{
+                        string deleteQuestion = @_localization.Getkey("alertQuestionDelete");
+                        string deleteSatement = string.Format(deleteQuestion, "Passenger");
+                    }
+                    <h4 id="alertPassengerDelete">@deleteSatement</h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-yellow" id="btnDeleteConfirm">@_localization.Getkey("Confirm")</button>
+                    <button type="button" class="btn btn-border" data-bs-dismiss="modal" aria-label="Close">@_localization.Getkey("CancelButton")</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+
+<div class="modal fade alert-modal alert_message" id="alert-delete-red" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    @{
+                        string originalString = @_localization.Getkey("alertDeleteDanger");
+                        string replacedString = string.Format(originalString, "Passenger");
+                    }
+                    <h4 id="alertDeleteDanger">@replacedString</h4>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--alert red End -->
+<!-- Modal -->
+<div class="modal fade alert-modal alert_message" id="alert-insert-green" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    @{
+                        string originalString1 = @_localization.Getkey("alertInsertSuccess");
+                        string replacedString1 = string.Format(originalString1, "Passenger");
+                    }
+                    <h4 id="alertInsertSuccess">@replacedString1</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade alert-modal alert_message" id="alert-update-green" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    @{
+                        string originalString2 = @_localization.Getkey("alertUpdateSuccess");
+                        string replacedString2 = string.Format(originalString2, "Passenger");
+                    }
+                    <h4 id="alertUpdateSuccess">@replacedString2</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--alert Green End -->
+<!-- Modal -->
+<div class="modal fade alert-modal alert_message" id="alert-norecord-yellow" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h4>@_localization.Getkey("AlertNoRecords")</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--alert Yellow End -->
+<div class="modal fade alert-modal  alert_statement" id="cancel-confirm-popup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header"></div>
+                <div class="modal-body">
+                    <h4 id="popup-body"></h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-yellow" id="cancel-confirm-button"> @_localization.Getkey("Confirm")</button>
+                    <button type="button" class="btn btn-border" id="cancel-confirm" data-bs-dismiss="modal" aria-label="Close"> @_localization.Getkey("CancelButton")</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade alert-modal  alert_statement" id="delete-file-confirm-popup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="vertical-alignment-helper">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header"></div>
+                    <div class="modal-body">
+
+                        <h4 id="popup-body"></h4>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-yellow" id="delete-file-confirm-button"> @_localization.Getkey("Confirm")</button>
+                        <button type="button" class="btn btn-border" id="cancel-confirm" data-bs-dismiss="modal" aria-label="Close"> @_localization.Getkey("CancelButton")</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+
+<!-- Create Trip Section End -->
+<script src="~/scripts/trip.js?new Date().getTime()"></script>
+<script type="text/javascript" src="~/scripts/TripPassenger.js?new Date().getTime()"></script>
+

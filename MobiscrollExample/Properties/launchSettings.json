@@ -1,0 +1,28 @@
+{
+  "profiles": {
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:44377", // Ensure that both profiles use the same URL and port
+      "sslPort": 44377 // Matching the HTTPS port for IIS Express
+    },
+    "ProjectName": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:44377", // Ensure this matches the IIS Express port
+      "dotnetRunMessages": true
+    }
+  },
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "https://localhost:44377", // Use the same port as above for consistency
+      "sslPort": 44377 // Ensure the SSL port matches
+    }
+  }
+}

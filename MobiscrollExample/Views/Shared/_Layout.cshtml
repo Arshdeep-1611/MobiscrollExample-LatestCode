@@ -1,0 +1,721 @@
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration _config
+
+@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.Extensions.Options
+@inject IOptions<RequestLocalizationOptions> LocOptions
+
+@using Nestle.CH.HQ.RSL.WebApp.Controllers
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject ILogger<HomeController> _Logger
+@using Newtonsoft.Json
+@{
+    string json = Context.Session.GetString("RoleToolsList");
+    List<RoleTools> roleToolsList = JsonConvert.DeserializeObject<List<RoleTools>>(json);
+    var RoleTools = roleToolsList as List<RoleTools>;
+    string jsonString = JsonConvert.SerializeObject(roleToolsList);
+    
+}
+
+@{
+
+    // Retrieve session value using C# code
+    var userId = Context.Session.GetString("UserId");
+    var sessionValue = Context.Session.GetString("Languages");
+    var UserType = Context.Session.GetString("UserType");
+    // Parse the JSON string into a list of Language objects
+    var languages = JsonConvert.DeserializeObject<List<Languages>>(sessionValue);
+}
+@using Nestle.CH.HQ.RSL.WebApp
+@using Nestle.CH.HQ.RSL.WebApp.Models
+@using Nestle.CH.HQ.RSL.WebApp.Services;
+@inject LanguageService _localization
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RSL</title>
+
+
+
+    <!-- CSS Links -->
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/jquery-ui.min.css" />
+    <link rel="stylesheet" href="~/css/ui.jqgrid.min.css" />
+    @* <link href="~/css/autocomplete-styles.css" rel="stylesheet" /> *@
+    <link rel="stylesheet" href="~/css/jquery-ui-custom.css" />
+    <link rel="stylesheet" href="~/css/flatpickr.min.css" />
+    <link rel="stylesheet" href="~/css/chosen.min.css" />
+    <link rel="stylesheet" href="~/css/virtual-select.min.css" />
+    <link rel="stylesheet" href="~/css/style.css" />
+    <link rel="stylesheet" href="~/css/responsive.css" />
+    <link rel="stylesheet" href="~/css/mobiscroll.jquery.min.css" />
+    <link rel="stylesheet" href="~/css/select2.css" />
+    <link rel="stylesheet" href="~/css/select2.min.css" />
+    <!-- Javascript dependency -->
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/popper.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/jquery.jqGrid.min.js"></script>
+    <script src="~/js/chosen.jquery.min.js"></script>
+    <script src="~/js/flatpickr.js"></script>
+    <script src="~/js/virtual-select.min.js"></script>
+    <script src="~/js/mobiscroll.jquery.min.js"></script>
+    <script src="~/js/select2.min.js"></script>
+    <script src="~/js/select2.js"></script>
+    <script src="~/js/jquery.autocomplete.js"></script>
+    <script src="~/js/jquery.autocomplete.min.js"></script>
+    @* <script src="~/scripts/applyrights.js"></script> *@
+
+</head>
+<body>
+    <input type="hidden" id="userType" value=@UserType />
+    <input type="hidden" id="rolesList" value=@jsonString />
+    <input type="hidden" id="userId" value=@userId />
+    <!-- Header -->
+    <header class="header">
+        @RenderSection("Head", required: false)
+        <div class="header-row">
+            <div class="header-col">
+                <div id="AppLogo" class="header-logo">
+                    <img src="~/img/Logo.png" alt="LOGO">
+                    <span>@_config.GetValue(typeof(string), "Version")</span>
+                </div>
+            </div>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <div class="nav-right">
+                <div class="header-col">
+                     <div class="header-nav">
+                        <ul id="my-list">
+                    <li id="link4">
+                    <a class="check-changes" id="mnuTripPlanning" href="#">@_localization.Getkey("linkTrips")</a>
+                    <span class="line"></span>
+                    </li>
+                           @* @if (Context.Session.GetString("UserType") == "Client")
+                            {
+                                <li id="link1">
+                                    <a href="@Url.Action("Index", "Trips")">@_localization.Getkey("linkTrips")</a>
+                                    <span class="line"></span>
+                                </li>
+                                <li id="link2">
+                                    <a href="@Url.Action("Index", "Delegates")">@_localization.Getkey("linkDelegates")</a>
+                                    <span class="line"></span>
+                                </li>                              
+                                <li id="link7">
+                                    <a href="@Url.Action("Index", "Passenger")">@_localization.Getkey("PassengerName")</a>
+                                    <span class="line"></span>
+                                </li>
+                                <li id="link8">
+                                    <a href="@Url.Action("Index", "Location")">@_localization.Getkey("LocationHeaderName")</a>
+                                    <span class="line"></span>
+                                </li>
+                            }
+                            @if (Context.Session.GetString("UserType") == "Admin")
+                            {
+                               
+                                <li class="admin-menu report-menu" id="link5">
+                                    <a href="#">@_localization.Getkey("linkReports")</a>
+                                    <span class="line"></span>
+                                    <div class="admin-sub">
+                                        @if (RoleTools != null)
+                                        {
+                                            if (RoleTools.FindAll(x => (x.Name == "mnuReportWorkReport" && x.IsEnabled)).Count == 1)
+                                            {
+                                                <span class="check-changes" type="button" id="mnuReportWorkReport">
+                                                    @_localization.Getkey("WorkReport")
+                                                </span>
+                                            }
+                                            else
+                                            {
+                                                <span  type="button" data-bs-toggle="modal" data-bs-target="#" class="mnuReportWorkReport">
+                                                    @_localization.Getkey("WorkReport")
+                                                </span>
+                                            }
+                                            if (RoleTools.FindAll(x => (x.Name == "mnuReportNightSunday" && x.IsEnabled)).Count == 1)
+                                            {
+                                                <span class="check-changes" type="button" id="mnuReportNightSunday">
+                                                    @_localization.Getkey("NightandSundayHoursReport")
+                                                </span>
+                                            }
+                                            else
+                                            {
+                                                <span type="button" data-bs-toggle="modal" data-bs-target="#" class="mnuReportNightSunday">
+                                                    @_localization.Getkey("NightandSundayHoursReport")
+                                                </span>
+                                            }
+                                            if (RoleTools.FindAll(x => (x.Name == "mnuReportOvertime" && x.IsEnabled)).Count == 1)
+                                            {
+                                                <span class="check-changes" type="button"  id="mnuReportOvertime">
+                                                    @_localization.Getkey("OvertimeReport")
+                                                </span>
+                                            }
+                                            else
+                                            {
+                                                <span  type="button" data-bs-toggle="modal" data-bs-target="#" class="mnuReportOvertime">
+                                                    @_localization.Getkey("OvertimeReport")
+                                                </span>
+                                            }
+
+                                            <span class="check-changes" type="button" id="mnuJourneyReport">
+                                                @_localization.Getkey("Beneficiaries'TravelReport")
+                                            </span>
+
+                                            @* <a href="@Url.Action("Index", "Statistics")">@_localization.Getkey("ReportStatistics")</a> *@
+
+                                           @*  <span class="check-changes" type="button"  id="mnuReportDashboard">
+                                                @_localization.Getkey("ReportDashboard")
+                                            </span>
+                                        } 
+                                    </div>
+                            </li>*@
+                                <li class="admin-menu" id="link6">
+                                    <a href="#">ADMINISTRATION</a>
+                                    <span class="line"></span>
+                                    <div class="admin-sub">
+                                        @if (RoleTools != null)
+                                        {
+                                            if (RoleTools.FindAll(x => (x.Name == "mnuAdminPassenger" && x.IsEnabled)).Count == 1)
+                                            {
+                                                <a href="#" class="check-changes" id="mnuAdminPassenger">@_localization.Getkey("linkPassenger")</a>
+                                            }
+                                            else
+                                            {
+                                                <a href="#" class="mnuAdminPassenger disabled">@_localization.Getkey("linkPassenger")</a>
+                                            }
+
+                                            if (RoleTools.FindAll(x => (x.Name == "mnuAdminDrivers" && x.IsEnabled)).Count == 1)
+                                            {
+                                                <a href="#" class="check-changes" id="mnuAdminDrivers">@_localization.Getkey("Drivers")</a>
+                                            }
+                                            else
+                                            {
+                                                <a href="#" class="mnuAdminDrivers disabled">@_localization.Getkey("Drivers")</a>
+                                            }
+
+                                            if (RoleTools.FindAll(x => (x.Name == "mnuAdminExternalServices" && x.IsEnabled)).Count == 1)
+                                            {
+                                                <a href="#" class="check-changes" id="mnuAdminExternalServices">@_localization.Getkey("ExternalHeaderName")</a>
+                                            }
+                                            else
+                                            {
+                                                <a href="#" class="mnuAdminExternalServices disabled">@_localization.Getkey("ExternalHeaderName")</a>
+                                            }
+
+                                            if (RoleTools.FindAll(x => (x.Name == "mnuAdminUsers" && x.IsEnabled)).Count == 1)
+                                            {
+                                                <a href="#" class="check-changes" id="mnuAdminUsers">@_localization.Getkey("Users")</a>
+                                            }
+                                            else
+                                            {
+                                                <a href="#" class="mnuAdminUsers disabled">@_localization.Getkey("Users")</a>
+                                            }
+
+                                            if (RoleTools.FindAll(x => (x.Name == "mnuAdminVehicle" && x.IsEnabled)).Count == 1)
+                                            {
+                                                <a href="#" class="check-changes" id="mnuAdminVehicle">@_localization.Getkey("Vehicles")</a>
+                                            }
+                                            else
+                                            {
+                                                <a href="#" class="mnuAdminVehicle disabled">@_localization.Getkey("Vehicles")</a>
+                                            }
+                                            <div class="admin-sub-divider"></div>
+
+                                            if (RoleTools.FindAll(x => (x.Name == "mnuAdminLocations" && x.IsEnabled)).Count == 1)
+                                            {
+                                                <a href="#" class="check-changes" id="mnuAdminLocations">@_localization.Getkey("Locations")</a>
+                                            }
+                                            else
+                                            {
+                                                <a href="#" class="mnuAdminLocations disabled">@_localization.Getkey("Locations")</a>
+                                            }
+
+                                            if (RoleTools.FindAll(x => (x.Name == "mnuAdminEventKind" && x.IsEnabled)).Count == 1)
+                                            {
+                                                <a href="#" class="check-changes" id="mnuAdminEventKind">@_localization.Getkey("linkManagerEvent")</a>
+                                            }
+                                            else
+                                            {
+                                                <a href="#" class="mnuAdminEventKind disabled">@_localization.Getkey("linkManagerEvent")</a>
+                                            }
+
+                                            <div class="admin-sub-divider"></div>
+                                            if (RoleTools.FindAll(x => (x.Name == "mnuAdminSyncPassengers" && x.IsEnabled)).Count == 1)
+                                            {
+                                                <a href="#" id="mnuAdminSyncPassengers" data-bs-toggle="modal" data-bs-target="#mnuAdminSyncPassengersForm">@_localization.Getkey("PassengerSynchronization") </a>
+                                            }
+                                            else
+                                            {
+                                                <a href="#" class="mnuAdminSyncPassengers disabled">@_localization.Getkey("PassengerSynchronization")</a>
+                                            }
+
+                                            <div class="admin-sub-divider"></div>
+                                            if (RoleTools.FindAll(x => (x.Name == "mnuAdminParameters" && x.IsEnabled)).Count == 1)
+                                            {
+                                                <a href="#" class="check-changes" id="mnuAdminParameters">@_localization.Getkey("Parameter")</a>
+                                            }
+                                            else
+                                            {
+                                                <a href="#" class="mnuAdminParameters disabled">@_localization.Getkey("Parameter")</a>
+                                            }
+
+                                            if (RoleTools.FindAll(x => (x.Name == "mnuAdminManageAccess" && x.IsEnabled)).Count == 1)
+                                            {
+                                                <a href="#" class="check-changes" id="mnuAdminManageAccess">@_localization.Getkey("ManageAccessHeaderName")</a>
+                                            }
+                                            else
+                                            {
+                                                <a href="#" class="mnuAdminManageAccess disabled">@_localization.Getkey("ManageAccessHeaderName")</a>
+                                            }
+                                        }
+                                    </div>
+                                </li>
+
+
+                                @*  <li id="link4">
+                            <a href="@Url.Action("Index", "ManagerEvents")">Manager Events</a>
+                            <span class="line"></span>
+                            </li>
+                            <li id="link4">
+                            <a href="@Url.Action("Notimplemented", "Trips")">@_localization.Getkey("linkTrips")</a>
+                            <span class="line"></span>
+                            </li>
+                            <li id="link5">
+                            <a href="@Url.Action("Notimplemented", "Trips")">@_localization.Getkey("linkReports")</a>
+                            <span class="line"></span>
+                            </li>
+                            <li id="link6">
+                            <a href="@Url.Action("Notimplemented", "Trips")">@_localization.Getkey("linkAdministration")</a>
+                            <span class="line"></span>
+                            </li>
+                            <li id="link7">
+                            <a href="@Url.Action("Index", "ManagerPassengers")">@_localization.Getkey("linkPassenger")</a>
+                            <span class="line"></span>
+                            </li>
+
+                            <li id="link9">
+                            <a href="@Url.Action("Index", "ManagerUsers")">@_localization.Getkey("USERS")</a>
+                            <span class="line"></span>
+                            </li>
+                            <li id="link10">
+                            <a href="@Url.Action("Index", "Parameter")">@_localization.Getkey("PARAMETERS")</a>
+                            <span class="line"></span>
+                            </li>
+                            <li id="link11">
+                            <a href="@Url.Action("Index", "Vehicle")">@_localization.Getkey("VEHICLE")</a>
+                            <span class="line"></span>
+                            </li>
+                            <li id="link12">
+                            <a href="@Url.Action("Index", "ManagerExternalService")">@_localization.Getkey("EXTERNAL SERVICE")</a>
+                            <span class="line"></span>
+                            </li>
+                            <li id="link13">
+                            <a href="@Url.Action("Index", "ManagerDrivers")">@_localization.Getkey("DRIVER")</a>
+                            <span class="line"></span>
+                            </li>
+                            <li id="link13">
+                            <a href="@Url.Action("Index", "ManagerEmplacements")">@_localization.Getkey("EMPLACEMENTS")</a>
+                            <span class="line"></span>
+                            </li> 
+                            }
+                        </ul>
+                    </div> *@
+                </div>
+                <div class="header-col">
+                    <div class="header-right-nav">
+                        <div class="header-right-nav-col">
+                            <div class="dropdown">
+                                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+                                    @foreach (var language in languages)
+                                    {
+                                        @if (_localization.Getkey("selectedLanguage") == language.Language)
+                                        {
+                                            <input type="hidden" id="langugeId" value="@language.Id"></input>
+                                            @language.Description
+                                        }
+                                    }
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    @foreach (var language in languages)
+                                    {
+                                        @if (_localization.Getkey("selectedLanguage") != language.Language)
+                                        {
+                                            <li>
+                                                <a data-id="@language.Language" class="dropdown-item">
+                                                    <i class="flag-icon flag-icon-gb"></i> @language.Description
+                                                </a>
+                                            </li>
+                                        }
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="header-right-nav-col">
+                            <div class="user-name">
+                                <img class="icon-img m-r-10" src="~/img/user-alt.png" alt="User">
+                                <span>
+                                    @if (Context.Session.GetString("UserId") != null)
+                                    {
+                                        <input type="hidden" value="@userId" id="userId"></input>
+                                    }
+                                    @if (Context.Session.GetString("FullName") != null)
+                                    {
+
+                                        <p>@Context.Session.GetString("FullName")</p>
+                                    }
+                                </span>
+                            </div>
+                            <div class="user-name-list">
+                                @if (Context.Session.GetString("IsManager") == "1")
+                                {
+                                    @if (Context.Session.GetString("UserType") == "Admin")
+                                    {
+                                        <div id="getUserType" class="user-name-list-col">
+                                            <span>@_localization.Getkey("btnConnectUser")</span>
+                                            <img class="icon-img" src="~/img/swap.png" alt="Swap">
+                                        </div>
+                                    }
+                                    @if (Context.Session.GetString("UserType") == "Client")
+                                    {
+                                        <div id="getUserType" class="user-name-list-col">
+                                            <span>@_localization.Getkey("btnConnectManager")</span>
+                                            <img class="icon-img" src="~/img/swap.png" alt="Swap">
+                                        </div>
+                                    }
+
+                                }
+                                <div id="logout" class="user-name-list-col">
+                                    <span>@_localization.Getkey("Logout")</span>
+                                    <img class="icon-img" src="~/img/log-out.png" alt="Logout">
+                                    @* <a href="@Url.Action("LogOut", "Home")"></a> *@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="overlay">
+            @*  <div id="loading-text">Loading</div> *@
+            <div id="spinner"></div>
+        </div>
+    </header>
+
+    <!-- Driver Work Report Modal Start -->
+    <div class="modal fade reports-general" id="driverWorkReport" tabindex="-1" data-bs-backdrop="static"
+         aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">@_localization.Getkey("WorkReport")</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id=" CloseDriverReport"></button>
+                </div>
+                <div class="modal-body">
+                    <h4 class="modal-title" id="driverWorkReportModalLabel"> @_localization.Getkey("FiltersOfReport")</h4>
+                    <div class="grid-wrapper">
+                        <div class="grid-first-wrapper">
+                            <div class="select-inputs ">
+                                <span> @_localization.Getkey("DriverName")</span>
+                                <select name="" id="driverList-work" class="full-width">
+                                    <!-- Add dynamic options  -->
+                                </select>
+                            </div>
+                        </div>
+                        <div class="grid-sec-inputs-wrapper">
+                            <div class="details-inputs">
+                                <span>@_localization.Getkey("StartDate")</span>
+                                <input type="date" id="driverFromDate" min="1000-01-01" max="9999-12-31">
+                            </div>
+
+                            <div class="details-inputs">
+                                <span>@_localization.Getkey("EndDate")</span>
+                                <input type="date" id="driverToDate" min="1000-01-01" max="9999-12-31">
+                            </div>
+                        </div>
+                     
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-yellow" id="driverReport-Apply" onclick="generateDriverReport()">@_localization.Getkey("GenerateReport")</button>
+                        <button type="button" class="btn btn-yellow" id="ResetModalDriverReport">@_localization.Getkey("Reset")</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Driver Work Report Modal End -->
+    <!-- Weekend Report Modal -->
+    <div class="modal fade reports-general" id="weekendReport" tabindex="-1" data-bs-backdrop="static"
+         aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">@_localization.Getkey("NightandSundayHoursReport")</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="CloseWeekend" ></button>
+                </div>
+                <div class="modal-body">
+                    <fieldset>
+                        <h4 class="modal-title" id="weekendReportModalLabel"> @_localization.Getkey("FiltersOfReport")</h4>
+                        <div class="grid-wrapper">
+                            <div class="grid-first-wrapper">
+                                <div class="select-inputs">
+                                    <span> @_localization.Getkey("DriverName")</span>
+                                    <select name="" id="driverList-sunday" class="full-width">
+                                        <!-- Add dynamic options  -->
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="grid-sec-inputs-wrapper">
+                                <div class="details-inputs full-width">
+                                    <span for="year"> @_localization.Getkey("Year")</span>
+                                    <input type="number" id="yearOfWeekend" value="" placeholder=" @_localization.Getkey("EnterYear")" min="2000" max="2999" maxlength="4" onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'">
+                                </div>
+                            </div>
+
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-yellow" id="Generate-overTime" onclick="generateWeekendReport() ">
+                        @_localization.Getkey("GenerateReport")
+                    </button>
+                    <button type="button" class="btn btn-yellow" id="ResetModalWeekend"> @_localization.Getkey("Reset")</button>
+                </div>
+            </div> 
+        </div>
+    </div>
+    <!-- Weekend Report Modal End -->
+    <!-- OverTime Report Modal -->
+    <div class="modal fade reports-general" id="overTimeReport" tabindex="-1" data-bs-backdrop="static"
+         aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">  @_localization.Getkey("OvertimeReport")</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="CloseOvertTime"></button>
+                </div>
+                <div class="modal-body">
+                    <fieldset>
+                        <h4 class="modal-title" id="overTimeModalLabel"> @_localization.Getkey("FiltersOfReport")</h4>
+                        <div class="grid-wrapper">
+                            <div class="grid-first-wrapper">
+                                <div class="select-inputs">
+                                    <span> @_localization.Getkey("DriverName")</span>
+                                    <select name="" id="driverlist" class="full-width">
+                                    </select>
+                                </div>
+                                <div class="details-inputs full-width">
+                                    <span for="year" required> @_localization.Getkey("Year")</span>
+                                    <input type="number" id="yearOfReport" value="" placeholder=" @_localization.Getkey("EnterYear")" min="2000" max="2999" maxlength="4" onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'">
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-yellow" id="Generate-overTime" onclick="generateOvertimeReport() ">
+                        @_localization.Getkey("GenerateReport")
+                    </button>
+                    <button type="button" class="btn btn-yellow" id="ResetModalOverTime"> @_localization.Getkey("Reset")</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- OverTime Report Modal End -->
+    <!-- Journey Report Modal -->
+    <div class="modal fade reports-general" id="journeyReport" tabindex="-1" data-bs-backdrop="static"
+         aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">  @_localization.Getkey("Beneficiaries'TravelReport")</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="ResetJourneyReport"></button>
+                </div>
+                <div class="modal-body">
+                    <h4 class="modal-title" id="journeyReportModalLabel"> @_localization.Getkey("FiltersOfReport")</h4>
+                    <div class="grid-wrapper">
+                        <div class="grid-sec-inputs-wrapper">
+                            <div class="details-inputs">
+                                <span>@_localization.Getkey("StartDate")</span>
+                                <input type="date" class="date-field" id="dateFrom" name="dateFrom" min="1000-01-01" max="9999-12-31" required>
+                            </div>
+
+                            <div class="details-inputs">
+                                <span>@_localization.Getkey("EndDate")</span>
+                                <input type="date" class="date-field" id="dateTo" name="dateTo" min="1000-01-01" max="9999-12-31" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="ApplyId" class="btn btn-yellow" type="submit" onclick="generateJourneyReport()">@_localization.Getkey("GenerateReport")</button>
+                    <button type="button" class="btn btn-yellow" id="ResetModalJourneyReport"> @_localization.Getkey("Reset")</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Journey Report Modal End -->
+    <!-- Tableu de board Modal Start -->
+    <div class="modal fade reports-general" id="tableu-de-board" tabindex="-1" data-bs-backdrop="static"
+         aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title"> @_localization.Getkey("ReportDashboard")</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="CloseModalDashboard"></button>
+                </div>
+                <div class="modal-body">
+                    <h3 class="modal-title" id="journeyReportModalLabel"> @_localization.Getkey("FiltersOfReport")</h3>
+                    <div class="grid-wrapper">
+                        <div class="grid-sec-inputs-wrapper">
+                            <div class="details-inputs">
+                                <span>@_localization.Getkey("StartDate")</span>
+                                <input type="date" id="startDate" name="startDate" min="1000-01-01" max="9999-12-31" required>
+                            </div>
+
+                            <div class="details-inputs">
+                                <span>@_localization.Getkey("EndDate")</span>
+                                <input type="date" id="endDate" name="endDate" min="1000-01-01" max="9999-12-31" required>
+                            </div>
+                            <div class="details-inputs btn-grp">
+                                <button class="btn btn-yellow" id="ApplyId-dashboard" type="submit">@_localization.Getkey("Apply")</button>
+                            </div>
+                        </div>
+                        <div class="grid-sec-inputs-wrapper">
+                            <div class="details-inputs">
+                                <label for="internalJourneys"> @_localization.Getkey("DashboardType1")</label>
+                                <input type="text" id="internalJourneys" name="internalJourneys" disabled>
+                            </div>
+                            <div class="details-inputs">
+                                <label for="externalJourneys"> @_localization.Getkey("DashboardType2")</label>
+                                <input type="text" id="externalJourneys" name="externalJourneys" disabled>
+                            </div>
+                            <div class="details-inputs">
+                                <label for="outOfPolicyJourneys"> @_localization.Getkey("DashboardType3")</label>
+                                <input type="text" id="outOfPolicyJourneys" name="outOfPolicyJourneys" disabled>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-yellow" id="RefreshId">@_localization.Getkey("Refresh")</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Tableu de board Modal End -->
+    
+
+    <div class="modal fade alert-modal  alert_statement" id="confirm-popup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="vertical-alignment-helper">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header"></div>
+                    <div class="modal-body">
+                        @{
+                            string deleteQuestion = @_localization.Getkey("alertQuestionDelete");
+                            string passenger = @_localization.Getkey("Passenger");
+                            string deleteSatement = string.Format(deleteQuestion, passenger);
+                        }
+                        <h4 id="popup-body"></h4>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-yellow" id="confirm-button"> @_localization.Getkey("Confirm")</button>
+                        <button type="button" class="btn btn-border" id="cancel-confirm" data-bs-dismiss="modal" aria-label="Close"> @_localization.Getkey("CancelButton")</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade alert-modal alert_message" id="alert-green" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="vertical-alignment-helper">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <h4 id="alert-message"><span></span> </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade alert-modal alert_message" id="alert-yellow" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="vertical-alignment-helper">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <h4 id="alert-message"><span></span> </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade alert-modal alert_message" id="alert-red" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="vertical-alignment-helper">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <h4 id="alert-message"><span></span> </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header End -->
+    <!-- Popup Synchro Model Starts -->
+
+    <div class="modal fade alert-modal alert_success" id="mnuAdminSyncPassengersForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="vertical-alignment-helper">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div id="synchroSpinner" class="synchro-Spinner">
+                            <div class="spinner-border text-muted text-center" id="loadingSpinner"></div>
+                            <h6 class="text-center" id="loadingSpinText"> @_localization.Getkey("Running")...</h6>
+                            <div class="text-center">
+                                <p id="synchroMessageSuccess"></p>
+                                <p id="synchroMessageError"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-border" id="spninnerCloseBtn" disabled> @_localization.Getkey("closeBtn")</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popup Synchro Model End -->
+
+    @RenderBody()
+    @* <script src="~/scripts/SynchronizationLoading.js?new Date().getTime()"></script> *@
+    <script src="~/scripts/header.js?new Date().getTime()"></script>
+    <!-- Javascript dependency -->
+    <script src="~/js/main.js?new Date().getTime()"></script>
+    @* <a href="~/js/kendo.all.min.js.map">~/js/kendo.all.min.js.map</a> *@
+    <script src="~/js/kendo.all.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+    <script src="~/js/telerikreportviewer-18.0.24.130.min.js"></script>
+    @* <script src="~/scripts/overtimereport.js"></script>
+    <script src="~/scripts/getjourneyreport.js"></script>
+    <script src="~/scripts/reportdashboard.js"></script> 
+    <script src="~/scripts/reports.js?new Date().getTime()"></script>*@
+
+</body>
+</html>
+

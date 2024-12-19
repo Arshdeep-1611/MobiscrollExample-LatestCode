@@ -1,0 +1,316 @@
+﻿@{
+    Layout = "_Layout";
+}
+@{
+    var UserType = Context.Session.GetString("UserType");
+}
+@using Newtonsoft.Json
+
+@{
+    string json = Context.Session.GetString("RoleToolsList");
+    List<RoleTools> roleToolsList = JsonConvert.DeserializeObject<List<RoleTools>>(json);
+    var RoleTools = roleToolsList as List<RoleTools>;
+
+}
+@using Nestle.CH.HQ.RSL.WebApp.Services
+@inject LanguageService _localization
+
+<!-- RSL Home page -->
+<section class="dashboard-page main-section" id="landing-sections">
+    <input type="hidden" id="userType" value=@UserType />
+    <div class="dashboard-row">
+        <div class="dashboard-col">
+            <div class="dashboard-header">
+                <div class="dashboard-header-col">
+                    <button id="createTrip" class="btn btn-yellow">
+                        <img class="icon-img" src="~/img/add.png" alt="add">
+                        <span>@_localization.Getkey("CreateNewTripHeader")</span>
+                    </button>
+                    <div class="check-wrapper">
+                        <input type="checkbox" class="check-box" id="check-trip">
+                        <label for="check-trip">@_localization.Getkey("TripsIcanmanage")</label>
+                    </div>
+                </div>
+                <div class="dashboard-header-col">
+                    <div class="dashboard-header-right">
+                        <button type="button" id="trip-filter-open" class="btn btn-outline-gray" data-bs-toggle="modal" data-bs-target="#TripFilters">
+                            <span>@_localization.Getkey("Filter")</span>
+                            <img class="icon-img m-l-10" src="~/img/filter-list.png" alt="Filter">
+                        </button>
+                        @if(RoleTools != null)
+                        {
+                            
+                        if (RoleTools.FindAll(x => (x.Name == "myExportTool" && x.IsEnabled)).Count == 1)
+                        {
+                        <button id="print-trip-Id" class="btn btn-outline-gray">
+                            <span>@_localization.Getkey("Print")</span>
+                            <img class="icon-img m-l-10" src="~/img/material-print.png" alt="Print">
+                        </button>
+                        }
+                        else
+                        {
+                        <button class="btn btn-outline-gray" disabled>
+                            <span>@_localization.Getkey("Print")</span>
+                            <img class="icon-img m-l-10" src="~/img/material-print.png" alt="Print">
+                        </button>
+                        }
+                        
+                        }
+                        <button type="button" id="refresh-filter" class="btn btn-outline-green">
+                            <span>@_localization.Getkey("Refresh")</span>
+                            <img class="icon-img m-l-10" src="~/img/material-refresh.png" alt="Refresh">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="dashboard-col system">
+            <div class="grid-wrapper" id="landing-grid-1">
+                <table id="dashboard-grid-1"></table>
+                <div id="pager"></div>
+            </div>
+            <div class="grid-wrapper" id="landing-grid-2">
+                <table id="dashboard-grid-2"></table>
+                <div id="pager"></div>
+            </div>
+        </div>
+        <div class="mobile" style="display:none">
+            <h1>This is mobile</h1>
+        </div>
+        <div class="dashboard-col m-t-a">
+            <div class="status-bottom-bar">
+                <div class="status-bar-col">
+                    <span>@_localization.Getkey("ExportCode") : <span id="exportCodeId"></span></span>
+                </div>
+                <div class="status-bar-col">
+                    <div class="status-container">
+                        <div class="status-dot">
+                            <span class="status status-outline-gray"></span>
+                            <span>@_localization.Getkey("Incompleted")</span>
+                        </div>
+                        <div class="status-dot">
+                            <span class="status status-pink"></span>
+                            <span>@_localization.Getkey("Pending")</span>
+                        </div>
+                        <div class="status-dot">
+                            <span class="status status-blue"></span>
+                            <span>@_localization.Getkey("Processing")</span>
+                        </div>
+                        <div class="status-dot">
+                            <span class="status status-yellow"></span>
+                            <span>@_localization.Getkey("Cancelling")</span>
+                        </div>
+                        <div class="status-dot">
+                            <span class="status status-green"></span>
+                            <span>@_localization.Getkey("Accepted")</span>
+                        </div>
+                        <div class="status-dot">
+                            <span class="status status-gray"></span>
+                            <span>@_localization.Getkey("Past")</span>
+                        </div>
+                        <div class="status-dot">
+                            <span class="status status-orange"></span>
+                            <span>@_localization.Getkey("Rejected")</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trip Filters -->
+    <div class="modal fade addNewLocation"
+         id="TripFilters"
+         tabindex="-1"
+         data-bs-backdrop="static"
+         aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">@_localization.Getkey("TripFilters")</h3>
+                    <button type="button" id="trip-filter-close"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="add-location-row trip-filter">
+                        <div class="add-location-col">
+                            <div class="add-location-checks showall">
+                                <div class="check-wrapper">
+                                    <input type="checkbox" class="check-box" id="check-all">
+                                    <label for="check-all">@_localization.Getkey("ShowAll")</label>
+                                </div>
+                                <p>(@_localization.Getkey("CheckFiltersDetails"))</p>
+                            </div>
+                        </div>
+                        <h4 class="additional">@_localization.Getkey("AdditionalFilters")</h4>
+                        <div class="add-location-col">
+                            <div class="select-inputs">
+                                <span>Date</span>
+                                <input id="date" type="date">
+                            </div>
+                            <div class="select-inputs">
+                                <span>@_localization.Getkey("Beneficiary") </span>
+                                <input id="beneficiary" type="text">
+                            </div>
+                            <div class="select-inputs ">
+                                <span>@_localization.Getkey("From")</span>
+                                <input id="from-location" type="text">
+                            </div>
+                            <div class="select-inputs">
+                                <span>@_localization.Getkey("To")</span>
+                                <input id="to-location" type="text">
+                            </div>
+                            <div class="select-inputs">
+                                <span>@_localization.Getkey("FlightInformation")</span>
+                                <input id="flight-info" type="text">
+                            </div>
+                            <div class="select-inputs">
+                                <span>@_localization.Getkey("Status")</span>
+                                <select name="" id="trip-filter-status">
+                                    <option value="">@_localization.Getkey("labelNone")</option>
+                                    <option value="1,18,19">@_localization.Getkey("Incompleted")</option>
+                                    <option value="2,20">@_localization.Getkey("Pending")</option>
+                                    <option value="3,11,12,14">@_localization.Getkey("Processing")</option>
+                                    <option value="5,6,8,9,13,15,16">@_localization.Getkey("Cancelling")</option>
+                                    <option value="10">@_localization.Getkey("Accepted")</option>
+                                    <option value="21">@_localization.Getkey("Past")</option>
+                                    <option value="4,7">@_localization.Getkey("Rejected")</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="apply-filter" type="button" class="btn btn-yellow">
+                        <span>@_localization.Getkey("Apply")</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trip Filters End -->
+
+    <div class="modal fade"
+         id="TripView"
+         tabindex="-1"
+         data-bs-backdrop="static"
+         aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Trip Information</h3>
+                    <button type="button" id="trip-filter-close"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="tab-trip-container">
+                        <input id="TripId" style="display:none;">
+                        <input id="DriverId" style="display:none;">
+                        <input id="ExternalServiceId" style="display:none;">
+                        <input id="Status" style="display:none;">
+                        <div class="trip-info-row scroll-bar">
+                            <div class="trip-final-details trip-step-details">
+                                <div class="trip-to">
+                                    <img class="icon-img m-r-10 flight-icon-img" src="~/img/flight-land.png" alt="Flight" style="display:none">
+                                    <h4 id="flightnumber"></h4>
+                                </div>
+                                <div class="trip-review-trip-step-container">
+                                </div>
+                                <div class="trip-final-details-col trip-review-trip-step-demo" style="display:none;">
+                                    <div class="trip-final-list-col">
+                                        <h4 class="trip-review-trip-step-header">Trip Step 1</h4>
+                                    </div>
+                                    <div class="trip-final-list-col">
+                                        <div class="trip-loc from-loc">
+                                            <img class="icon-large-img m-r-10" alt="Location" id="fromLocationImg">
+                                            <div class="trip-loc-col">
+                                                <span class="trip-step-from-date"> 2024-09-12</span>
+                                                <span class="trip-step-from-location"> bangalore</span>
+                                            </div>
+                                        </div>
+                                        <div class="trip-loc direction"><img class="icon-large-img m-r-10" src="~/img/arrow-back.png" alt="To"></div>
+                                        <div class="trip-loc to-loc">
+                                            <img class="icon-large-img m-r-10" alt="Location" id="toLocationImg">
+                                            <div class="trip-loc-col">
+                                                <span class="trip-step-to-date">2024-09-13</span>
+                                                <span class="trip-step-to-location">Mysorre</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="trip-final-list-col">
+                                        <div class="passenger-list-row">
+                                            <h4>@_localization.Getkey("linkPassenger")</h4>
+
+                                            <div class="trip-user trip-review-passenger-demo" style="display:none">
+                                                <div class="trip-user-wrapper">
+                                                    <img class="icon-large-img m-r-10" src="~/img/user-alt-black.png" alt="User">
+                                                    <div class="trip-user-col">
+                                                        <span class="trip-step-passenger-name">Sriram</span>
+                                                        <span class="trip-step-passenger-phone">986736479212</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="trip-final-list-col trip-review-trip-step-passenger-list">
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="trip-final-details">
+                                <h4>@_localization.Getkey("PaymentDetails")</h4>
+                                <div class="last-payment-detail-row">
+                                    <div class="last-payment-detail-col">
+                                        <span>@_localization.Getkey("Mainpassenger")</span>
+                                        <h4 class="trip-review-main-passenger">Sriram</h4>
+                                    </div>
+                                    <div class="last-payment-detail-col">
+                                        <span>@_localization.Getkey("ResearchCostcenter")</span>
+                                        <h4 id="costcenterId"></h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                        
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="modal fade alert-modal permission" id="alert-delete-red" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    @{
+                        // string status = @_localization.Getkey("Delete");
+                        string originalString1 = @_localization.Getkey("PrintPermission");
+                        //string replacedString = string.Format(originalString, "External Service");
+                    }
+                    <h4 id="alertDeleteDanger"> @originalString1</h4>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- RSL Home page  End -->
+<!-- Dashboard  Grid Js Start -->
+
+<script src="~/scripts/trips.js?new Date().getTime()"></script>
+
+
+

@@ -1,0 +1,1156 @@
+@media only screen and (max-width: 1220px) {
+    .grid-wrapper button span {
+        display: none;
+    }
+
+    .grid-wrapper button img {
+        margin-left: 0 !important;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+
+    /* Common */
+    .col-50 {
+        width: 100% !important;
+        margin-right: 0 !important;
+    }
+
+    /* Common End*/
+    /* Header responsive style start */
+    .header .header-nav .admin-sub {
+        top: 25px;
+    }
+
+    .hamburger {
+        /*display: block !important;*/
+        cursor: pointer;
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .nav-right.show {
+        height: 100vh;
+        position: absolute;
+        right: 0 !important;
+        display: block !important;
+        transition: 0.5s ease-in-out;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .nav-right {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: flex-start !important;
+        position: absolute;
+        top: 56px;
+        right: -1000px;
+        width: 60%;
+        padding: 10px;
+        box-sizing: border-box;
+        background: #fff;
+        height: 100vh !important;
+        transition: 0.5s ease-in-out;
+    }
+
+    .header .nav-right .header-col {
+        justify-content: center;
+        height: auto;
+    }
+
+    .header .header-nav ul {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .header .header-nav ul li {
+        margin-top: 20px;
+        padding-bottom: 5px;
+    }
+
+    .header .header-col .header-right-nav {
+        flex-direction: column;
+    }
+
+    .header .header-col .header-right-nav-col {
+        margin-top: 20px;
+        margin-left: 0;
+    }
+
+    .header .header-col .header-right-nav-col .user-name-list {
+        top: 21px;
+        right: -40px;
+        left: auto;
+    }
+
+    .header .nav-right .header-col:last-child {
+        margin-right: auto;
+    }
+
+    /* Header responsive style End */
+
+    /* JQGrid Responsive start */
+    .ui-jqgrid-btable tr {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 20px;
+        border: 2px solid #f5f5f6 !important;
+    }
+
+    .jqgfirstrow {
+        display: none;
+        margin-bottom: 0 !important;
+        border: 0 !important;
+    }
+
+    .ui-jqgrid>.ui-jqgrid-view>.ui-jqgrid-hdiv {
+        display: none;
+    }
+
+    .ui-jqgrid .ui-jqgrid-bdiv {
+        height: auto !important;
+    }
+
+    .ui-jqgrid .ui-jqgrid-bdiv tr.ui-row-ltr>td {
+        width: 100%;
+        height: 46px;
+        display: flex;
+        align-items: center;
+        padding: 0 20px;
+    }
+
+    td .status {
+        margin: 0;
+    }
+
+    .grid-wrapper img {
+        margin: 0;
+        margin-right: 30px;
+    }
+
+    .jqgfirstrow {
+        display: none !important;
+    }
+
+    .modal .jqgfirstrow {
+        display: table-row !important;
+    }
+
+    /* New Start*/
+    .ui-pg-table tr {
+        display: flex !important;
+        flex-wrap: wrap;
+    }
+
+    #pager_right {
+        width: 100% !important;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    #pager_center {
+        width: 100% !important;
+    }
+
+    /* New End*/
+    /* JQGrid Responsive End */
+
+    /* Status bottom bar */
+    .status-container {
+        flex-wrap: wrap;
+    }
+
+    /* Status bottom bar End */
+
+    /* RSL Home page style Start */
+    .dashboard-page .dashboard-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .dashboard-page .dashboard-header .dashboard-header-col {
+        margin-bottom: 0px;
+        width: 100%;
+        order: 2;
+    }
+
+    .dashboard-page .dashboard-header .dashboard-header-col:last-child {
+        margin-bottom: 20px;
+        order: 1;
+    }
+
+    .dashboard-page .dashboard-header-col .dashboard-header-right {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .dashboard-page .status-container {
+        flex-wrap: wrap;
+        margin-top: 20px;
+    }
+
+    /* RSL Home page style End */
+
+    /* Modal responsive style start */
+    .modal-body .ui-jqgrid-btable tr {
+        display: table-row;
+        margin-bottom: 0;
+    }
+
+    .modal-body .ui-jqgrid>.ui-jqgrid-view>.ui-jqgrid-hdiv {
+        display: block;
+    }
+
+    .modal-body .ui-jqgrid .ui-jqgrid-bdiv {
+        max-height: 40vh !important;
+    }
+
+    .modal-body .ui-jqgrid .ui-jqgrid-bdiv tr.ui-row-ltr>td {
+        display: table-cell;
+        padding: 0;
+    }
+
+    .modal-content {
+        min-width: auto !important;
+        max-width: fit-content !important;
+    }
+
+    #addDelegates .new-delates-row .new-delates-col input {
+        width: 100%;
+    }
+
+    .modal-footer {
+        justify-content: center;
+    }
+
+    /* Modal responsive style End */
+
+    /* Create New Trip Page responsive Style Start */
+    #createTrip-section .tab-content-3 .tab-trip-container .trip-info-col .trip-details-row {
+        flex-wrap: wrap;
+    }
+
+    #createTrip-section .tab-content-3 .trip-info-col .trip-details-row .trip-details-col {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    #createTrip-section .tab-content-3 .trip-info-col .trip-info-checks .radio-wrapper {
+        margin-bottom: 5px;
+    }
+
+    .tab-trip-container .details-inputs {
+        width: 100%;
+        margin-right: 0 !important;
+    }
+
+    #createTrip-section .tab-content-3 .detail-blk-row .detail-blk-col .detail-passenger-blk {
+        flex-wrap: wrap;
+    }
+
+    .tab-trip-container .detail-blk-row .detail-blk-col .details-inputs.passenger {
+        width: 100% !important;
+    }
+
+    #createTrip-section .tab-content-3 .detail-blk-col .trip-cmt-row .trip-cmt-col {
+        flex-wrap: wrap;
+    }
+
+    #createTrip-section .tab-content-3 .tab-trip-container .trip-info-row .payment-trip-info-row {
+        flex-wrap: wrap;
+    }
+
+    #createTrip-section .tab-content-3 .payment-trip-info-row .payment-trip-col {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    #createTrip-section .tab-content-3 .tab-trip-container .trip-final-details-col .trip-final-list-col {
+        flex-wrap: wrap;
+        margin-bottom: 0;
+    }
+
+    #createTrip-section .tab-content-3 .trip-final-details .trip-final-list-col .trip-loc {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    #createTrip-section .tab-content-3 .trip-final-details .trip-final-list-col .trip-loc:last-child {
+        margin-bottom: 0;
+    }
+
+    #createTrip-section .tab-content-3 .trip-final-details .trip-final-list-col .trip-loc.direction img {
+        transform: rotate(90deg);
+    }
+
+    #createTrip-section .tab-content-3 .trip-final-details-col .trip-final-list-col .trip-user {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    #createTrip-section .tab-content-3 .trip-final-details-col .trip-final-list-col .trip-user:last-child {
+        margin-bottom: 0;
+    }
+
+    #createTrip-section .tab-content-3 .tab-trip-container .last-payment-detail-row {
+        flex-wrap: wrap;
+        margin-right: 0;
+    }
+
+    #createTrip-section .tab-content-3 .tab-trip-container .last-payment-detail-row .last-payment-detail-col {
+        margin-right: 0;
+        width: 100%;
+    }
+
+    #createTrip-section .tab-content-3 .tab-trip-container .last-payment-detail-col span {
+        width: 30%;
+        margin-right: 0;
+    }
+
+    #createTrip-section .new-trip-blk .tab-content-3 .tab-bottom .btn {
+        margin-right: 10px;
+    }
+
+    #createTrip-section .tab-content-3 .payment-trip-col .trip-options-col textarea {
+        height: 70px;
+    }
+
+    #createTrip-section .new-trip-blk .tab-content-3 .tab-trip-container .trip-info-row .trip-info-col:first-child {
+        margin-top: 0;
+    }
+
+    #createTrip-section .new-trip-blk .tab-content-3 .tab-bottom {
+        flex-wrap: wrap;
+    }
+
+    #createTrip-section .tab-content-3 .detail-info-row .detail-header .add-more {
+        margin-left: 10px !important;
+    }
+
+    #createTrip-section .tab-content-3 .trip-options-row .trip-options-col .check-wrapper {
+        margin-bottom: 5px;
+        margin-right:0;
+    }
+
+
+    /* Create New Trip Page responsive Style End */
+
+    /* Trips detail page responsive style Start */
+    #trip-detail-section .trip-tab-content3 .trip-details-tab .trip-tab-col {
+        flex-wrap: wrap;
+        margin-bottom: 0;
+    }
+
+    #trip-detail-section .trip-tab-content3 .trip-details-tab .trip-tab-col .input-container {
+        width: 100%;
+        margin-right: 0 !important;
+        margin-bottom: 10px;
+    }
+
+    /* Trips detail page responsive style End */
+
+    /* Passengers page style Start */
+    .admin-section .passanger-container .passanger-header {
+        flex-wrap: wrap;
+    }
+
+    .admin-section .passanger-container .passanger-header .search-wrapper {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .admin-section .passanger-container .passanger-row {
+        flex-wrap: wrap;
+    }
+
+    .admin-section .passanger-container .passanger-col {
+        width: 100%;
+        margin-bottom: 30px;
+        margin-right: 0 !important;
+    }
+
+    /* Passengers page style End */
+
+    /* Add New Payment modal*/
+    #AddNewPayment .localDetailTab {
+        width: 100%;
+        margin-right: 0 !important;
+    }
+
+    /* Add New Payment modal style end*/
+
+    /* Add New Passenger modal*/
+    #AddNewPassenger .d-flex {
+        flex-wrap: wrap;
+    }
+
+    #AddNewPassenger .select-inputs {
+        width: 100% !important;
+        margin: 0;
+        margin-bottom: 10px;
+    }
+
+    #AddNewPassenger .btn-blk .btn {
+        margin-left: 0 !important;
+        justify-content: center;
+    }
+
+    .addNewLocation .add-location-col .select-inputs,
+    #PaymentMode .select-inputs {
+        width: 100%;
+    }
+
+    /* Add New Payment modal*/
+}
+
+
+@media only screen and (max-width: 768px) {
+
+    /* Common Style start */
+    .btn.btn-outline-gray span,
+    .btn-outline-blue span,
+    .btn-outline-green span,
+    .btn-outline-red span {
+        display: none !important;
+    }
+
+    .btn.btn-outline-gray img,
+    .btn.btn-outline-red img {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    .btn {
+        padding: 10px !important;
+    }
+
+    .btn img {
+        margin-left: 0;
+    }
+
+    .ui-jqgrid .btn img {
+        margin: 0;
+        margin-right: 0;
+    }
+
+    /* Common Style start */
+
+    /* RSL Home page style Start */
+    .dashboard-page .status-bottom-bar {
+        flex-direction: column;
+    }
+
+    .dashboard-page .dashboard-header-col .dashboard-header-right .btn img {
+        height: 16px;
+    }
+
+    .dashboard-page .dashboard-header .dashboard-header-col:first-child {
+        flex-wrap: wrap;
+    }
+
+    .dashboard-page .dashboard-header .dashboard-header-col:first-child .btn {
+        width: 100%;
+        justify-content: center;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    /* RSL Home page style End */
+
+    /* My Delegate page style start */
+    #delegates-section .dashboard-header-col .btn span {
+        display: block;
+    }
+
+    #delegates-section .btn img {
+        margin-left: 10px;
+    }
+
+    /* My Delegate page style End */
+
+    /* Create New Trip Page responsive Style Start */
+    #createTrip-section .new-trip-blk .tab-content-3 .tab-bottom {
+        flex-wrap: wrap;
+    }
+
+    #createTrip-section .create-trip-col .new-trip-blk .tabs .tabs-nav-3 li a img {
+        display: block;
+    }
+
+    #createTrip-section .new-trip-blk .tab-content-3 .tab-bottom span {
+        display: none;
+    }
+
+    #createTrip-section .tab-content-3 .detail-info-row .detail-header .add-more span {
+        display: none;
+    }
+
+    /* Create New Trip Page responsive Style End */
+
+    /* Add new location Modal style start*/
+    .addNewLocation .add-location-col .select-inputs {
+        width: 100%;
+        margin-right: 0 !important;
+    }
+
+    .addNewLocation .add-location-checks {
+        flex-wrap: wrap;
+    }
+
+    #createTrip-section .create-trip-col .new-trip-blk .tabs .tabs-nav-3 li {
+        margin: 0 20px;
+        width: 90px;
+    }
+
+    #createTrip-section .create-trip-col .new-trip-blk .tabs .tabs-nav-3 li .progress-links span {
+        display: none;
+    }
+
+    #createTrip-section .create-trip-col .new-trip-blk .tabs .tabs-nav-3 li .progress-links img {
+        width: 24px;
+        filter: brightness(0);
+    }
+
+    #createTrip-section .create-trip-col .new-trip-blk .tabs .tabs-nav-3 li.active-3 .progress-links img,
+    #createTrip-section .create-trip-col .new-trip-blk .tabs .tabs-nav-3 li.complete .progress-links img {
+        filter: brightness(1);
+    }
+
+    #createTrip-section .create-trip-col .new-trip-blk .tabs .tabs-nav-3 li .progress-links:after {
+        width: 50px;
+        right: -45px;
+    }
+
+    #createTrip-section .create-trip-col .new-trip-blk .tabs .tabs-nav-3 li .progress-links .icon-large-img {
+        display: block;
+    }
+
+
+    /* Add new location Modal style End*/
+
+    /* Requestor page style start */
+    .main-tabs .tabs-blk {
+        overflow-x: auto;
+        /* padding-bottom: 20px; */
+    }
+
+    /* Requestor page style End */
+
+    #AddNewPayment .authenticate {
+        flex-wrap: wrap;
+    }
+
+    #AddNewPayment .authenticate .limousines-select {
+        width: 100%;
+        flex-basis: auto !important;
+        margin-bottom: 10px;
+    }
+
+    /*Passenger responsive start*/
+    .dashboard-page .dashboard-header-right {
+        flex-wrap: wrap;
+    }
+
+    .dashboard-page .dashboard-header-right .search-wrapper {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    /*Passenger responsive End*/
+
+
+    /*-------------------------------------*/
+    /*@media only screen and (max-width: 1220px) {
+        .grid-wrapper button span {
+            display: none;
+        }
+
+        .grid-wrapper button img {
+            margin-left: 0 !important;
+        }
+    }
+
+    @media only screen and (max-width: 900px) {*/
+
+        /* Common */
+        /*.col-50 {
+            width: 100% !important;
+            margin-right: 0 !important;
+        }*/
+
+        /* Common End*/
+        /* Header responsive style start */
+        /*.header .header-nav .admin-sub {
+            top: 25px;
+        }
+
+        .hamburger {
+            display: block !important;
+            cursor: pointer;
+        }
+
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+        .nav-right.show {
+            height: 100vh;
+            position: absolute;
+            right: 0 !important;
+            display: block !important;
+            transition: 0.5s ease-in-out;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: flex-start !important;
+            position: absolute;
+            top: 56px;
+            right: -1000px;
+            width: 60%;
+            padding: 10px;
+            box-sizing: border-box;
+            background: #fff;
+            height: 100vh !important;
+            transition: 0.5s ease-in-out;
+        }
+
+        .header .nav-right .header-col {
+            justify-content: center;
+            height: auto;
+        }
+
+        .header .header-nav ul {
+            flex-direction: column;
+            height: auto;
+        }
+
+            .header .header-nav ul li {
+                margin-top: 20px;
+                padding-bottom: 5px;
+            }
+
+        .header .header-col .header-right-nav {
+            flex-direction: column;
+        }
+
+        .header .header-col .header-right-nav-col {
+            margin-top: 20px;
+            margin-left: 0;
+        }
+
+            .header .header-col .header-right-nav-col .user-name-list {
+                top: 21px;
+                right: -40px;
+                left: auto;
+            }
+
+        .header .nav-right .header-col:last-child {
+            margin-right: auto;
+        }*/
+
+        /* Header responsive style End */
+
+        /* JQGrid Responsive start */
+        /*.ui-jqgrid-btable tr {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            border: 2px solid #f5f5f6 !important;
+        }
+
+        .jqgfirstrow {
+            display: none;
+            margin-bottom: 0 !important;
+            border: 0 !important;
+        }
+
+        .ui-jqgrid > .ui-jqgrid-view > .ui-jqgrid-hdiv {
+            display: none;
+        }
+
+        .ui-jqgrid .ui-jqgrid-bdiv {
+            height: auto !important;
+        }
+
+            .ui-jqgrid .ui-jqgrid-bdiv tr.ui-row-ltr > td {
+                width: 100%;
+                height: 46px;
+                display: flex;
+                align-items: center;
+                padding: 0 20px;
+            }
+
+        td .status {
+            margin: 0;
+        }
+
+        .grid-wrapper img {
+            margin: 0;
+            margin-right: 30px;
+        }
+
+        .jqgfirstrow {
+            display: none !important;
+        }
+
+        .modal .jqgfirstrow {
+            display: table-row !important;
+        }*/
+
+        /* New Start*/
+        /*.ui-pg-table tr {
+            display: flex !important;
+            flex-wrap: wrap;
+        }
+
+        #pager_right {
+            width: 100% !important;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        #pager_center {
+            width: 100% !important;
+        }*/
+
+        /* New End*/
+        /* JQGrid Responsive End */
+
+        /* Status bottom bar */
+        /*.status-container {
+            flex-wrap: wrap;
+        }*/
+
+        /* Status bottom bar End */
+
+        /* RSL Home page style Start */
+        /*.dashboard-page .dashboard-header {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+            .dashboard-page .dashboard-header .dashboard-header-col {
+                margin-bottom: 0px;
+                width: 100%;
+                order: 2;
+            }
+
+                .dashboard-page .dashboard-header .dashboard-header-col:last-child {
+                    margin-bottom: 20px;
+                    order: 1;
+                }
+
+        .dashboard-page .dashboard-header-col .dashboard-header-right {
+            width: 100%;
+            justify-content: space-between;
+        }
+
+        .dashboard-page .status-container {
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }*/
+
+        /* RSL Home page style End */
+
+        /* Modal responsive style start */
+        /*.modal-body .ui-jqgrid-btable tr {
+            display: table-row;
+            margin-bottom: 0;
+        }
+
+        .modal-body .ui-jqgrid > .ui-jqgrid-view > .ui-jqgrid-hdiv {
+            display: block;
+        }
+
+        .modal-body .ui-jqgrid .ui-jqgrid-bdiv {
+            max-height: 40vh !important;
+        }
+
+            .modal-body .ui-jqgrid .ui-jqgrid-bdiv tr.ui-row-ltr > td {
+                display: table-cell;
+                padding: 0;
+            }
+
+        .modal-content {
+            min-width: auto;
+            max-width: fit-content;
+        }
+
+        #addDelegates .new-delates-row .new-delates-col input {
+            width: 100%;
+        }
+
+        .modal-footer {
+            justify-content: center;
+        }*/
+
+        /* Modal responsive style End */
+
+        /* Create New Trip Page responsive Style Start */
+        /*#createTrip-section .tab-content-3 .tab-trip-container .trip-info-col .trip-details-row {
+            flex-wrap: wrap;
+        }
+
+        #createTrip-section .tab-content-3 .trip-info-col .trip-details-row .trip-details-col {
+            margin-right: 0;
+            margin-bottom: 10px;
+        }
+
+        #createTrip-section .tab-content-3 .trip-info-col .trip-info-checks .radio-wrapper {
+            margin-bottom: 5px;
+        }
+
+        #createTrip-section .tab-content-3 .details-inputs {
+            width: 100%;
+            margin-right: 0 !important;
+        }
+
+        #createTrip-section .tab-content-3 .detail-blk-row .detail-blk-col .detail-passenger-blk {
+            flex-wrap: wrap;
+        }
+
+        #createTrip-section .tab-content-3 .detail-blk-row .detail-blk-col .details-inputs.passenger {
+            width: 100% !important;
+        }
+
+        #createTrip-section .tab-content-3 .detail-blk-col .trip-cmt-row .trip-cmt-col {
+            flex-wrap: wrap;
+        }
+
+        #createTrip-section .tab-content-3 .tab-trip-container .trip-info-row .payment-trip-info-row {
+            flex-wrap: wrap;
+        }
+
+        #createTrip-section .tab-content-3 .payment-trip-info-row .payment-trip-col {
+            width: 100%;
+            margin-right: 0;
+        }
+
+        #createTrip-section .tab-content-3 .tab-trip-container .trip-final-details-col .trip-final-list-col {
+            flex-wrap: wrap;
+            margin-bottom: 0;
+        }
+
+        #createTrip-section .tab-content-3 .trip-final-details .trip-final-list-col .trip-loc {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        #createTrip-section .tab-trip-container .trip-final-details-col .trip-final-list-col .trip-loc.direction {
+            width: 20%;
+        }
+
+        #createTrip-section .tab-content-3 .trip-final-details .trip-final-list-col .trip-loc:last-child {
+            margin-bottom: 0;
+        }
+
+        #createTrip-section .tab-content-3 .trip-final-details .trip-final-list-col .trip-loc.direction img {
+            transform: rotate(90deg);
+        }
+
+        #createTrip-section .tab-content-3 .trip-final-details-col .trip-final-list-col .trip-user {
+            width: 100%;
+            margin-right: 0;
+            margin-bottom: 10px;
+        }
+
+            #createTrip-section .tab-content-3 .trip-final-details-col .trip-final-list-col .trip-user:last-child {
+                margin-bottom: 0;
+            }
+
+        #createTrip-section .tab-content-3 .tab-trip-container .last-payment-detail-row {
+            flex-wrap: wrap;
+            margin-right: 0;
+        }
+
+            #createTrip-section .tab-content-3 .tab-trip-container .last-payment-detail-row .last-payment-detail-col {
+                margin-right: 0;
+                width: 100%;
+            }
+
+        #createTrip-section .tab-content-3 .tab-trip-container .last-payment-detail-col span {
+            width: 30%;
+            margin-right: 0;
+        }
+
+        #createTrip-section .new-trip-blk .tab-content-3 .tab-bottom .btn {
+            margin-right: 10px;
+        }
+
+        #createTrip-section .tab-content-3 .payment-trip-col .trip-options-col textarea {
+            height: 70px;
+        }
+
+        #createTrip-section .new-trip-blk .tab-content-3 .tab-trip-container .trip-info-row .trip-info-col:first-child {
+            margin-top: 0;
+        }
+
+        #createTrip-section .new-trip-blk .tab-content-3 .tab-bottom {
+            flex-wrap: wrap;
+        }
+
+        #createTrip-section .tab-content-3 .detail-info-row .detail-header .add-more {
+            margin-left: 10px !important;
+        }
+
+        #createTrip-section .tab-content-3 .trip-options-row .trip-options-col .check-wrapper {
+            margin-bottom: 5px;
+        }*/
+
+
+        /* Create New Trip Page responsive Style End */
+
+        /* Trips detail page responsive style Start */
+        /*#trip-detail-section .trip-tab-content3 .trip-details-tab .trip-tab-col {
+            flex-wrap: wrap;
+            margin-bottom: 0;
+        }
+
+            #trip-detail-section .trip-tab-content3 .trip-details-tab .trip-tab-col .input-container {
+                width: 100%;
+                margin-right: 0 !important;
+                margin-bottom: 10px;
+            }*/
+
+        /* Trips detail page responsive style End */
+
+        /* Passengers page style Start */
+        /*.admin-section .passanger-container .passanger-header {
+            flex-wrap: wrap;
+        }
+
+            .admin-section .passanger-container .passanger-header .search-wrapper {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+        .admin-section .passanger-container .passanger-row {
+            flex-wrap: wrap;
+        }
+
+        .admin-section .passanger-container .passanger-col {
+            width: 100%;
+            margin-bottom: 30px;
+            margin-right: 0 !important;
+        }*/
+
+        /* Passengers page style End */
+
+        /* Add New Payment modal*/
+        /*#AddNewPayment .localDetailTab {
+            width: 100%;
+            margin-right: 0 !important;
+        }*/
+
+        /* Add New Payment modal style end*/
+
+        /* Add New Passenger modal*/
+        /*#AddNewPassenger .d-flex {
+            flex-wrap: wrap;
+        }
+
+        #AddNewPassenger .select-inputs {
+            width: 100% !important;
+            margin: 0;
+            margin-bottom: 10px;
+        }
+
+        #AddNewPassenger .btn-blk .btn {
+            margin-left: 0 !important;
+            justify-content: center;
+        }
+
+        .addNewLocation .add-location-col .select-inputs,
+        #PaymentMode .select-inputs {
+            width: 100%;
+        }*/
+
+        /* Add New Payment modal*/
+    /*}
+
+
+    @media only screen and (max-width: 768px) {*/
+
+        /* Common Style start */
+        /*.btn.btn-outline-gray span,
+        .btn-outline-blue span,
+        .btn-outline-green span,
+        .btn-outline-red span {
+            display: none !important;
+        }
+
+        .btn.btn-outline-gray img,
+        .btn.btn-outline-red img {
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+        }
+
+        .btn {
+            padding: 10px !important;
+        }
+
+            .btn img {
+                margin-left: 0;
+            }
+
+        .ui-jqgrid .btn img {
+            margin: 0;
+            margin-right: 0;
+        }*/
+
+        /* Common Style start */
+
+        /* RSL Home page style Start */
+        /*.dashboard-page .status-bottom-bar {
+            flex-direction: column;
+        }
+
+        .dashboard-page .dashboard-header-col .dashboard-header-right .btn img {
+            height: 16px;
+        }
+
+        .dashboard-page .dashboard-header .dashboard-header-col:first-child {
+            flex-wrap: wrap;
+        }
+
+            .dashboard-page .dashboard-header .dashboard-header-col:first-child .btn {
+                width: 100%;
+                justify-content: center;
+                margin-right: 0;
+                margin-bottom: 20px;
+            }*/
+
+        /* RSL Home page style End */
+
+        /* My Delegate page style start */
+        /*#delegates-section .dashboard-header-col .btn span {
+            display: block;
+        }
+
+        #delegates-section .btn img {
+            margin-left: 10px;
+        }*/
+
+        /* My Delegate page style End */
+
+        /* Create New Trip Page responsive Style Start */
+        /*#createTrip-section .new-trip-blk .tab-content-3 .tab-bottom {
+            flex-wrap: wrap;
+        }
+
+        #createTrip-section .create-trip-col .new-trip-blk .tabs .tabs-nav-3 li a img {
+            display: block;
+        }
+
+        #createTrip-section .new-trip-blk .tab-content-3 .tab-bottom span {
+            display: none;
+        }
+
+        #createTrip-section .tab-content-3 .detail-info-row .detail-header .add-more span {
+            display: none;
+        }*/
+
+        /* Create New Trip Page responsive Style End */
+
+        /* Add new location Modal style start*/
+        /*.addNewLocation .add-location-col .select-inputs {
+            width: 100%;
+            margin-right: 0 !important;
+        }
+
+        .addNewLocation .add-location-checks {
+            flex-wrap: wrap;
+        }
+
+        #createTrip-section .create-trip-col .new-trip-blk .tabs .tabs-nav-3 li {
+            margin: 0 20px;
+            width: 90px;
+        }
+
+            #createTrip-section .create-trip-col .new-trip-blk .tabs .tabs-nav-3 li .progress-links span {
+                display: none;
+            }
+
+            #createTrip-section .create-trip-col .new-trip-blk .tabs .tabs-nav-3 li .progress-links img {
+                width: 24px;
+                filter: brightness(0);
+            }
+
+            #createTrip-section .create-trip-col .new-trip-blk .tabs .tabs-nav-3 li.active-3 .progress-links img,
+            #createTrip-section .create-trip-col .new-trip-blk .tabs .tabs-nav-3 li.complete .progress-links img {
+                filter: brightness(1);
+            }
+
+            #createTrip-section .create-trip-col .new-trip-blk .tabs .tabs-nav-3 li .progress-links:after {
+                width: 50px;
+                right: -45px;
+            }
+
+            #createTrip-section .create-trip-col .new-trip-blk .tabs .tabs-nav-3 li .progress-links .icon-large-img {
+                display: block;
+            }*/
+
+
+        /* Add new location Modal style End*/
+
+        /* Requestor page style start */
+        /*.main-tabs .tabs-blk {
+            overflow-x: auto;*/
+            /* padding-bottom: 20px; */
+        /*}*/
+
+        /* Requestor page style End */
+
+        /*#AddNewPayment .authenticate {
+            flex-wrap: wrap;
+        }
+
+            #AddNewPayment .authenticate .limousines-select {
+                width: 100%;
+                flex-basis: auto !important;
+                margin-bottom: 10px;
+            }*/
+
+        /*Passenger responsive start*/
+        /*.dashboard-page .dashboard-header-right {
+            flex-wrap: wrap;
+        }
+
+            .dashboard-page .dashboard-header-right .search-wrapper {
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 20px;
+            }*/
+
+        /*Passenger responsive End*/
+    /*}*/
+}
