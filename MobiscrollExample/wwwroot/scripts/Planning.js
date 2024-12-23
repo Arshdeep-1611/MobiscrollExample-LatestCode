@@ -69,6 +69,7 @@ $(document).ready(function () {
     var accessLevel = access.AccessLevel;
     var planningRole = checkRole.find(role => role.ToolId == 30);
     var planningAccess = planningRole.IsEnabled;*/
+    var accessLevel = 6;
     var Feb = "";
     var Aug = "";
     var Dec = "";
@@ -106,6 +107,7 @@ $(document).ready(function () {
     function restoreScrollPosition(scrollPosition) {
         window.scrollTo(0, scrollPosition); // Restore to the saved position
     }
+    let count = 0;
     $(".main-tabs-nav3 li").click(async function (e) {
         e.preventDefault();
 
@@ -115,11 +117,16 @@ $(document).ready(function () {
         if (liId === "tripPlanningRefresh") {
             var data = await getLocalizedWords();
             //showOverlay();
-            console.log("tripPlanningRefesh referesh");
+            console.log("data", data);
             $('#statusBottom').hide();
             if (isMobile == false) {
-
-                start(data.drivers, data.services);
+                if (count == 0) {
+                    count++;
+                    start(data.drivers, data.services);
+                }
+                else if (count > 0) {
+                    $("#refreshplanning").trigger("click");
+                }
                 // hideOverlay();
                 $("#main-tab2-mobile").css('display', 'none');
             }
@@ -397,92 +404,7 @@ $("#main-tab2-mobile").css('display', 'block');
         })
 
     }
-    /*$.ajax({
-        url: '/ManagerExternalService/GetServices',
-        method: 'GET',
-        dataType: 'json',
-        success: function (data) {
-            console.log(data);
-            externalService = data
-                .filter(service => service.valid === 1) // Filter out invalid services
-                .map(service => ({
-                    id: service.id,
-                    name: service.name
-                }));
-            $.ajax({
-                url: '/ManagerDrivers/GetDriver',
-                type: 'GET',
-                success: function (res) {
-                    //console.log(res)
-                    schdeulerDrivers = res
-                        .filter(driver => driver.isValid === 1) // Filter out invalid drivers
-                        .map(driver => ({
-                            id: 'D' + driver.driverId,
-                            name: driver.firstName + ' ' + driver.lastName,
-                            userid: driver.userId
-                        }));
-                    if (isMobile == false) {
-                        if (planningAccess == true) {
-                            $(".main-tabs-nav3 li").click(function (e) {
-                                e.preventDefault();
-
-                                // Execute specific functions based on the clicked <li>
-                                var liId = $(this).find("a").attr("id");
-                                console.log("liId", liId);
-                                if (liId === "tripPlanningRefresh") {
-                                    //showOverlay();
-                                    console.log("tripPlanningRefesh referesh");
-                                    $('#statusBottom').hide();
-                                    //clearValues();
-                                    start(schdeulerDrivers, externalService);
-                                    $("#main-tab2-mobile").css('display', 'none');
-
-                                }
-                            });
-
-                            start(schdeulerDrivers, externalService);
-                            $("#main-tab2-mobile").css('display', 'none');
-
-                        }
-
-                    }
-                    else {
-                        if (planningAccess == true) {
-                            $(".main-tabs-nav3 li").click(function (e) {
-                                e.preventDefault();
-
-                                // Execute specific functions based on the clicked <li>
-                                var liId = $(this).find("a").attr("id");
-                                console.log("liId", liId);
-                                if (liId === "tripPlanningRefresh") {
-                                    showOverlay();
-                                    console.log("tripPlanningRefesh referesh");
-                                    $('#statusBottom').hide();
-                                    $("#windows-planning-screen").css('display', 'none');
-                                    mobile_start(schdeulerDrivers, externalService);
-                                    $("#main-tab2-mobile").css('display', 'block');
-                                    //clearValues();
-
-                                }
-                            });
-
-                            $("#windows-planning-screen").css('display', 'none');
-                            mobile_start(schdeulerDrivers, externalService);
-                            $("#main-tab2-mobile").css('display', 'block');
-
-                        }
-
-                    }
-                },
-                error: function (error) {
-                    console.error('Error fetching data:', error);
-                }
-            });
-        },
-        error: function (error) {
-            console.error('Error fetching data:', error);
-        }
-    });*/
+  
     async function generateDropdownOptions(options, targetElement) {
         // Clear existing options
         $(targetElement).empty();
@@ -1156,6 +1078,7 @@ $("#main-tab2-mobile").css('display', 'block');
                     $(".search-detail-tab").show();
                 });
                 $('#dynamicContent').html('');
+
                 if (start > current && accessLevel > 3) {
                     if ((status == 2 || status == 4) && ev.resource == 'U2') {
                         var hiddendiv = '<div class="user-name-list-col" id="AcceptTrip">' +
@@ -3341,56 +3264,7 @@ $('#main-tab2-mobile').hide();
 
         });
         //showOverlay();
-       /* $.ajax({
-            url: '/ManagerEvents/GetEventKinds',
-            method: 'GET',
-            success: function (data) {
-                // console.log(data); // Log the data received from the server
-
-                var mydata = null;
-                mydata = data
-                    .filter(function (item) {
-                        return item.valid == 1;
-                    })
-                    .map(function (item) {
-                        return {
-                            Code: item.code,
-                            Name: item.name,
-                            Level: item.level,
-                            CategoryCode: item.categoryCode,
-                            Id: item.id,
-                            RequestAmount: item.requestAmount,
-                            RequestComments: item.requestComments,
-                            RequestDuration: item.requestDuration,
-                            RequestFromTo: item.requestFromTo
-                        };
-                    });
-                eventsKind = mydata;
-                console.log(eventsKind);
-                var populate = eventsKind.map(event => {
-                    return {
-                        id: event.Id,
-                        text: event.Name
-                    };
-                })
-               // generateDropdownOptions(populate, '#event-name');
-                $('#event-name').select2({
-                    data: populate,
-                    dropdownParent: $('#demo-add-popup'),
-                    width: '365px',
-
-
-                });
-                // Initialize the grid with new data
-            },
-            error: function (xhr, textStatus, exception) {
-                // Handle error response
-                console.error('Error:', textStatus, exception);
-
-            },
-            
-
-        });*/
+      
          showOverlay();
         $.ajax({
             url: `/Eventsdriver/GetAllEvents`,
@@ -3602,7 +3476,7 @@ $('#main-tab2-mobile').hide();
                                     vehicleName: event.vehicleName,
                                     statusName: event.statusName,
                                     status: event.status,
-                                    order:3,
+                                    order:2,
                                     color: Color,
 
                                     // Map other fields as needed

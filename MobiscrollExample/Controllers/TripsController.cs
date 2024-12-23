@@ -176,6 +176,178 @@ namespace Nestle.CH.HQ.RSL.WebApp.Controllers
                 {
                     Result = new List<PlanningTrips>
     {
+                         new PlanningTrips
+    {
+        TripId = 100,
+        DriverId = 101,
+        ExternalServiceId = 1,
+        Status = 2, // In Progress
+        StatusName = "In Progress",
+        VehicleName = "SUV",
+        FlightType = 1,
+        IsMailSent = false,
+        FromDate = DateTime.Now,
+        ToDate = DateTime.Now.AddHours(6),
+        FlightNumber = "AA1234",
+        TripSteps = new List<TripStep>
+        {
+            new TripStep
+            {
+                TripStepId = 1001,
+                TripFromDate = DateTime.Now,
+                TripToDate = DateTime.Now.AddHours(3),
+                FromLocation = new Location { LocationName = "New York", LocationId = 10 },
+                ToLocation = new Location { LocationName = "Boston", LocationId = 11 },
+                Mail = "Yes",
+                Comment = "First leg of the trip"
+            }
+        },
+        MainPassenger = new List<Passenger>
+        {
+            new Passenger { PassengerId = 1, FirstName = "John", LastName = "Doe", MobilePhone = "123-456-7890" }
+        },
+        ExternalService = new ExternalService
+        {
+            id = 1,
+            name = "ABC Transport",
+            code = "ABC",
+            contact_firstname = "James",
+            contact_lastname = "Smith",
+            contact_email = "james.smith@abc.com",
+            unassigned_warning_hours = 24,
+            modified_by = "admin",
+            time_stamp = DateTime.Now
+        }
+    },
+    new PlanningTrips
+    {
+        TripId = 101,
+        DriverId = 102,
+        ExternalServiceId = 2,
+        Status = 3, // Completed
+        StatusName = "Completed",
+        VehicleName = "Sedan",
+        FlightType = 2,
+        IsMailSent = false,
+        FromDate = DateTime.Now.AddDays(1),
+        ToDate = DateTime.Now.AddDays(1).AddHours(8),
+        FlightNumber = "DL5678",
+        TripSteps = new List<TripStep>
+        {
+            new TripStep
+            {
+                TripStepId = 1002,
+                TripFromDate = DateTime.Now.AddDays(1),
+                TripToDate = DateTime.Now.AddDays(1).AddHours(4),
+                FromLocation = new Location { LocationName = "San Francisco", LocationId = 1 },
+                ToLocation = new Location { LocationName = "Los Angeles", LocationId = 2 },
+                Mail = "No",
+                Comment = "Second leg of the trip"
+            }
+        },
+        MainPassenger = new List<Passenger>
+        {
+            new Passenger { PassengerId = 2, FirstName = "Emma", LastName = "Stone", MobilePhone = "222-333-4444" }
+        },
+        ExternalService = new ExternalService
+        {
+            id = 2,
+            name = "XYZ Logistics",
+            code = "XYZ",
+            contact_firstname = "Sarah",
+            contact_lastname = "Connor",
+            contact_email = "sarah.connor@xyz.com",
+            unassigned_warning_hours = 12,
+            modified_by = "user",
+            time_stamp = DateTime.Now
+        }
+    },
+    new PlanningTrips
+    {
+        TripId = 102,
+        DriverId = 3,
+        //ExternalServiceId = 3,
+        Status = 11, // On Hold
+        StatusName = "On Hold",
+        VehicleName = "Van",
+        FlightType = 2,
+        IsMailSent = true,
+        FromDate = DateTime.Now.AddDays(2),
+        ToDate = DateTime.Now.AddDays(2).AddHours(5),
+        FlightNumber = "UA8765",
+        TripSteps = new List<TripStep>
+        {
+            new TripStep
+            {
+                TripStepId = 1003,
+                TripFromDate = DateTime.Now.AddDays(2),
+                TripToDate = DateTime.Now.AddDays(2).AddHours(2),
+                FromLocation = new Location { LocationName = "Chicago", LocationId = 3 },
+                ToLocation = new Location { LocationName = "Detroit", LocationId = 4 },
+                Mail = "Yes",
+                Comment = "Layover in Detroit"
+            }
+        },
+        MainPassenger = new List<Passenger>
+        {
+            new Passenger { PassengerId = 3, FirstName = "Liam", LastName = "Johnson", MobilePhone = "555-666-7777" }
+        },
+        ExternalService = new ExternalService
+        {
+            id = 3,
+            name = "Global Movers",
+            code = "GM",
+            contact_firstname = "Michael",
+            contact_lastname = "Jordan",
+            contact_email = "michael.jordan@gm.com",
+            unassigned_warning_hours = 48,
+            modified_by = "admin",
+            time_stamp = DateTime.Now
+        }
+    },
+    new PlanningTrips
+    {
+        TripId = 103,
+        DriverId = 4,
+        //ExternalServiceId = ,
+        Status = 10, // Cancelled
+        StatusName = "Cancelled",
+        VehicleName = "Truck",
+        FlightType = 4,
+        IsMailSent = true,
+        FromDate = DateTime.Now.AddDays(3),
+        ToDate = DateTime.Now.AddDays(3).AddHours(10),
+        FlightNumber = "BA9999",
+        TripSteps = new List<TripStep>
+        {
+            new TripStep
+            {
+                TripStepId = 1004,
+                TripFromDate = DateTime.Now.AddDays(3),
+                TripToDate = DateTime.Now.AddDays(3).AddHours(7),
+                FromLocation = new Location { LocationName = "Miami", LocationId = 5 },
+                ToLocation = new Location { LocationName = "Orlando", LocationId = 6 },
+                Mail = "No",
+                Comment = "Cancelled due to weather"
+            }
+        },
+        MainPassenger = new List<Passenger>
+        {
+            new Passenger { PassengerId = 4, FirstName = "Sophia", LastName = "Brown", MobilePhone = "888-999-0000" }
+        },
+        ExternalService = new ExternalService
+        {
+            id = 4,
+            name = "Rapid Transit",
+            code = "RT",
+            contact_firstname = "David",
+            contact_lastname = "Beckham",
+            contact_email = "david.beckham@rt.com",
+            unassigned_warning_hours = 8,
+            modified_by = "system",
+            time_stamp = DateTime.Now
+        }
+    },
         new PlanningTrips
         {
             TripId = 1,
