@@ -3097,20 +3097,9 @@ td [dir="ltr"] + .ui-pg-button.ui-state-disabled {
         display: none;
     }
 
-    #out-of-policy-scheduler {
-        max-height: auto;
-        font-size: 10px; /* Adjust font size for printing */
-        max-width: auto;
-        /*  // max-width:150vh;
-        //border: solid 1px grey;*/
-    }
-
-    #demo-work-order-scheduling {
-        max-height: auto;
-        font-size: 10px; /* Adjust font size for printing */
-        max-width: auto;
-        /*  // max-width:150vh;
-        //border: solid 1px grey;*/
+    .mbsc-eventcalendar {
+        height: auto !important;
+        overflow: visible !important;
     }
     /*#demo-work-order-scheduling {
         border :solid;
