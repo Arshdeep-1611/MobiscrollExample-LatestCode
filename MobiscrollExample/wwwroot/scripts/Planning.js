@@ -1516,7 +1516,7 @@ $(document).ready(function () {
                             tempEvent.resource = 'D' + driverId;
                             // navigate the calendar to the correct view
                             calendar.addEvent(tempEvent);
-                            calendar.navigateToEvent(tempEvent);
+                            //calendar.navigateToEvent(tempEvent);
 
 
 
@@ -2111,9 +2111,9 @@ $(document).ready(function () {
                     if (typeof args.resource !== 'number') {
 
                         if (args.resource.charAt(0) == 'D') {
-                            tempEvent = args.event;
-                             tempEvent.start = args.date;
-                             tempEvent.resource = args.resource;
+                            tempEvent = {};
+                             /*tempEvent.start = args.date;
+                             tempEvent.resource = args.resource;*/
                             var resource = args.resource;
                             var driver = schdeulerDrivers.find(res => res.id === resource);
                             var finaldate = JSON.stringify(args.date);
