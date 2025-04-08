@@ -2031,9 +2031,9 @@ $(document).ready(function () {
                     pushToDatabase(ev);
                 },
                 onEventClick: function (args) {
-                    rightclick = true;
                     tempEvent = args.event;
                     console.log(tempEvent);
+                   
                 },
                 onEventHoverIn: function (args) {
                    

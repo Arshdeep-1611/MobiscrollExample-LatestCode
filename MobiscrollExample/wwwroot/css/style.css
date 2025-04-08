@@ -203,6 +203,7 @@ textarea {
 }
 
 
+
 .icon-large-img {
     width: 16px;
     height: auto;
@@ -3173,7 +3174,6 @@ td [dir="ltr"] + .ui-pg-button.ui-state-disabled {
 
 #out-of-policy-scheduler {
     border: solid 1px grey;
-    font-size: xx-small;
     max-height: 90vh;
 }
 
@@ -3191,6 +3191,10 @@ td [dir="ltr"] + .ui-pg-button.ui-state-disabled {
     max-height: 90vh;
 }
 
+.tripsPlanning {
+    opacity: 0.7 !important;
+}
+
 #demo-add-popup {
     /* width:400px;
    display:flex;
@@ -3200,7 +3204,7 @@ td [dir="ltr"] + .ui-pg-button.ui-state-disabled {
 }
 
 .resourceHours {
-    font-size: 7px;
+    font-size: 8px;
 }
 
 #mobile-day-view {
@@ -3208,12 +3212,12 @@ td [dir="ltr"] + .ui-pg-button.ui-state-disabled {
 }
 
 #duration-days {
-    max-width: 53px;
+    max-width: 70px;
     margin-right: 10px;
 }
 
 #duration-hours {
-    max-width: 53px;
+    max-width: 70px;
     margin-right: 10px;
 }
 
@@ -3222,7 +3226,7 @@ td [dir="ltr"] + .ui-pg-button.ui-state-disabled {
 }
 
 #duration-mins {
-    max-width: 53px;
+    max-width: 70px;
     margin-right: 10px;
 }
 
@@ -3278,6 +3282,10 @@ td [dir="ltr"] + .ui-pg-button.ui-state-disabled {
 
 .event-color-label {
     flex: 1 0 auto;
+}
+
+.mbsc-timeline-column-s {
+    width: 1em !important;
 }
 
 .event-color {
@@ -3376,7 +3384,7 @@ td [dir="ltr"] + .ui-pg-button.ui-state-disabled {
 }
 
 .cal-header-today {
-    font-size: medium;
+    font-size: medium !important;
 }
 
 .img-trip {
@@ -3445,7 +3453,7 @@ td [dir="ltr"] + .ui-pg-button.ui-state-disabled {
 }
 
 .mbsc-timeline-row {
-    height: 50px;
+    height: 50px !important;
 }
 
 .mbsc-timeline-column,
@@ -3461,7 +3469,7 @@ td [dir="ltr"] + .ui-pg-button.ui-state-disabled {
 }*/
 
 .mbsc-timeline-parent {
-    height: 32px;
+    max-height: 30px !important;
 }
 
 .mbsc-timeline-resource-title {
@@ -3473,9 +3481,10 @@ td [dir="ltr"] + .ui-pg-button.ui-state-disabled {
 .mbsc-timeline-resource-col {
     width: 120px;
 }
-/*.mbsc-timeline-row-gutter {
+
+.mbsc-timeline-row-gutter {
     height: 2px;
-}*/
+}
 
 .mbsc-timeline-resource {
     display: flex;
@@ -3680,8 +3689,12 @@ td [dir="ltr"] + .ui-pg-button.ui-state-disabled {
     display: none;
 }
 
+.mbsc-timeline-event {
+    min-width: 0;
+}
+
 .mbsc-timeline-header-time {
-    padding: 0;
+    padding: 0 !important;
     display: flex;
     font-size: 10px !important;
 }
@@ -5083,7 +5096,7 @@ input.select2-search__field {
 }
 
 .mbsc-timeline-resource-title {
-    padding-left: 5px !important;
+    font-size: 11px !important;
 }
 
 @media only screen and (max-width: 900px) {
@@ -5131,7 +5144,7 @@ input.select2-search__field {
 
 #driverWorkReport .grid-first-wrapper.grid-version {
     display: flex;
-    gap: 17px;
+    gap: 5px;
     align-items: center;
     text-align: center;
 }
@@ -5158,6 +5171,22 @@ input.select2-search__field {
     border-radius: 50%;
 }
 
-.driver-url-icon.driverInfo-icon {
-    margin-left: 0 !important;
+#main-tab3 .ui-jqgrid-bdiv.ui-corner-bottom {
+    max-height: 500px !important;
+    overflow-y: auto;
+}
+
+#dashboard-grid-1_DriverInfo,
+#dashboard-grid-2_DriverInfo {
+    text-align: center !important;
+}
+
+#checkAuthorized1, #checkAuthorized2, #checkPrivate2, #checkCustomised2, #checkRadioPrivate, #checkCustomised1 {
+    padding: 5.7px 5.7px;
+    border-radius: 2.5px;
+}
+
+#isPrivate, #informPassenger, #isVIPtrip {
+    padding: 6px 6px;
+    border-radius: 3px;
 }
